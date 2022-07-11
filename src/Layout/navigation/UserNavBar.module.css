@@ -1,0 +1,10 @@
+.logo {
+  transition: all 300ms;
+  letter-spacing: 0.5rem;
+}
+
+.logo:hover {
+  color: white;
+  transform: scale(1.01);
+  filter: brightness(1.1);
+}

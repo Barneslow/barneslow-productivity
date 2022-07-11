@@ -1,0 +1,19 @@
+.main {
+  height: 86vh;
+  background-color: lightblue;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0.5rem;
+}
+
+.layout {
+  height: 100vh;
+  display: grid;
+}
+
+@media only screen and (max-width: 870px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,28 @@
+:root {
+  --light-grey: #a8a7a7;
+  --dark-grey: #242526;
+  --off-white: #dbdbdb;
+  --green: #89c569;
+  --dark-green: #276009;
+  --speed: 500ms;
+  --box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.container {
+  display: flex;
+  border: 1px solid;
+  border-radius: 5px;
+  flex-direction: column;
+  overflow: scroll;
+  align-items: center;
+  gap: 1rem;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+h1 {
+  margin: 1rem;
+  text-decoration: underline;
+}

@@ -1,0 +1,19 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow: scroll;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+/* 
+.chart-container {
+  display: flex;
+  justify-content: space-evenly;
+  height: 500px;
+  width: 100%;
+  border: 1px solid;
+} */

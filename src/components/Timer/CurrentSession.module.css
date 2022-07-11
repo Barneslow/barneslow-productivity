@@ -1,0 +1,9 @@
+.current-session {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.number {
+  padding: 1rem;
+}

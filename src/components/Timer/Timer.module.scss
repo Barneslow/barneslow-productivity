@@ -1,0 +1,27 @@
+.container {
+  text-align: center;
+  padding: 1rem;
+  background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+  border-radius: 5px;
+  height: fit-content;
+  width: 100%;
+}
+
+.padding {
+  margin: 1rem 0 1rem 0;
+}
+
+.break {
+  background: linear-gradient(
+    138deg,
+    rgba(112, 249, 27, 0.5) 0%,
+    rgba(140, 238, 75, 0.5) 35%,
+    rgba(161, 244, 145, 0.5) 100%
+  );
+  border-color: green;
+}
+
+.container:hover {
+  filter: brightness(1.05);
+  // border: 1px solid ;
+}

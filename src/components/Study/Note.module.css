@@ -1,0 +1,9 @@
+.input {
+  height: 10rem;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}

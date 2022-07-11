@@ -1,0 +1,22 @@
+.chart {
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #f8dfff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  width: 100%;
+}
+
+.chart-section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.graph {
+  display: flex;
+  height: 100%;
+  justify-content: space-around;
+}
