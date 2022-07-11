@@ -1,28 +1,28 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchUserTasksAction } from "../../store/taskSlice";
+
 import Table from "../UI/Table";
 import TableRow from "../UI/TableRow";
-import styles from "./CurrentTasks.module.css";
+import { dateFormatter } from "../../utils/dateFormater";
 
 const CurrentTasks = () => {
-  const data = [
-    {
-      task: "Build Blog",
-      status: { state: "failed" },
-      date: { amount: "10/10/2021" },
-      id: "1",
-    },
-    {
-      task: "Build Productivity",
-      status: { state: "pending" },
-      date: { amount: "10/10/2021" },
-      id: "2",
-    },
-    {
-      task: "Workout",
-      status: { state: "completed" },
-      date: { amount: "10/10/2021" },
-      id: "3",
-    },
-  ];
+  const dispatch = useDispatch();
+  const { tasks } = useSelector((state) => state.task);
+
+  useEffect(() => {
+    dispatch(fetchUserTasksAction());
+  }, [dispatch]);
+
+  const dataArray = [];
+  tasks?.map((field) =>
+    dataArray.push({
+      description: field.description,
+      status: { state: field.status },
+      date: { amount: dateFormatter(field.dueDate) },
+      id: field._id,
+    })
+  );
 
   return (
     <Table
@@ -31,8 +31,8 @@ const CurrentTasks = () => {
       field3="Due Date"
       header="Current Tasks"
     >
-      {data.map((field) => (
-        <TableRow selectable="true" data={field} key={field.id} />
+      {dataArray?.map((data) => (
+        <TableRow selectable="true" data={data} key={data.id} />
       ))}
     </Table>
   );

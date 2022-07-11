@@ -1,18 +1,24 @@
-import { useSelector } from "react-redux";
-import { selectTimerLog } from "../../store/timerSlice";
+import { useDispatch, useSelector } from "react-redux";
 import Table from "../UI/Table";
 import TableRow from "../UI/TableRow";
 import { secondsToHms } from "../../utils/secondsToHms";
+import { useEffect } from "react";
+import { fetchUserSessionsAction } from "../../store/sessionSlice";
 
 const UserSessions = () => {
-  // const data = { task: "42", status: "110mins", date: { amount: "55mins" } };
-  const sessions = useSelector(selectTimerLog);
+  const dispatch = useDispatch();
+  const { sessions } = useSelector((state) => state.session);
+
+  useEffect(() => {
+    dispatch(fetchUserSessionsAction());
+  }, [dispatch]);
+
   let data;
 
-  let totalSessions = sessions.length;
-  let time = sessions.map((session) => session.time);
+  let totalSessions = sessions?.length;
+  let time = sessions?.map((session) => session.time);
 
-  if (time.length > 0) {
+  if (time?.length > 0) {
     let totalSeconds = time?.reduce((acc, cur) => acc + cur);
     let averageSeconds = Math.round(totalSeconds / totalSessions);
 
@@ -23,7 +29,7 @@ const UserSessions = () => {
     const averageTime = `${averageSeconds.hours}:${averageSeconds.minutes}:${averageSeconds.seconds}`;
 
     data = {
-      task: totalSessions,
+      description: totalSessions,
       status: totalTime,
       date: { amount: averageTime },
     };

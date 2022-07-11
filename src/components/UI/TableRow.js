@@ -7,7 +7,7 @@ const TableRow = ({ selectable, data }) => {
   if (selectable) {
     className = `${styles.row} ${styles.selectable}`;
   }
-  if (data?.status?.state === "failed") {
+  if (data?.status?.state === "overdue") {
     status = <i className="icon close red"></i>;
   }
   if (data?.status?.state === "pending") {
@@ -25,7 +25,7 @@ const TableRow = ({ selectable, data }) => {
 
   return (
     <div className={className}>
-      <h4 className={styles.goals}>{data?.task}</h4>
+      <h4 className={styles.goals}>{data?.description}</h4>
       <h4 className={styles.goals}>
         {status}
         {data?.status?.amount}

@@ -6,7 +6,6 @@ import { selectTimerLog } from "../../store/timerSlice";
 export const MonthlyChart = (props) => {
   const sessionLog = useSelector(selectTimerLog);
 
-
   const [series, setSeries] = useState([
     {
       name: "Study Time",
@@ -257,8 +256,6 @@ export const WeeklyChart = (props) => {
     for (const session of sessionLog) {
       const isoDate = new Date(session.date);
       const sessionDay = isoDate.getDay();
-
-      console.log(sessionDay);
 
       time[sessionDay] += session.time;
     }

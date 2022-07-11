@@ -81,13 +81,13 @@ const UserInfo = (props) => {
             </div>
             <div className={styles.box}>
               <h4>Weekly Goal:</h4>
-              <span>2 days ago</span>
+              <span>{user?.goals}hrs</span>
             </div>
           </div>
         </div>
         <div className={styles.bio}>
           <h2 className={styles.title}>Bio</h2>
-          <p>{bio}</p>
+          <p>{user?.bio}</p>
         </div>
         <div className={styles.settings}>
           <button className="ui blue button" onClick={showModalHandler}>
