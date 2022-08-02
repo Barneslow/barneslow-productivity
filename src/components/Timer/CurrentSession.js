@@ -1,68 +1,123 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectTimer,
-  selectTimerLog,
-  timerActions,
-} from "../../store/timerSlice";
+import { LinearProgress } from "@mui/material";
+
+import { selectTimer, timerActions } from "../../store/timerSlice";
 
 import Card from "../UI/Card";
 
 import styles from "./CurrentSession.module.css";
+import CountdownTimer from "./CountdownTimer";
+import { secondsToHms } from "../../utils/secondsToHms";
+import SessionStars from "./SessionStars";
+import SaveSession from "./SaveSession";
+import Modal from "../UI/Modal";
+
+const red = "#f54e4e";
+const green = "#4aec8c";
+const black = "#020202";
 
 const CurrentSession = () => {
   const dispatch = useDispatch();
   const timerState = useSelector(selectTimer);
-  const timerLog = useSelector(selectTimerLog);
   const [currentSession, setCurrentSession] = useState();
+  const [currentBreak, setCurrentBreak] = useState();
+  const [error, setError] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const { user } = useSelector((state) => state.user);
+
+  const [stars, setStars] = useState(3);
 
   useEffect(() => {
+    if (currentSession <= 0) {
+      setError(true);
+    } else {
+      setError(false);
+    }
     setCurrentSession(timerState.session);
-  }, [timerState.session]);
+    setCurrentBreak(timerState.sessionBreak);
+  }, [timerState.session, timerState.sessionBreak, currentSession]);
 
   const saveSessionHandler = () => {
-    const session = {
-      time: currentSession,
-      date: new Date().toISOString(),
-      id: Math.floor(Math.random() * 100).toString(),
-    };
-    const newTimerLog = [...timerLog];
+    setShowModal(true);
+  };
 
-    newTimerLog.push(session);
-
-    dispatch(timerActions.saveSession(newTimerLog));
+  const resetSession = () => {
     dispatch(timerActions.resetCurrentSession(0));
   };
 
-  const log = () => {
-    console.log(timerLog);
-  };
+  const sessionTime = secondsToHms(currentSession);
 
-  const minutes = Math.floor(currentSession / 60);
-  let seconds = currentSession % 60;
-  if (seconds < 10) seconds = "0" + seconds;
+  const goal = user?.sessionGoal ? user?.sessionGoal : 0;
+  let value = (currentSession / goal) * 100;
+
+  if (currentSession > user?.sessionGoal) {
+    value = 100;
+  }
 
   return (
-    <Card>
-      <div className={styles["current-session"]}>
-        <h2 className={styles.title}>CURRENT SESSION :</h2>
-        <h1 className={styles.number}>
-          {minutes}:{seconds}
-        </h1>
-      </div>
-
-      <div className={styles["current-session"]}>
-        <div className="ui buttons">
-          <button className="ui red button" onClick={log}>
-            Cancel
-          </button>
-          <div className="or"></div>
-          <button className="ui positive button" onClick={saveSessionHandler}>
-            Save Session
-          </button>
+    <>
+      {showModal && (
+        <Modal>
+          <SaveSession
+            session={currentSession}
+            breakTime={currentBreak}
+            rating={stars}
+            setShowModal={setShowModal}
+          />
+        </Modal>
+      )}
+      <Card>
+        <div className={styles["current-session"]}>
+          <h2 className={styles.title}>CURRENT SESSION</h2>
         </div>
-      </div>
-    </Card>
+        <div className={styles["timer-container"]}>
+          <LinearProgress
+            style={{ height: "1rem", borderRadius: 5 }}
+            variant="determinate"
+            value={value}
+            color={currentSession > goal ? "success" : "error"}
+          />
+          <div className={styles["session-stats"]}>
+            <div className={styles["session-time"]}>
+              <p>Session Time</p>
+              <h3>
+                {sessionTime.hours}:{sessionTime.minutes}:{sessionTime.seconds}
+              </h3>
+            </div>
+            <div className={styles["session-time"]}>
+              <p>
+                {goal < currentSession ? "Completed Goal" : "Time Until Goal"}
+              </p>
+              <CountdownTimer goal={goal} session={currentSession} />
+            </div>
+          </div>
+        </div>
+        <div className={styles.save}>
+          <SessionStars stars={stars} setStars={setStars} />
+          <div className={styles["current-session"]}>
+            <div className="ui buttons">
+              <button className="ui red button" onClick={resetSession}>
+                Cancel
+              </button>
+              <div className="or"></div>
+              {error ? (
+                <button className="ui positive button" disabled>
+                  Save Session
+                </button>
+              ) : (
+                <button
+                  className="ui positive button"
+                  onClick={saveSessionHandler}
+                >
+                  Save Session
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      </Card>
+    </>
   );
 };
 

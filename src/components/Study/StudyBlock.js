@@ -24,14 +24,6 @@ const StudyBlock = (props) => {
   if (props.time) {
     let { hours, minutes, seconds } = secondsToHms(props.time);
 
-    if (minutes < 10) {
-      minutes = "0" + minutes;
-    }
-
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-
     return (
       <div className={`${styles["session-date"]} ${styles.time}`}>
         <div className={styles["expense-date__month"]}>Session Time</div>

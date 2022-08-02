@@ -23,8 +23,11 @@ const TableRow = ({ selectable, data }) => {
     icon = <i className="icon checkmark green"></i>;
   }
 
+  const handleClick = (e) => {
+    console.log("fire");
+  };
   return (
-    <div className={className}>
+    <div className={className} onClick={handleClick}>
       <h4 className={styles.goals}>{data?.description}</h4>
       <h4 className={styles.goals}>
         {status}

@@ -31,7 +31,7 @@ const TimerSettings = () => {
     <Card>
       {showSettings && (
         <div className={styles.container}>
-          <h1>Work Time: {workTime}</h1>
+          <h3>Work Time: {workTime}</h3>
           <WorkingSlider
             step={5}
             defaultValue={25}
@@ -40,7 +40,7 @@ const TimerSettings = () => {
             value={workTime}
             onChange={handleWorkChange}
           />
-          <h1>Break Time: {breakTime} </h1>
+          <h3>Break Time: {breakTime} </h3>
           <PrettoSlider
             step={5}
             defaultValue={25}

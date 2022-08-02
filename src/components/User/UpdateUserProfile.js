@@ -1,50 +1,90 @@
-import { useState, useRef } from "react";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../store/authSlice";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { updateUserAction } from "../../store/userSlice";
+
+import styles from "./UpdateUserProfile.module.css";
+
+const formSchema = Yup.object({
+  userName: Yup.string().required("Username is required"),
+  email: Yup.string().required("Email is required"),
+  firstName: Yup.string().required("First name is required"),
+  lastName: Yup.string().required("Last name is required"),
+});
 
 const UpdateUserProfile = (props) => {
+  const dispatch = useDispatch();
   const { user } = props;
-  const usernameRef = useRef();
-  const emailRef = useRef();
-  const firstNameRef = useRef();
-  const lastNameRef = useRef();
 
-  const logData = (e) => {
-    e.preventDefault();
+  const formik = useFormik({
+    initialValues: {
+      userName: user.userName,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+    },
 
-    const data = {
-      username: usernameRef.current.value,
-      email: emailRef.current.value,
-      firstName: firstNameRef.current.value,
-      lastName: lastNameRef.current.value,
-    };
-  };
+    onSubmit: (values) => {
+      console.log(values);
+      dispatch(updateUserAction(values));
+      props.onClose();
+    },
+    validationSchema: formSchema,
+  });
 
   return (
-    <form onSubmit={logData}>
+    <form onSubmit={formik.handleSubmit}>
       <div className="ui equal width form">
         <div className="fields">
           <div className="field">
             <label>UserName</label>
-            <input type="text" placeholder={user.userName} ref={usernameRef} />
+            <input
+              value={formik.values.userName}
+              onChange={formik.handleChange("userName")}
+              onBlur={formik.handleBlur("userName")}
+              type="text"
+            />
+            <div className={styles.error}>
+              {formik.touched.userName && formik.errors.userName}
+            </div>
           </div>
           <div className="field">
             <label>Email</label>
-            <input type="email" placeholder={user.email} ref={emailRef} />
+            <input
+              value={formik.values.email}
+              onChange={formik.handleChange("email")}
+              onBlur={formik.handleBlur("email")}
+              type="email"
+            />
+            <div className={styles.error}>
+              {formik.touched.email && formik.errors.email}
+            </div>
           </div>
         </div>
         <div className="fields">
           <div className="field">
             <label>First name</label>
             <input
+              value={formik.values.firstName}
+              onChange={formik.handleChange("firstName")}
+              onBlur={formik.handleBlur("firstName")}
               type="text"
-              placeholder={user.firstName}
-              ref={firstNameRef}
             />
+            <div className={styles.error}>
+              {formik.touched.firstName && formik.errors.firstName}
+            </div>
           </div>
           <div className="field">
             <label>Last name</label>
-            <input type="text" placeholder={user.lastName} ref={lastNameRef} />
+            <input
+              value={formik.values.lastName}
+              onChange={formik.handleChange("lastName")}
+              onBlur={formik.handleBlur("lastName")}
+              type="text"
+            />
+            <div className={styles.error}>
+              {formik.touched.lastName && formik.errors.lastName}
+            </div>
           </div>
         </div>
       </div>

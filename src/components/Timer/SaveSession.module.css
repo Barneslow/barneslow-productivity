@@ -1,0 +1,27 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  text-align: center;
+}
+
+.save {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.session-time {
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--inset-box-shadow);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.title {
+  padding: 1rem;
+}

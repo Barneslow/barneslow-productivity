@@ -9,10 +9,12 @@ import UpdateUserProfile from "./UpdateUserProfile";
 import styles from "./UserInfo.module.css";
 import UpdateUserGoals from "./UpdateUserGoals";
 import { dateFormatter } from "../../utils/dateFormater";
+import { secondsToHhrsAndMins } from "../../utils/secondsToHms";
 
 const UserInfo = (props) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
+
   const { userAuth } = useSelector((state) => state.authentication);
 
   useEffect(() => {
@@ -54,7 +56,7 @@ const UserInfo = (props) => {
       )}
       {showUpdateGoalsModal && (
         <Modal onClose={closeModal}>
-          <UpdateUserGoals onClose={closeModal} />
+          <UpdateUserGoals onClose={closeModal} user={user} />
         </Modal>
       )}
 
@@ -81,7 +83,19 @@ const UserInfo = (props) => {
             </div>
             <div className={styles.box}>
               <h4>Weekly Goal:</h4>
-              <span>{user?.goals}hrs</span>
+              <span>
+                {` ${secondsToHhrsAndMins(user?.goals).hours}hrs
+                  ${secondsToHhrsAndMins(user?.goals).minutes}mins
+                `}
+              </span>
+            </div>
+            <div className={styles.box}>
+              <h4>Session Goal:</h4>
+              <span>
+                {` ${secondsToHhrsAndMins(user?.sessionGoal).hours}hrs
+                  ${secondsToHhrsAndMins(user?.sessionGoal).minutes}mins
+                `}
+              </span>
             </div>
           </div>
         </div>

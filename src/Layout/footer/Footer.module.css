@@ -1,7 +1,8 @@
 .footer {
   width: 100%;
   height: 10vh;
-  background-color: lightslategray;
+  background-color: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: space-between;

@@ -14,8 +14,10 @@ const CurrentTasks = () => {
     dispatch(fetchUserTasksAction());
   }, [dispatch]);
 
+  const nonArchivedTasks = tasks?.filter((task) => !task.isArchive);
+
   const dataArray = [];
-  tasks?.map((field) =>
+  nonArchivedTasks?.map((field) =>
     dataArray.push({
       description: field.description,
       status: { state: field.status },

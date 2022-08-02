@@ -1,0 +1,82 @@
+.container {
+  border: 1px solid;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 3rem;
+  height: 86vh;
+}
+
+.tasks-list {
+  border: 1px solid;
+  width: fit-content;
+  height: 100%;
+  overflow: scroll;
+  padding: 3rem;
+  border-radius: 5px;
+  background-color: lightgray;
+}
+
+.tasks-list::-webkit-scrollbar {
+  display: none;
+}
+
+.title {
+  display: grid;
+  grid-auto-flow: column dense;
+  grid-template-rows: 1fr;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  background-color: #b5e8f5;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sorting {
+  padding-bottom: 1rem;
+  justify-content: center;
+  display: flex;
+}
+
+.button {
+  font: inherit;
+  color: teal;
+  border: 1px solid teal;
+  background-color: #c2fafa;
+  border-radius: 4px;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: teal;
+  color: white;
+}
+
+.add:hover {
+  cursor: pointer;
+  stroke: black;
+  color: teal;
+}
+
+.add-task {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.archive {
+  background-color: teal;
+  color: white;
+  border: 1px dashed black;
+}

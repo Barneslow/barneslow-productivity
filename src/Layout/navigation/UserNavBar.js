@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,29 +14,16 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import PunchClockIcon from "@mui/icons-material/PunchClock";
 
-import Modal from "../../components/UI/Modal";
-import AccountSettings from "../../components/User/AccountSettings";
-import userImage from "../../images/patrick.png";
-import UpdateUserProfile from "../../components/User/UpdateUserProfile";
-import UpdateUserGoals from "../../components/User/UpdateUserGoals";
-
-import styles from "./UserNavBar.module.css";
-
 import image from "../../images/patrick.png";
+import { useDispatch } from "react-redux";
+import { LogoutUserAction } from "../../store/authSlice";
 
-const pages = ["Profile", "Settings"];
-const settings = ["Profile", "Dashboard", "Settings", "Logout"];
-
-const DUMMY_USER = {
-  firstName: "Darrach",
-  lastName: "Barneveld",
-  userName: "Barneslow",
-  email: "test@gmail.com",
-  goals: 120,
-  password: "123456",
-};
+const pages = ["Dashboard", "Tasks"];
+const settings = ["Dashboard", "Tasks", "Settings", "Logout"];
 
 const UserNavBar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [showUpdateUserModal, setshowUpdateUserModal] = useState(false);
@@ -48,45 +36,31 @@ const UserNavBar = () => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (e) => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (e) => {
+    if (e.target.textContent === "Tasks") navigate("/tasks");
+    if (e.target.textContent === "Dashboard") navigate("/dashboard");
+    if (e.target.textContent === "Logout") {
+      dispatch(LogoutUserAction());
+      navigate("/login");
+    }
+
     setAnchorElUser(null);
   };
 
   const showModalHandler = (e) => {
-    if (e.target.textContent === "Profile") {
-      const content = (
-        <Modal onClose={closeModal}>
-          <AccountSettings />
-          <h2 className="ui header">
-            <img src={userImage} className="ui circular image" />
-            Barneslow
-          </h2>
-          <UpdateUserProfile onClose={closeModal} user={DUMMY_USER} />
-        </Modal>
-      );
-
-      setModalContent(content);
+    if (e.target.textContent === "Dashboard") {
+      navigate("/dashboard");
     }
 
-    if (e.target.textContent === "Settings") {
-      const content = (
-        <Modal onClose={closeModal}>
-          <UpdateUserGoals onClose={closeModal} />
-        </Modal>
-      );
-
-      setModalContent(content);
+    if (e.target.textContent === "Tasks") {
+      navigate("/tasks");
     }
 
     setshowUpdateUserModal(true);
-  };
-
-  const closeModal = (e) => {
-    setshowUpdateUserModal(false);
   };
 
   return (
@@ -97,8 +71,7 @@ const UserNavBar = () => {
         <Container
           maxWidth="false"
           sx={{
-            background:
-              "linear-gradient(138deg, rgba(39,83,247,1) 0%, rgba(7,75,170,1) 60%, rgba(3,21,96,1) 100%)",
+            background: "linear-gradient(315deg, #485461 0%, #28313b 74%)",
             borderBottom: "1px solid white",
           }}
         >
@@ -116,7 +89,6 @@ const UserNavBar = () => {
               noWrap
               component="a"
               href="/"
-              className={styles.logo}
               sx={{
                 ml: "2rem",
                 mr: "2rem",
@@ -152,6 +124,7 @@ const UserNavBar = () => {
                   vertical: "top",
                   horizontal: "left",
                 }}
+                onClick={showModalHandler}
                 open={Boolean(anchorElNav)}
                 onClose={handleCloseNavMenu}
                 sx={{

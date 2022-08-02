@@ -1,0 +1,105 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7f5a83;
+  background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+}
+
+.title {
+  font-size: 2rem;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 3rem 1rem 3rem 1rem;
+  border-radius: 50px;
+  box-shadow: var(--darker-box-shadow);
+  background-color: #7f53ac;
+  background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
+}
+
+.form-input {
+  padding: 0.5rem;
+  display: flex;
+  width: 100%;
+  border: grey;
+  position: relative;
+  display: flex;
+}
+
+.form-input svg {
+  position: absolute;
+  left: 25px;
+  top: 10px;
+  font-size: 2rem;
+  fill: darkgray;
+  stroke: black;
+}
+
+.form-input input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding-left: 4rem;
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.form button {
+  border-radius: 50px;
+  border: none;
+  padding: 0.5rem;
+  width: 50%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.2rem;
+}
+
+.form button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: #f7b42c;
+  background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
+  box-shadow: var(--darker-box-shadow);
+}
+
+.copywrite {
+  padding: 2rem;
+}
+
+.copywrite svg {
+  font-size: 10rem;
+  fill: white;
+  stroke: orange;
+  stroke-width: 0.3;
+}
+
+.copywrite h2 {
+  color: white;
+  font-size: 5rem;
+}
+
+.register {
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.register button {
+  background: none;
+  border: none;
+  color: white;
+}
+
+.register button:hover {
+  cursor: pointer;
+  color: #4183c4;
+}

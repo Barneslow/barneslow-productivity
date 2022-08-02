@@ -3,12 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectTimer, timerActions } from "../../store/timerSlice";
 import { selectNoteLog } from "../../store/noteSlice";
 
-import { LinearProgress } from "@mui/material";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 import TimerContext from "../../contexts/timerContext";
 import TimerButtons from "./TimerButtons";
 
 import styles from "./Timer.module.scss";
+
+const red = "#f54e4e";
+const green = "#276009";
+const black = "#020202";
 
 const Timer = () => {
   const dispatch = useDispatch();
@@ -59,7 +64,7 @@ const Timer = () => {
     timerCtx.isPaused = true;
 
     const workTime = timerState.workMinutes;
-    const breakTime = timerState.workMinutes;
+    const breakTime = timerState.breakMinutes;
 
     dispatch(timerActions.updateTimerClock({ workTime, breakTime }));
     secondsLeftRef.current = timerState.workMinutes * 60;
@@ -79,7 +84,12 @@ const Timer = () => {
       }
       if (secondsLeftRef.current === 0) {
         if (modeRef.current === "work") {
-          dispatch(timerActions.addCurrentSession(timerState.workMinutes * 60));
+          dispatch(
+            timerActions.addCurrentSession({
+              work: timerState.workMinutes * 60,
+              break: timerState.breakMinutes * 60,
+            })
+          );
         }
         switchMode();
 
@@ -116,15 +126,25 @@ const Timer = () => {
           : `${styles.container} ${styles.break}`
       }
     >
-      <h1>{mode === "work" ? "Study Hard" : "Break Time"}</h1>
-      <h1>{`${minutes} : ${seconds}`}</h1>
+      <h2>{mode === "work" ? "Study Hard" : "Break Time"}</h2>
       <div className={styles.padding}>
-        <LinearProgress
-          style={{ height: "1rem" }}
-          variant="determinate"
-          color={mode === "work" ? "error" : "success"}
-          value={(secondsLeft / totalSeconds) * 100}
-        />
+        <div
+          style={{
+            width: 200,
+            height: 200,
+            padding: "1rem",
+          }}
+        >
+          <CircularProgressbar
+            value={(secondsLeft / totalSeconds) * 100}
+            text={`${minutes} : ${seconds}`}
+            styles={buildStyles({
+              textColor: black,
+              pathColor: mode === "work" ? red : green,
+              tailColor: "rgba(255,255,255,.2)",
+            })}
+          />
+        </div>
       </div>
       <TimerButtons
         handleStart={onPlayHandler}

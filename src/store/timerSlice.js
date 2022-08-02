@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const INITIAL_STATE = {
   timerLog: [],
   session: 0,
+  sessionBreak: 0,
   workMinutes: 0.25,
   breakMinutes: 0.1,
   isPaused: true,
@@ -18,13 +19,12 @@ const timerSlice = createSlice({
       state.breakMinutes = breakTime;
     },
     addCurrentSession(state, action) {
-      state.session += action.payload;
-    },
-    saveSession(state, action) {
-      state.timerLog = action.payload;
+      state.session += action.payload.work;
+      state.sessionBreak += action.payload.break;
     },
     resetCurrentSession(state) {
       state.session = INITIAL_STATE.session;
+      state.sessionBreak = INITIAL_STATE.sessionBreak;
     },
   },
 });

@@ -1,40 +1,13 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { selectTimerLog, timerActions } from "../../store/timerSlice";
+import { useSelector } from "react-redux";
 import styles from "./StatsContainer.module.css";
-
-import StudyLog from "../Study/StudyLog";
+import StudySessionList from "../Study/StudySessionList";
 import { GoalChart, MonthlyChart, WeeklyChart } from "./ApexCharts";
 
-const DUMMY_DATA = [
-  {
-    id: "e1",
-    time: 5400,
-    date: new Date(2020, 7, 14).toISOString(),
-  },
-  { id: "e2", time: 1800, date: new Date(2021, 2, 12).toISOString() },
-  {
-    id: "e3",
-    time: 3000,
-    date: new Date(2021, 2, 28).toISOString(),
-  },
-];
-
 const StatsContainer = () => {
-  const dispatch = useDispatch();
-  const dataLog = useSelector(selectTimerLog);
+  const { sessions } = useSelector((state) => state.session);
+
   const [chart, setChart] = useState(<MonthlyChart />);
-
-  if (dataLog.length < 3) {
-    dispatch(timerActions.saveSession(DUMMY_DATA));
-  }
-
-  useEffect(() => {
-    if (dataLog.length === 0) return;
-
-    dispatch(timerActions.saveSession(dataLog));
-  }, [dataLog]);
 
   const toggleChartHandler = (e) => {
     const buttonText = e.target.textContent;
@@ -66,7 +39,7 @@ const StatsContainer = () => {
           Goals
         </button>
       </div>
-      <StudyLog items={dataLog} />
+      <StudySessionList items={sessions} />
     </div>
   );
 };

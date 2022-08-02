@@ -1,0 +1,18 @@
+.stats-container {
+  display: flex;
+}
+
+.title {
+  font-size: 70px;
+  font-weight: bolder;
+  padding: 1rem;
+  text-align: center;
+  color: #042333;
+  background: var(--light-blue-gradient);
+}
+
+.border {
+  padding-bottom: 2rem;
+  border-bottom: var(--box-shadow);
+  width: 100%;
+}

@@ -1,10 +1,13 @@
 import ReactApexChart from "react-apexcharts";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectTimerLog } from "../../store/timerSlice";
+import { secondsToMinutes } from "date-fns/esm";
+import { Co2Sharp } from "@mui/icons-material";
+import { secondsToHhrsAndMins } from "../../utils/secondsToHms";
+import { dateFormatter } from "../../utils/dateFormater";
 
 export const MonthlyChart = (props) => {
-  const sessionLog = useSelector(selectTimerLog);
+  const { sessions } = useSelector((state) => state.session);
 
   const [series, setSeries] = useState([
     {
@@ -121,8 +124,10 @@ export const MonthlyChart = (props) => {
   useEffect(() => {
     const time = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    for (const session of sessionLog) {
-      const isoDate = new Date(session.date);
+    if (!sessions) return;
+
+    for (const session of sessions) {
+      const isoDate = new Date(session.createdAt);
       const sessionMonth = isoDate.getMonth();
 
       time[sessionMonth] += session.time;
@@ -134,7 +139,7 @@ export const MonthlyChart = (props) => {
         data: time,
       },
     ]);
-  }, [sessionLog]);
+  }, [sessions]);
 
   return (
     <div id="chart">
@@ -149,7 +154,7 @@ export const MonthlyChart = (props) => {
 };
 
 export const WeeklyChart = (props) => {
-  const sessionLog = useSelector(selectTimerLog);
+  const { sessions } = useSelector((state) => state.session);
 
   const [series, setSeries] = useState([
     {
@@ -253,8 +258,10 @@ export const WeeklyChart = (props) => {
   useEffect(() => {
     const time = [0, 0, 0, 0, 0, 0, 0];
 
-    for (const session of sessionLog) {
-      const isoDate = new Date(session.date);
+    if (!sessions) return;
+
+    for (const session of sessions) {
+      const isoDate = new Date(session.createdAt);
       const sessionDay = isoDate.getDay();
 
       time[sessionDay] += session.time;
@@ -266,7 +273,7 @@ export const WeeklyChart = (props) => {
         data: time,
       },
     ]);
-  }, [sessionLog]);
+  }, [sessions]);
 
   return (
     <div id="chart">
@@ -281,7 +288,22 @@ export const WeeklyChart = (props) => {
 };
 
 export const GoalChart = (props) => {
-  const [series, setSeries] = useState([67]);
+  const { user } = useSelector((state) => state.user);
+  const { sessions } = useSelector((state) => state.session);
+  const [series, setSeries] = useState([0]);
+
+  useEffect(() => {
+    const goalTime = user?.goals;
+    const timeArr = [];
+    sessions?.map((session) => timeArr.push(session.time));
+
+    const totaltime = timeArr.reduce((acc, cur) => acc + cur);
+
+    const percentage = (totaltime / goalTime) * 100;
+
+    setSeries([percentage]);
+  }, [user.goals, sessions]);
+
   const [options, setOptions] = useState({
     chart: {
       height: 350,
@@ -325,7 +347,7 @@ export const GoalChart = (props) => {
     stroke: {
       dashArray: 3,
     },
-    labels: ["Goal Completion"],
+    labels: ["Monthly Goal"],
   });
 
   return (
@@ -335,6 +357,151 @@ export const GoalChart = (props) => {
         series={series}
         type="radialBar"
         height={421}
+      />
+    </div>
+  );
+};
+
+export const SessionRadialChart = (props) => {
+  const { time, breakTime } = props;
+  const { user } = useSelector((state) => state.user);
+  const goalTime = user?.sessionGoal;
+  const timePercent = (time / goalTime) * 100;
+  const breakPercent = (breakTime / goalTime) * 100;
+
+  const [series, setSeries] = useState([timePercent, breakPercent]);
+  const [options, setOptions] = useState({
+    plotOptions: {
+      radialBar: {
+        hollow: {
+          margin: 0,
+        },
+        track: {
+          dropShadow: {
+            enabled: true,
+            top: 2,
+            left: 0,
+            blur: 4,
+            opacity: 0.15,
+          },
+        },
+
+        dataLabels: {
+          name: {
+            fontSize: "30px",
+          },
+          value: {
+            fontSize: "30px",
+            formatter: function (val) {
+              const value = +val;
+              return value.toFixed(2) + "%";
+            },
+          },
+          total: {
+            show: true,
+            label: "Daily Goal",
+            color: "#2a2a2a",
+            formatter: function (w) {
+              return secondsToMinutes(goalTime) + "mins";
+            },
+          },
+        },
+      },
+    },
+    stroke: {
+      lineCap: "round",
+    },
+
+    labels: ["Study", "Break"],
+  });
+
+  return (
+    <div id="chart">
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="radialBar"
+        height="350"
+      />
+    </div>
+  );
+};
+
+export const SessionBarChart = (props) => {
+  const { time, breakTime, date } = props;
+  const { user } = useSelector((state) => state.user);
+
+  const timeInMinutes = (time / 60).toFixed(2);
+
+  const breakInMinutes = (breakTime / 60).toFixed(2);
+
+  const isoDate = dateFormatter(date);
+
+  const [series, setSeries] = useState([
+    {
+      name: "Work Time",
+      data: [timeInMinutes],
+    },
+    {
+      name: "Break Time",
+      data: [breakInMinutes],
+    },
+  ]);
+  const [options, setOptions] = useState({
+    chart: {
+      type: "bar",
+      height: 350,
+      stacked: true,
+    },
+
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        borderRadius: 10,
+      },
+      stroke: {
+        width: 2,
+      },
+    },
+
+    dataLabels: {
+      enabled: true,
+      formatter: function (val) {
+        return val + "mins";
+      },
+      style: {
+        fontSize: "12px",
+        colors: ["#304758"],
+      },
+    },
+
+    xaxis: {
+      categories: [isoDate],
+    },
+
+    fill: {
+      opacity: 1,
+    },
+
+    legend: {
+      position: "right",
+      offsetY: 40,
+    },
+
+    stroke: {
+      show: true,
+      colors: ["black"],
+      width: 2,
+    },
+  });
+
+  return (
+    <div id="chart">
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="bar"
+        height="350"
       />
     </div>
   );
