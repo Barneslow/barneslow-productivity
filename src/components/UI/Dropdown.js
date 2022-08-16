@@ -79,7 +79,7 @@ export const DropdownMenu = (props) => {
     >
       <CSSTransition
         in={activeMenu === "main"}
-        timeout={500}
+        timeout={300}
         classNames={{
           enter: styles["menu-primary-enter"],
           enterActive: styles["menu-primary-enter-active"],

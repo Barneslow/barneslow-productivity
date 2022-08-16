@@ -6,7 +6,6 @@ import Card from "../UI/Card";
 import styles from "./Session.module.css";
 import SessionNotes from "./SessionsNotes";
 import SessionStats from "./SessionStats";
-import SessionStars from "../Timer/SessionStars";
 import SessionRating from "./SessionRating";
 
 const Session = () => {

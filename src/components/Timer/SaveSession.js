@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { timerActions } from "../../store/timerSlice";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { IconButton, Tooltip } from "@mui/material";
@@ -20,8 +21,11 @@ const SaveSession = (props) => {
     };
 
     dispatch(createSessionAction(data));
+    dispatch(timerActions.resetCurrentSession());
     props.setShowModal(false);
   };
+
+  console.log(timerActions);
   const cancelHandler = () => {
     props.setShowModal(false);
   };

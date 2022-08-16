@@ -18,7 +18,6 @@ const black = "#020202";
 const Timer = () => {
   const dispatch = useDispatch();
   const timerState = useSelector(selectTimer);
-  const noteState = useSelector(selectNoteLog);
   const timerCtx = useContext(TimerContext);
   const [isPaused, setIsPaused] = useState(true);
   const [mode, setMode] = useState("work");
@@ -106,7 +105,8 @@ const Timer = () => {
   }, [timerState.workMinutes, timerState.breakMinutes]);
 
   const log = () => {
-    console.log(noteState);
+    console.log(isPaused);
+    console.log();
   };
 
   const totalSeconds =
@@ -151,7 +151,7 @@ const Timer = () => {
         handlePause={onPauseHandler}
         handleReset={onResetHandler}
       />
-      <button onClick={log}>LOG NOTE STATE</button>
+      <button onClick={log}>LOG STATE</button>
     </div>
   );
 };

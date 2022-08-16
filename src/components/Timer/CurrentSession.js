@@ -13,10 +13,6 @@ import SessionStars from "./SessionStars";
 import SaveSession from "./SaveSession";
 import Modal from "../UI/Modal";
 
-const red = "#f54e4e";
-const green = "#4aec8c";
-const black = "#020202";
-
 const CurrentSession = () => {
   const dispatch = useDispatch();
   const timerState = useSelector(selectTimer);
@@ -73,7 +69,7 @@ const CurrentSession = () => {
         </div>
         <div className={styles["timer-container"]}>
           <LinearProgress
-            style={{ height: "1rem", borderRadius: 5 }}
+            style={{ height: "2rem", borderRadius: 5 }}
             variant="determinate"
             value={value}
             color={currentSession > goal ? "success" : "error"}

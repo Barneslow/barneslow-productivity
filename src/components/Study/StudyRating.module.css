@@ -1,0 +1,33 @@
+.ratings {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.title {
+  font-size: 1rem;
+}
+
+.root {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.icon {
+  color: gold;
+  stroke-width: 0.5;
+  stroke: black;
+}
+
+.count {
+  position: absolute;
+  line-height: 1;
+  font-weight: bold;
+}

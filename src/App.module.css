@@ -5,6 +5,8 @@
   --green: #89c569;
   --dark-green: #276009;
   --light-blue-gradient: linear-gradient(to right, #e9f8ff, #90b2d8, #c1e3ff);
+  --light-green-gradient: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+
   --speed: 500ms;
   --box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   --darker-box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
@@ -15,12 +17,13 @@
 
 .container {
   display: flex;
-  border: 1px solid;
   border-radius: 5px;
   flex-direction: column;
   overflow: scroll;
   align-items: center;
   gap: 1rem;
+  width: 100%;
+  background-color: lightblue;
 }
 
 .container::-webkit-scrollbar {

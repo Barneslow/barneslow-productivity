@@ -1,27 +1,28 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import styles from "./StatsContainer.module.css";
 import StudySessionList from "../Study/StudySessionList";
 import { GoalChart, MonthlyChart, WeeklyChart } from "./ApexCharts";
+
+import styles from "./StatsContainer.module.css";
 
 const StatsContainer = () => {
   const { sessions } = useSelector((state) => state.session);
 
-  const [chart, setChart] = useState(<MonthlyChart />);
+  const [chart, setChart] = useState(<MonthlyChart sessions={sessions} />);
 
   const toggleChartHandler = (e) => {
     const buttonText = e.target.textContent;
 
     if (buttonText === "Weekly") {
-      setChart(<WeeklyChart />);
+      setChart(<WeeklyChart sessions={sessions} />);
     }
 
     if (buttonText === "Monthly") {
-      setChart(<MonthlyChart />);
+      setChart(<MonthlyChart sessions={sessions} />);
     }
 
     if (buttonText === "Goals") {
-      setChart(<GoalChart />);
+      setChart(<GoalChart sessions={sessions} />);
     }
   };
 

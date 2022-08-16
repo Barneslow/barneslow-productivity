@@ -18,8 +18,15 @@ import image from "../../images/patrick.png";
 import { useDispatch } from "react-redux";
 import { LogoutUserAction } from "../../store/authSlice";
 
-const pages = ["Dashboard", "Tasks"];
-const settings = ["Dashboard", "Tasks", "Settings", "Logout"];
+const pages = ["Dashboard", "Study", "Tasks", "Leaderboard"];
+const settings = [
+  "Dashboard",
+  "Study",
+  "Tasks",
+  "Leaderboard",
+  "Settings",
+  "Logout",
+];
 
 const UserNavBar = () => {
   const navigate = useNavigate();
@@ -42,7 +49,10 @@ const UserNavBar = () => {
 
   const handleCloseUserMenu = (e) => {
     if (e.target.textContent === "Tasks") navigate("/tasks");
-    if (e.target.textContent === "Dashboard") navigate("/dashboard");
+    if (e.target.textContent === "Dashboard") navigate("/");
+    if (e.target.textContent === "Study") navigate("/study");
+    if (e.target.textContent === "Leaderboard") navigate("/leaderboard");
+
     if (e.target.textContent === "Logout") {
       dispatch(LogoutUserAction());
       navigate("/login");
@@ -53,11 +63,18 @@ const UserNavBar = () => {
 
   const showModalHandler = (e) => {
     if (e.target.textContent === "Dashboard") {
-      navigate("/dashboard");
+      navigate("/");
     }
 
     if (e.target.textContent === "Tasks") {
       navigate("/tasks");
+    }
+
+    if (e.target.textContent === "Study") {
+      navigate("/study");
+    }
+    if (e.target.textContent === "Leaderboard") {
+      navigate("/leaderboard");
     }
 
     setshowUpdateUserModal(true);

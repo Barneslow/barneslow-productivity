@@ -23,7 +23,7 @@ const DeleteSession = () => {
 
   const confirmHandler = () => {
     dispatch(deleteSessionAction(id));
-    navigate("/dashboard");
+    navigate("/");
   };
   const cancelHandler = () => {
     setShowModal(false);

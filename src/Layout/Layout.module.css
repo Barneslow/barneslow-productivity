@@ -1,14 +1,28 @@
 .main {
   height: 100vh;
-  background-color: lightblue;
+  background: lightblue;
   justify-content: center;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 0.5rem;
+  grid-template-columns: 1fr 1fr;
+  width: 100vw;
+}
+
+.chart-container {
+  box-shadow: var(--box-shadow);
+  margin: 1rem;
+  color: rgb(44, 43, 43);
+  text-align: center;
 }
 
 .layout {
   display: grid;
+}
+
+.box {
+  box-shadow: var(--darker-box-shadow);
+  padding: 1rem;
+  background: var(--light-grey);
+  color: black;
 }
 
 @media only screen and (max-width: 870px) {

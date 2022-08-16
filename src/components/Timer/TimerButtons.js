@@ -1,19 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import TimerContext from "../../contexts/timerContext";
-
-let init = true;
 
 const TimerButtons = (props) => {
   const timerCtx = useContext(TimerContext);
-  const [isPaused, setIsPaused] = useState(true);
-
-  useEffect(() => {
-    if (init) {
-      init = false;
-      return;
-    }
-    setIsPaused((prevState) => !prevState);
-  }, [timerCtx.isPaused]);
 
   return (
     <div>
@@ -21,7 +10,7 @@ const TimerButtons = (props) => {
         Reset
       </button>
 
-      {!isPaused && (
+      {!timerCtx.isPaused && (
         <button
           className="ui negative basic button"
           onClick={props.handlePause}
@@ -29,7 +18,7 @@ const TimerButtons = (props) => {
           Stop
         </button>
       )}
-      {isPaused && (
+      {timerCtx.isPaused && (
         <button className="ui positive  button" onClick={props.handleStart}>
           Start
         </button>

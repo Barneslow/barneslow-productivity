@@ -1,0 +1,28 @@
+.dashboard-primary-enter {
+  transform: translateX(-100%);
+}
+.dashboard-primary-enter-active {
+  transform: translateX(0%);
+  transition: all 300ms ease;
+}
+.dashboard-primary-exit {
+  position: absolute;
+}
+.dashboard-primary-exit-active {
+  transform: translateX(-100%);
+  transition: all 300ms ease;
+}
+
+.dashboard-secondary-enter {
+  transform: translateX(100%);
+}
+.dashboard-secondary-enter-active {
+  transform: translateX(0%);
+  transition: all 300ms ease;
+}
+.dashboard-secondary-exit {
+}
+.dashboard-secondary-exit-active {
+  transform: translateX(100%);
+  transition: all 300ms ease;
+}

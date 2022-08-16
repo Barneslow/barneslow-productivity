@@ -1,6 +1,6 @@
-import styles from "./AccountSettings.module.css";
+import styles from "./AccountSettingsTitle.module.css";
 
-const AccountSettings = (props) => {
+const AccountSettingsTitle = () => {
   return (
     <div className={styles.container}>
       <h2 className="ui header">
@@ -14,4 +14,4 @@ const AccountSettings = (props) => {
   );
 };
 
-export default AccountSettings;
+export default AccountSettingsTitle;

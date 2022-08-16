@@ -11,7 +11,6 @@ export const loginUserAction = createAsyncThunk(
       },
     };
     try {
-      //make http call
       const { data } = await axios.post(
         `${baseUrl}/api/users/login`,
         userData,

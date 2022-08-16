@@ -38,12 +38,12 @@ const UpdateUserWeeklyGoal = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      goal: props.user.goals,
+      goal: props.user.weeklyGoal,
     },
 
     onSubmit: (values) => {
       const data = {
-        goals: hoursToSeconds(workTime),
+        weeklyGoal: hoursToSeconds(workTime),
         sessionGoal: minutesToSeconds(sessionTime),
       };
 

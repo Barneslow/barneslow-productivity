@@ -1,8 +1,13 @@
 .main-container {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 2rem;
+
   overflow: scroll;
+}
+
+.main-container::-webkit-scrollbar {
+  display: none;
 }
 
 .button-container {

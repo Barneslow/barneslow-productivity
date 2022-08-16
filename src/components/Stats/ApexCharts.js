@@ -2,12 +2,10 @@ import ReactApexChart from "react-apexcharts";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { secondsToMinutes } from "date-fns/esm";
-import { Co2Sharp } from "@mui/icons-material";
-import { secondsToHhrsAndMins } from "../../utils/secondsToHms";
 import { dateFormatter } from "../../utils/dateFormater";
 
 export const MonthlyChart = (props) => {
-  const { sessions } = useSelector((state) => state.session);
+  const { sessions } = props;
 
   const [series, setSeries] = useState([
     {
@@ -154,7 +152,7 @@ export const MonthlyChart = (props) => {
 };
 
 export const WeeklyChart = (props) => {
-  const { sessions } = useSelector((state) => state.session);
+  const { sessions } = props;
 
   const [series, setSeries] = useState([
     {
@@ -289,20 +287,24 @@ export const WeeklyChart = (props) => {
 
 export const GoalChart = (props) => {
   const { user } = useSelector((state) => state.user);
-  const { sessions } = useSelector((state) => state.session);
+  const { sessions } = props;
+
   const [series, setSeries] = useState([0]);
 
   useEffect(() => {
-    const goalTime = user?.goals;
+    const goalTime = user?.weeklyGoal;
     const timeArr = [];
+
+    if (!sessions || sessions.length <= 0) return;
+
     sessions?.map((session) => timeArr.push(session.time));
 
     const totaltime = timeArr.reduce((acc, cur) => acc + cur);
 
     const percentage = (totaltime / goalTime) * 100;
 
-    setSeries([percentage]);
-  }, [user.goals, sessions]);
+    setSeries([percentage.toFixed(2)]);
+  }, [user?.weeklyGoal, sessions]);
 
   const [options, setOptions] = useState({
     chart: {
@@ -347,7 +349,7 @@ export const GoalChart = (props) => {
     stroke: {
       dashArray: 3,
     },
-    labels: ["Monthly Goal"],
+    labels: ["Weekly Goal"],
   });
 
   return (
@@ -501,6 +503,95 @@ export const SessionBarChart = (props) => {
         options={options}
         series={series}
         type="bar"
+        height="350"
+      />
+    </div>
+  );
+};
+
+export const RatingsChart = (props) => {
+  const { rating } = props;
+
+  const [series, setSeries] = useState([
+    rating["1"],
+    rating["2"],
+    rating["3"],
+    rating["4"],
+    rating["5"],
+  ]);
+
+  const [options, setOptions] = useState({
+    chart: {
+      width: 380,
+      type: "donut",
+    },
+    labels: ["1 Star", "2 Star", "3 Star", "4 Star", "5 Star"],
+    plotOptions: {
+      pie: {
+        startAngle: -90,
+        endAngle: 270,
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    fill: {
+      type: "gradient",
+    },
+    legend: {
+      formatter: function (val, opts) {
+        return val;
+      },
+      offsetX: 80,
+      fontWeight: 400,
+      fontSize: 20,
+    },
+    title: {
+      text: "Ratings Chart",
+      align: "center",
+      offsetX: -50,
+      offsetY: 170,
+
+      style: {
+        fontSize: "20px",
+        fontWeight: "bold",
+        color: "#263238",
+      },
+    },
+    tooltip: {
+      y: {
+        formatter: function (val) {
+          return val;
+        },
+        title: {
+          formatter: function (seriesName) {
+            return seriesName;
+          },
+        },
+      },
+    },
+
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200,
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+    ],
+  });
+
+  return (
+    <div id="chart">
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="donut"
         height="350"
       />
     </div>

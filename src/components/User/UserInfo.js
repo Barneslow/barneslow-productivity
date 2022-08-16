@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { fetchUserAction } from "../../store/userSlice";
 import Modal from "../UI/Modal";
-import AccountSettings from "./AccountSettings";
+import AccountSettingsTitle from "./AccountSettingsTitle";
 import userImage from "../../images/patrick.png";
 import UpdateUserProfile from "./UpdateUserProfile";
 
@@ -46,7 +46,7 @@ const UserInfo = (props) => {
     <>
       {showUpdateUserModal && (
         <Modal onClose={closeModal}>
-          <AccountSettings />
+          <AccountSettingsTitle />
           <h2 className="ui header">
             <img src={userImage} className="ui circular image" />
             Barneslow
@@ -84,8 +84,8 @@ const UserInfo = (props) => {
             <div className={styles.box}>
               <h4>Weekly Goal:</h4>
               <span>
-                {` ${secondsToHhrsAndMins(user?.goals).hours}hrs
-                  ${secondsToHhrsAndMins(user?.goals).minutes}mins
+                {` ${secondsToHhrsAndMins(user?.weeklyGoal).hours}hrs
+                  ${secondsToHhrsAndMins(user?.weeklyGoal).minutes}mins
                 `}
               </span>
             </div>

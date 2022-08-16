@@ -15,7 +15,7 @@ const LoginPage = () => {
   const { loading, serverError, appError, userAuth } = userData;
 
   if (userAuth) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/" />;
   }
 
   const changeRegStateHandler = () => {

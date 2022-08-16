@@ -1,8 +1,4 @@
-import Layout from "./Layout/Layout";
-import TimerContainer from "./components/Timer/TimerContainer";
-import StatsContainer from "./components/Stats/StatsContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import UserContainer from "./components/User/UserContainer";
 import LoginPage from "./components/Auth/LoginPage";
 import PrivateProtectedRoute from "./routes/PrivateProtectedRoute";
 import NavBar from "./Layout/navigation/NavBar";
@@ -12,6 +8,9 @@ import Session from "./components/Sessions/Session";
 import Contact from "./Layout/Legal/Contact";
 import TermsOfService from "./Layout/Legal/TermsOfService";
 import Privacy from "./Layout/Legal/Privacy";
+import Dashboard from "./Layout/Dashboard";
+import TimerContainer from "./components/Timer/TimerContainer";
+import LeaderBoardContainer from "./components/LeaderBoard/LeaderBoardContainer";
 
 function App() {
   return (
@@ -25,14 +24,18 @@ function App() {
           <Route path="/privacy" element={<Privacy />} />
 
           <Route
-            path="/dashboard"
+            path="/"
             element={
               <PrivateProtectedRoute>
-                <Layout>
-                  <UserContainer />
-                  <StatsContainer />
-                  <TimerContainer />
-                </Layout>
+                <Dashboard />
+              </PrivateProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="/study"
+            element={
+              <PrivateProtectedRoute>
+                <TimerContainer />
               </PrivateProtectedRoute>
             }
           ></Route>
@@ -41,6 +44,14 @@ function App() {
             element={
               <PrivateProtectedRoute>
                 <TasksContainer />
+              </PrivateProtectedRoute>
+            }
+          />
+          <Route
+            path="/leaderboard"
+            element={
+              <PrivateProtectedRoute>
+                <LeaderBoardContainer />
               </PrivateProtectedRoute>
             }
           />
@@ -60,12 +71,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <Layout>
-<Login />
-<UserContainer />
-<StatsContainer />
-<TimerContainer />
-</Layout> */
-}
