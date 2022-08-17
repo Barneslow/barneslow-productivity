@@ -9,8 +9,8 @@ import CurrentSession from "./CurrentSession";
 
 import Timer from "./Timer";
 
-import styles from "../../App.module.css";
 import { useDispatch } from "react-redux";
+import styles from "./TimerContainer.module.css";
 
 const TimerContainer = () => {
   const dispatch = useDispatch();
@@ -26,8 +26,10 @@ const TimerContainer = () => {
     <TimerContextProvider>
       <div className={styles.container}>
         <Timer />
-        <CurrentSession />
-        <TimerSettings />
+        <div className={styles["sub-container"]}>
+          <CurrentSession />
+          <TimerSettings />
+        </div>
       </div>
     </TimerContextProvider>
   );

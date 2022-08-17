@@ -21,8 +21,10 @@ const Layout = (props) => {
   const rating = frequencyCounter(ratingArray);
 
   let totalTime;
-  if (sessions) {
+  if (sessions?.length > 0) {
     totalTime = sessionTimeSinceMonday(sessions);
+  } else {
+    totalTime = 0;
   }
 
   const time = secondsToHms(user?.weeklyGoal - totalTime);
@@ -38,10 +40,7 @@ const Layout = (props) => {
             <div className={styles["chart-container"]}>
               <GoalChart sessions={sessions} />
               <div className={styles.box}>
-                <h2>
-                  Time Remaining -{" "}
-                  {`${time.hours}:${time.minutes}:${time.seconds}`}
-                </h2>
+                <h2>{`Time Remaining - ${time.hours}:${time.minutes}:${time.seconds}`}</h2>
               </div>
             </div>
             <div className={styles["chart-container"]}>

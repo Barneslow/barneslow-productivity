@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Card from "../UI/Card";
 import { PrettoSlider, WorkingSlider } from "./StyledSlider";
 import { selectTimer, timerActions } from "../../store/timerSlice";
 
-import styles from "./TimerSettings.module.css";
+import SettingsIcon from "@mui/icons-material/Settings";
+
+import styles from "./TimerSettings.module.scss";
+import { IconButton } from "@mui/material";
+import { borderRadius } from "@mui/system";
 
 const TimerSettings = () => {
   const dispatch = useDispatch();
@@ -28,9 +31,9 @@ const TimerSettings = () => {
   };
 
   return (
-    <Card>
+    <div className={styles.container}>
       {showSettings && (
-        <div className={styles.container}>
+        <div className={styles["settings-container"]}>
           <h3>Work Time: {workTime}</h3>
           <WorkingSlider
             step={5}
@@ -69,16 +72,30 @@ const TimerSettings = () => {
       )}
       {!showSettings && (
         <>
-          <button
-            className="ui blue button"
+          <h2 className={styles.title}>Settings</h2>
+
+          <IconButton
+            className={styles.settings}
+            sx={{
+              background: "#2086d0",
+            }}
             onClick={() => setShowSettings(!showSettings)}
           >
-            <i className="cogs icon"></i>
-            Settings
-          </button>
+            <SettingsIcon
+              className={styles.cog}
+              sx={{
+                color: "darkgrey",
+                borderRadius: 2,
+                fontSize: 100,
+                stroke: "black",
+                strokeWidth: 0.5,
+                strokeOpacity: 0.8,
+              }}
+            />
+          </IconButton>
         </>
       )}
-    </Card>
+    </div>
   );
 };
 

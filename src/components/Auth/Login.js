@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUserAction } from "../../store/authSlice";
 
 import LockIcon from "@mui/icons-material/Lock";
@@ -26,6 +26,11 @@ const Login = () => {
     },
     validationSchema: formSchema,
   });
+
+  const userData = useSelector((state) => state.authentication);
+
+  const { loading, serverError, appError, userAuth } = userData;
+
   return (
     <form onSubmit={formik.handleSubmit} className={styles.form}>
       <h3 className={styles.title}>Login to your Account</h3>
@@ -33,7 +38,6 @@ const Login = () => {
         <span>
           <LockIcon />
         </span>
-        {/* Email */}
         <input
           value={formik.values.email}
           onChange={formik.handleChange("email")}
@@ -57,10 +61,18 @@ const Login = () => {
           placeholder=" Password"
         />
       </div>
-      {/* Err msg */}
-      <div className="text-red-400 mb-2"></div>
-      {/* Login btn */}
-      <button type="submit">Login</button>
+      {serverError || appError ? (
+        <h3 className={styles.error}>
+          {serverError} - {appError}
+        </h3>
+      ) : null}
+      {loading ? (
+        <button disabled className={styles.loading}>
+          Loading...
+        </button>
+      ) : (
+        <button type="submit">Login</button>
+      )}
     </form>
   );
 };

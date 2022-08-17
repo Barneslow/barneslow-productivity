@@ -17,7 +17,6 @@ const PublicNavBar = () => {
         <Toolbar
           sx={{
             background: "linear-gradient(315deg, #485461 0%, #28313b 74%)",
-            borderBottom: "1px solid white",
           }}
         >
           <Typography

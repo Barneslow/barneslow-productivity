@@ -63,13 +63,13 @@ const CurrentSession = () => {
           />
         </Modal>
       )}
-      <Card>
+      <div className={styles.container}>
         <div className={styles["current-session"]}>
           <h2 className={styles.title}>CURRENT SESSION</h2>
         </div>
         <div className={styles["timer-container"]}>
           <LinearProgress
-            style={{ height: "2rem", borderRadius: 5 }}
+            style={{ height: "1.5rem", borderRadius: 5 }}
             variant="determinate"
             value={value}
             color={currentSession > goal ? "success" : "error"}
@@ -112,7 +112,7 @@ const CurrentSession = () => {
             </div>
           </div>
         </div>
-      </Card>
+      </div>
     </>
   );
 };

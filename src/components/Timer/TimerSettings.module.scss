@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: var(--darker-box-shadow);
+  padding: 3rem;
+  background: var(--light-grey-gradient);
+  border-radius: 10px;
+}
+
+.title {
+  text-align: center;
+  margin: 1rem;
+}
+
+.settings-container {
+  width: fit-content;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.settings {
+  box-shadow: var(--box-shadow);
+}
+
+.settings:hover {
+  background: rgb(35, 35, 189);
+  box-shadow: var(--darker-box-shadow);
+}

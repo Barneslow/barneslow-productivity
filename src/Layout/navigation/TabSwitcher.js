@@ -3,8 +3,6 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 
-const grey = "#242526;";
-
 const TabSwitcher = (props) => {
   const [viewable, setViewable] = useState(0);
   const handleChange = (event, newValue) => {
@@ -24,14 +22,13 @@ const TabSwitcher = (props) => {
       sx={{
         width: "100%",
         borderBottom: "1px solid grey",
-        borderRadius: 1,
-        background: "lightblue",
+        background: "lightgrey",
       }}
     >
       <Tabs onChange={handleChange} value={viewable}>
-        <Tab sx={{ color: grey }} label="Dashboard" />
-        <Tab sx={{ color: grey }} label="Sessions" />
-        <Tab sx={{ color: grey }} label="User" />
+        <Tab sx={{ color: "black" }} label="Dashboard" />
+        <Tab sx={{ color: "black" }} label="Sessions" />
+        <Tab sx={{ color: "black" }} label="User" />
       </Tabs>
     </Box>
   );

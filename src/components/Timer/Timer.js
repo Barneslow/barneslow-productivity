@@ -1,7 +1,6 @@
 import { useContext, useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTimer, timerActions } from "../../store/timerSlice";
-import { selectNoteLog } from "../../store/noteSlice";
 
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -104,11 +103,6 @@ const Timer = () => {
     };
   }, [timerState.workMinutes, timerState.breakMinutes]);
 
-  const log = () => {
-    console.log(isPaused);
-    console.log();
-  };
-
   const totalSeconds =
     mode === "work"
       ? timerState.workMinutes * 60
@@ -130,15 +124,15 @@ const Timer = () => {
       <div className={styles.padding}>
         <div
           style={{
-            width: 200,
-            height: 200,
-            padding: "1rem",
+            width: 300,
+            height: 300,
           }}
         >
           <CircularProgressbar
             value={(secondsLeft / totalSeconds) * 100}
             text={`${minutes} : ${seconds}`}
             styles={buildStyles({
+              strokeWidth: 5,
               textColor: black,
               pathColor: mode === "work" ? red : green,
               tailColor: "rgba(255,255,255,.2)",
@@ -151,7 +145,6 @@ const Timer = () => {
         handlePause={onPauseHandler}
         handleReset={onResetHandler}
       />
-      <button onClick={log}>LOG STATE</button>
     </div>
   );
 };

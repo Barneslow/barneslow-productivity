@@ -4,13 +4,10 @@ import styles from "./Leaderboard.module.css";
 const Leaderboard = (props) => {
   const { users } = props;
 
-  console.log(users);
-
   if (!users) return;
   const dupUsers = [...users];
 
   const sortedUsers = dupUsers?.sort((a, b) => {
-    console.log(a.weeklySessionTime);
     return a.weeklySessionTime < b.weeklySessionTime
       ? 1
       : b.weeklySessionTime < a.weeklySessionTime

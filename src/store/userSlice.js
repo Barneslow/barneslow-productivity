@@ -82,6 +82,40 @@ export const updateUserAction = createAsyncThunk(
   }
 );
 
+export const uploadProfilePhoto = createAsyncThunk(
+  "user/upload-profile-photo",
+  async (image, { rejectWithValue, getState, dispatch }) => {
+    const user = getState().authentication;
+    const { userAuth } = user;
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const formData = new FormData();
+
+      formData.append("image", image);
+
+      const { data } = await axios.post(
+        `${baseUrl}/api/users/upload-profile-photo`,
+        formData,
+        config
+      );
+
+      return data;
+    } catch (error) {
+      if (!error?.response) {
+        throw error;
+      }
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState: {},

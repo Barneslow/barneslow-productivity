@@ -10,6 +10,7 @@ import styles from "./UserInfo.module.css";
 import UpdateUserGoals from "./UpdateUserGoals";
 import { dateFormatter } from "../../utils/dateFormater";
 import { secondsToHhrsAndMins } from "../../utils/secondsToHms";
+import UserProfileImage from "./UserProfileImage";
 
 const UserInfo = (props) => {
   const dispatch = useDispatch();
@@ -62,9 +63,7 @@ const UserInfo = (props) => {
 
       <div className={styles.profile}>
         <div className={styles.information}>
-          <div className={styles["image-box"]}>
-            <img className={styles.image} src={userImage} />
-          </div>
+          <UserProfileImage imageSrc={userImage} />
           <div>
             <h2 className={styles.title}>{user?.userName}</h2>
             <div className={styles.box}>

@@ -6,7 +6,7 @@ const Star = (props) => {
     return (
       <IconButton onClick={props.onClick}>
         <GradeIcon
-          sx={{ color: "gold", fontSize: 60, stroke: "black", strokeWidth: 1 }}
+          sx={{ color: "gold", fontSize: 50, stroke: "black", strokeWidth: 1 }}
         />
       </IconButton>
     );
@@ -14,7 +14,7 @@ const Star = (props) => {
     return (
       <IconButton onClick={props.onClick}>
         <GradeIcon
-          sx={{ color: "grey", fontSize: 60, stroke: "black", strokeWidth: 1 }}
+          sx={{ color: "grey", fontSize: 50, stroke: "black", strokeWidth: 1 }}
         />
       </IconButton>
     );
