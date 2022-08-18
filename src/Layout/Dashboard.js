@@ -23,7 +23,7 @@ const Dashboard = () => {
   }, [dispatch, userAuth?.id]);
 
   return (
-    <div>
+    <div className={styles.dashboard}>
       <TabSwitcher view={setViewable} />
 
       <CSSTransition

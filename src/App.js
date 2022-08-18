@@ -11,6 +11,7 @@ import Privacy from "./Layout/Legal/Privacy";
 import Dashboard from "./Layout/Dashboard";
 import TimerContainer from "./components/Timer/TimerContainer";
 import LeaderBoardContainer from "./components/LeaderBoard/LeaderBoardContainer";
+import Settings from "./components/Settings/SettingsModal";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
                 <Dashboard />
               </PrivateProtectedRoute>
             }
-          ></Route>
+          />
           <Route
             path="/study"
             element={
@@ -38,7 +39,7 @@ function App() {
                 <TimerContainer />
               </PrivateProtectedRoute>
             }
-          ></Route>
+          />
           <Route
             path="/tasks"
             element={
@@ -52,6 +53,14 @@ function App() {
             element={
               <PrivateProtectedRoute>
                 <LeaderBoardContainer />
+              </PrivateProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <PrivateProtectedRoute>
+                <Settings />
               </PrivateProtectedRoute>
             }
           />

@@ -71,10 +71,10 @@ const TasksList = (props) => {
       <div className={styles["tasks-list"]}>
         <div className={styles.sorting}>
           <button className={styles.button} onClick={sortByDateCreated}>
-            Sort By Date Created
+            Date Created
           </button>
-          <button className={styles.button}>Sort By Due Date</button>
-          <button className={styles.button}>Sort By Completed</button>
+          <button className={styles.button}>Due Date</button>
+          <button className={styles.button}>Completed</button>
           <button className={archiveClasses} onClick={showArchiveHandler}>
             Archive
           </button>

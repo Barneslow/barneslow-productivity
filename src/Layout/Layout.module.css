@@ -1,10 +1,10 @@
 .main {
-  height: 100vh;
   background: lightblue;
   justify-content: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100vw;
+  padding: 2rem;
 }
 
 .chart-container {

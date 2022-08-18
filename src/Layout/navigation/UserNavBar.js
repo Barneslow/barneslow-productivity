@@ -52,6 +52,7 @@ const UserNavBar = () => {
     if (e.target.textContent === "Dashboard") navigate("/");
     if (e.target.textContent === "Study") navigate("/study");
     if (e.target.textContent === "Leaderboard") navigate("/leaderboard");
+    if (e.target.textContent === "Settings") navigate("/settings");
 
     if (e.target.textContent === "Logout") {
       dispatch(LogoutUserAction());

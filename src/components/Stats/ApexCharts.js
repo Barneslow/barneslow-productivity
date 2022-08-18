@@ -547,7 +547,7 @@ export const RatingsChart = (props) => {
       fontSize: 20,
     },
     title: {
-      text: "Ratings Chart",
+      text: "Session Ratings",
       align: "center",
       offsetX: -50,
       offsetY: 170,

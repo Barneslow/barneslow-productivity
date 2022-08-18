@@ -1,16 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { fetchUserAction } from "../../store/userSlice";
-import Modal from "../UI/Modal";
-import AccountSettingsTitle from "./AccountSettingsTitle";
-import userImage from "../../images/patrick.png";
-import UpdateUserProfile from "./UpdateUserProfile";
-
-import styles from "./UserInfo.module.css";
-import UpdateUserGoals from "./UpdateUserGoals";
 import { dateFormatter } from "../../utils/dateFormater";
 import { secondsToHhrsAndMins } from "../../utils/secondsToHms";
-import UserProfileImage from "./UserProfileImage";
+
+import Modal from "../UI/Modal";
+import UpdateUserGoals from "./UpdateUserGoals";
+import SettingsModal from "../Settings/SettingsModal";
+
+import styles from "./UserInfo.module.css";
 
 const UserInfo = (props) => {
   const dispatch = useDispatch();
@@ -38,21 +36,18 @@ const UserInfo = (props) => {
     setshowUpdateGoalsModal(true);
   };
 
-  let bio =
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam sunt placeat facilis optio eligendi nulla, ea vel ratione ullam nobis suscipit quo, sed libero! Esse tempore facere fuga consequatur cumque.";
+  let biography;
 
-  if (bio.length > 100) bio = bio.substring(0, 100) + "...";
+  if (user) {
+    biography = user?.bio;
+    if (biography.length > 100) biography = biography.substring(0, 100) + "...";
+  }
 
   return (
     <>
       {showUpdateUserModal && (
         <Modal onClose={closeModal}>
-          <AccountSettingsTitle />
-          <h2 className="ui header">
-            <img src={userImage} className="ui circular image" />
-            Barneslow
-          </h2>
-          <UpdateUserProfile onClose={closeModal} user={user} />
+          <SettingsModal onClose={closeModal} user={user} />
         </Modal>
       )}
       {showUpdateGoalsModal && (
@@ -63,7 +58,7 @@ const UserInfo = (props) => {
 
       <div className={styles.profile}>
         <div className={styles.information}>
-          <UserProfileImage imageSrc={userImage} />
+          <img className={styles["user-image"]} src={user?.profilePhoto} />
           <div>
             <h2 className={styles.title}>{user?.userName}</h2>
             <div className={styles.box}>
@@ -100,7 +95,7 @@ const UserInfo = (props) => {
         </div>
         <div className={styles.bio}>
           <h2 className={styles.title}>Bio</h2>
-          <p>{user?.bio}</p>
+          <p>{biography}</p>
         </div>
         <div className={styles.settings}>
           <button className="ui blue button" onClick={showModalHandler}>
