@@ -1,0 +1,9 @@
+.star {
+  font-size: 50;
+}
+
+@media (max-width: 768px) {
+  .star {
+    font-size: 30;
+  }
+}

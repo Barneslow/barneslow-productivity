@@ -18,12 +18,13 @@ import image from "../../images/patrick.png";
 import { useDispatch } from "react-redux";
 import { LogoutUserAction } from "../../store/authSlice";
 
-const pages = ["Dashboard", "Study", "Tasks", "Leaderboard"];
+const pages = ["Dashboard", "Study", "Tasks", "Leaderboard", "Store"];
 const settings = [
   "Dashboard",
   "Study",
   "Tasks",
   "Leaderboard",
+  "Store",
   "Settings",
   "Logout",
 ];
@@ -53,6 +54,7 @@ const UserNavBar = () => {
     if (e.target.textContent === "Study") navigate("/study");
     if (e.target.textContent === "Leaderboard") navigate("/leaderboard");
     if (e.target.textContent === "Settings") navigate("/settings");
+    if (e.target.textContent === "Store") navigate("/store");
 
     if (e.target.textContent === "Logout") {
       dispatch(LogoutUserAction());
@@ -76,6 +78,10 @@ const UserNavBar = () => {
     }
     if (e.target.textContent === "Leaderboard") {
       navigate("/leaderboard");
+    }
+
+    if (e.target.textContent === "Store") {
+      navigate("/store");
     }
 
     setshowUpdateUserModal(true);

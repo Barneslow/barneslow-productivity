@@ -10,10 +10,11 @@ export const sessionTimeSinceMonday = (sessions) => {
   );
 
   const timeArr = [];
+  let totalTime = 0;
 
   filteredSessions.map((session) => timeArr.push(session.time));
 
-  const totalTime = timeArr.reduce((acc, cur) => acc + cur);
+  if (timeArr.length > 0) totalTime = timeArr.reduce((acc, cur) => acc + cur);
 
   return totalTime;
 };

@@ -76,15 +76,15 @@ const CurrentSession = () => {
           />
           <div className={styles["session-stats"]}>
             <div className={styles["session-time"]}>
-              <p>Session Time</p>
+              <h3>Session Time</h3>
               <h3>
                 {sessionTime.hours}:{sessionTime.minutes}:{sessionTime.seconds}
               </h3>
             </div>
             <div className={styles["session-time"]}>
-              <p>
+              <h3>
                 {goal < currentSession ? "Completed Goal" : "Time Until Goal"}
-              </p>
+              </h3>
               <CountdownTimer goal={goal} session={currentSession} />
             </div>
           </div>

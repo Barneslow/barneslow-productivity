@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Frodo Baggins",
+    "price": "4.99",
+    "source": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2d376770-abbd-4961-a68a-fa31c8214f3b/dotap4-09a81b3b-ab80-445b-94f7-a45cd20c1c6c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJkMzc2NzcwLWFiYmQtNDk2MS1hNjhhLWZhMzFjODIxNGYzYlwvZG90YXA0LTA5YTgxYjNiLWFiODAtNDQ1Yi05NGY3LWE0NWNkMjBjMWM2Yy5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.CNpydEVkBiby4b1fTIW1y0Z-QhqT5dKu3aIePJPzTl8"
+  },
+  {
+    "name": "Aragorn",
+    "price": "5.99",
+    "source": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2d376770-abbd-4961-a68a-fa31c8214f3b/dc5ntfs-5d582045-7ce0-4cb9-84ef-1042dfc2acb2.jpg/v1/fill/w_1280,h_1672,q_75,strp/lord_of_the_rings__aragorn_cartoon__exiled_heir_by_jerome_k_moore_dc5ntfs-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTY3MiIsInBhdGgiOiJcL2ZcLzJkMzc2NzcwLWFiYmQtNDk2MS1hNjhhLWZhMzFjODIxNGYzYlwvZGM1bnRmcy01ZDU4MjA0NS03Y2UwLTRjYjktODRlZi0xMDQyZGZjMmFjYjIuanBnIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.C_QfPSgoeO5eb0x93vF-oqVjokTdYXzSpuShpaSMxqw"
+  },
+  {
+    "name": "Samwise Gamgee",
+    "price": "3.99",
+    "source": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2d376770-abbd-4961-a68a-fa31c8214f3b/dq7h0c-6a7ab711-c2e2-4338-8f98-b27711825ac6.jpg/v1/fill/w_600,h_735,q_75,strp/faithful_friend_by_jerome_k_moore_dq7h0c-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzM1IiwicGF0aCI6IlwvZlwvMmQzNzY3NzAtYWJiZC00OTYxLWE2OGEtZmEzMWM4MjE0ZjNiXC9kcTdoMGMtNmE3YWI3MTEtYzJlMi00MzM4LThmOTgtYjI3NzExODI1YWM2LmpwZyIsIndpZHRoIjoiPD02MDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.GUIQpE8pfajGWhH4ZO7nUKeDieimwnXZNjoDuoKMrqU"
+  },
+  {
+    "name": "Peregrin Took",
+    "price": "3.99",
+    "source": "https://cdna.artstation.com/p/assets/images/images/019/710/258/large/jb-casacop-mec-k0714-d2083-24567-pippin-jbcasacop-post.jpg?1564680184"
+  },
+  {
+    "name": "Meriadoc Brandybuck",
+    "price": "3.99",
+    "source": "https://pbs.twimg.com/media/En6xc18XIAA9RWo?format=jpg&name=small"
+  },
+  {
+    "name": "Gimli",
+    "price": "4.99",
+    "source": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2d376770-abbd-4961-a68a-fa31c8214f3b/dq8hac-c63eec82-5d43-4f4b-889d-5cc562ebbb44.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJkMzc2NzcwLWFiYmQtNDk2MS1hNjhhLWZhMzFjODIxNGYzYlwvZHE4aGFjLWM2M2VlYzgyLTVkNDMtNGY0Yi04ODlkLTVjYzU2MmViYmI0NC5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.0BmSkdsYTEjmXsYJAvbLlzyHpHkfsTHr1njPuuxx0r8"
+  },
+  {
+    "name": "Legolas ",
+    "price": "5.99",
+    "source": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2d376770-abbd-4961-a68a-fa31c8214f3b/dowtiq-d57950e1-a721-4748-a033-61a8017b48e0.jpg/v1/fill/w_600,h_902,q_75,strp/prince_of_mirkwood_by_jerome_k_moore_dowtiq-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTAyIiwicGF0aCI6IlwvZlwvMmQzNzY3NzAtYWJiZC00OTYxLWE2OGEtZmEzMWM4MjE0ZjNiXC9kb3d0aXEtZDU3OTUwZTEtYTcyMS00NzQ4LWEwMzMtNjFhODAxN2I0OGUwLmpwZyIsIndpZHRoIjoiPD02MDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.ax5YdEu1PkZifhksZWbDD7V0Vmx62Pi0Y-9mJVgi6hY"
+  },
+  {
+    "name": "Boromir",
+    "price": "4.99",
+    "source": "https://i.pinimg.com/564x/7c/08/0f/7c080fa40e0ac1ff5507ea34b776d610.jpg"
+  },
+  {
+    "name": "Gandalf",
+    "price": "9.99",
+    "source": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/57a463cc-0c73-4032-82b7-b55b6bc88626/d6iyrzb-9586c65e-5ed8-4561-86c9-7a3179ff64bc.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzU3YTQ2M2NjLTBjNzMtNDAzMi04MmI3LWI1NWI2YmM4ODYyNlwvZDZpeXJ6Yi05NTg2YzY1ZS01ZWQ4LTQ1NjEtODZjOS03YTMxNzlmZjY0YmMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.6VmmcJM0LtPceSbChFrlq1eP6KrRGb1y-AreCm3ltjg"
+  }
+]

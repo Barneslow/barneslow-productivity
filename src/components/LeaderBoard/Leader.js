@@ -3,8 +3,11 @@ import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import { secondsToHms } from "../../utils/secondsToHms";
 import { Typography } from "@mui/material";
+import countryData from "../../config/sourceCountries.json";
+import { useNavigate } from "react-router-dom";
 
 const Leader = (props) => {
+  const navigate = useNavigate();
   const { user, placement } = props;
 
   let totalTime = secondsToHms(user?.weeklySessionTime);
@@ -12,17 +15,25 @@ const Leader = (props) => {
   const medalColor =
     placement === 1 ? "gold" : placement === 2 ? "silver" : "#CD7F32";
 
+  const [countryCode] = countryData.filter(
+    (country) => country.name === user.country
+  );
+
   let source;
 
   if (!user?.country) {
     source =
       "https://res.cloudinary.com/barneslow/image/upload/v1660661933/BarneslowProductivity/Flag.svg_n6ucee.png";
   } else {
-    source = `https:/flagcdn.com/${user?.country.toLowerCase()}.svg`;
+    source = `https:/flagcdn.com/${countryCode.code.toLowerCase()}.svg`;
   }
 
+  const navigateHandler = () => {
+    navigate(`/user/${user?._id}`, { state: { placement, source } });
+  };
+
   return (
-    <div className={styles.container}>
+    <div onClick={navigateHandler} className={styles.container}>
       <div className={styles.box}>
         <h3>{user.userName}</h3>
       </div>

@@ -287,21 +287,14 @@ export const WeeklyChart = (props) => {
 
 export const GoalChart = (props) => {
   const { user } = useSelector((state) => state.user);
-  const { sessions } = props;
+  const { sessions, totalTime } = props;
 
   const [series, setSeries] = useState([0]);
 
   useEffect(() => {
     const goalTime = user?.weeklyGoal;
-    const timeArr = [];
 
-    if (!sessions || sessions.length <= 0) return;
-
-    sessions?.map((session) => timeArr.push(session.time));
-
-    const totaltime = timeArr.reduce((acc, cur) => acc + cur);
-
-    const percentage = (totaltime / goalTime) * 100;
+    const percentage = (totalTime / goalTime) * 100;
 
     setSeries([percentage.toFixed(2)]);
   }, [user?.weeklyGoal, sessions]);
@@ -313,15 +306,34 @@ export const GoalChart = (props) => {
       offsetY: -10,
     },
     plotOptions: {
+      track: {
+        stroke: "black",
+        strokeWidth: "3px",
+      },
       radialBar: {
         startAngle: -135,
         endAngle: 135,
+        track: {
+          show: true,
+          background: "#fff",
+          strokeWidth: "100%",
+          margin: 0, // margin is in pixels
+          dropShadow: {
+            enabled: true,
+            top: 0,
+            left: 0,
+            blur: 4,
+            opacity: 1,
+          },
+        },
+
         dataLabels: {
           name: {
             fontSize: "20px",
             color: "#304758",
             offsetY: 120,
           },
+
           value: {
             offsetY: 0,
             fontSize: "50px",
@@ -347,9 +359,31 @@ export const GoalChart = (props) => {
       },
     },
     stroke: {
-      dashArray: 3,
+      dashArray: 1,
+      colors: ["#000"],
     },
+
     labels: ["Weekly Goal"],
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            height: 250,
+          },
+          plotOptions: {
+            radialBar: {
+              dataLabels: {
+                value: {
+                  fontSize: "30px",
+                  offsetY: -5,
+                },
+              },
+            },
+          },
+        },
+      },
+    ],
   });
 
   return (
@@ -509,7 +543,7 @@ export const SessionBarChart = (props) => {
   );
 };
 
-export const RatingsChart = (props) => {
+export const RatingsChart1 = (props) => {
   const { rating } = props;
 
   const [series, setSeries] = useState([
@@ -522,7 +556,7 @@ export const RatingsChart = (props) => {
 
   const [options, setOptions] = useState({
     chart: {
-      width: 380,
+      width: "100%",
       type: "donut",
     },
     labels: ["1 Star", "2 Star", "3 Star", "4 Star", "5 Star"],
@@ -542,7 +576,7 @@ export const RatingsChart = (props) => {
       formatter: function (val, opts) {
         return val;
       },
-      offsetX: 80,
+      offsetX: 0,
       fontWeight: 400,
       fontSize: 20,
     },
@@ -573,13 +607,17 @@ export const RatingsChart = (props) => {
 
     responsive: [
       {
-        breakpoint: 480,
+        breakpoint: 1000,
         options: {
           chart: {
-            width: 200,
+            width: "300",
+            offsetX: 30,
           },
           legend: {
             position: "bottom",
+            offsetX: 0,
+            fontWeight: 400,
+            fontSize: 16,
           },
         },
       },
@@ -592,6 +630,73 @@ export const RatingsChart = (props) => {
         options={options}
         series={series}
         type="donut"
+        height="350"
+      />
+    </div>
+  );
+};
+
+export const RatingsChart = (props) => {
+  const { rating } = props;
+
+  const [series, setSeries] = useState([
+    rating["1"],
+    rating["2"],
+    rating["3"],
+    rating["4"],
+    rating["5"],
+  ]);
+
+  const [options, setOptions] = useState({
+    chart: {
+      height: 350,
+      type: "pie",
+    },
+    labels: ["1 Star", "2 Star", "3 Star", "4 Star", "5 Star"],
+
+    legend: {
+      formatter: function (val, opts) {
+        return val;
+      },
+      offsetX: 0,
+      fontWeight: 400,
+      fontSize: 20,
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+          return val;
+        },
+        title: {
+          formatter: function (seriesName) {
+            return seriesName;
+          },
+        },
+      },
+    },
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            height: 250,
+          },
+          legend: {
+            position: "bottom",
+            fontSize: 15,
+          },
+        },
+      },
+    ],
+  });
+
+  return (
+    <div id="chart">
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="pie"
         height="350"
       />
     </div>

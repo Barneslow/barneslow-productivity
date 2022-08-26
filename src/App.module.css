@@ -2,8 +2,8 @@
   --light-grey: #a8a7a7;
   --dark-grey: #242526;
   --off-white: #dbdbdb;
-  --light-blue: #2086d0
-  --green: #89c569;
+  --light-blue: #2086d0;
+  --green: #429416;
   --dark-green: #276009;
   --light-blue-gradient: linear-gradient(to right, #e9f8ff, #90b2d8, #c1e3ff);
   --light-green-gradient: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
@@ -12,7 +12,29 @@
     rgb(247, 180, 44, 0.8) 0%,
     rgb(252, 87, 94, 0.8) 74%
   );
+  --blue-gradient: linear-gradient(
+    310deg,
+    rgb(17, 113, 239),
+    rgb(17, 205, 239)
+  );
+  --red-gradient: linear-gradient(310deg, rgb(245, 54, 92), rgb(245, 96, 54));
+  --green-gradient: linear-gradient(
+    310deg,
+    rgb(45, 206, 137),
+    rgb(45, 206, 204)
+  );
+  --orange-gradient: linear-gradient(
+    310deg,
+    rgb(251, 99, 64),
+    rgb(251, 177, 64)
+  );
   --light-grey-gradient: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+  --dark-grey-gradeint: linear-gradient(
+    315deg,
+    rgba(40, 49, 59, 1) 0%,
+    rgba(72, 84, 97, 1) 74%
+  );
+
   --speed: 500ms;
   --box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   --darker-box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,

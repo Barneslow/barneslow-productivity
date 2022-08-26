@@ -4,6 +4,13 @@
   box-shadow: var(--darker-box-shadow);
   background: lightcyan;
   opacity: 0.9;
+  transition: all var(--speed);
+}
+
+.container:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  background-color: lightgrey;
 }
 
 .box {

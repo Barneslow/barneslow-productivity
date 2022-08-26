@@ -1,6 +1,5 @@
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUserAction } from "../../store/authSlice";
 import { Navigate } from "react-router-dom";
@@ -38,8 +37,7 @@ const Register = () => {
     validateOnBlur: false,
 
     onSubmit: (values) => {
-      console.log(values);
-      // dispatch(registerUserAction(values));
+      dispatch(registerUserAction(values));
     },
     validationSchema: formSchema,
   });

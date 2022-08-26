@@ -57,9 +57,9 @@ const UserInfo = (props) => {
       )}
 
       <div className={styles.profile}>
-        <div className={styles.information}>
+        <div className={styles.container}>
           <img className={styles["user-image"]} src={user?.profilePhoto} />
-          <div>
+          <div className={styles.information}>
             <h2 className={styles.title}>{user?.userName}</h2>
             <div className={styles.box}>
               <h4>Name:</h4>

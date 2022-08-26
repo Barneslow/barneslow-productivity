@@ -122,12 +122,7 @@ const Timer = () => {
     >
       <h2>{mode === "work" ? "Study Hard" : "Break Time"}</h2>
       <div className={styles.padding}>
-        <div
-          style={{
-            width: 300,
-            height: 300,
-          }}
-        >
+        <div className={styles.timer}>
           <CircularProgressbar
             value={(secondsLeft / totalSeconds) * 100}
             text={`${minutes} : ${seconds}`}

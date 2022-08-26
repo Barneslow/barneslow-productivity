@@ -12,6 +12,18 @@
   margin: 1rem;
   color: rgb(44, 43, 43);
   text-align: center;
+  width: auto;
+  justify-content: center;
+}
+
+.rating-container {
+  box-shadow: var(--box-shadow);
+  margin: 1rem;
+  color: rgb(44, 43, 43);
+  text-align: center;
+  width: auto;
+  /* justify-content: center;
+  display: flex; */
 }
 
 .layout {
@@ -19,14 +31,31 @@
 }
 
 .box {
-  box-shadow: var(--darker-box-shadow);
+  box-shadow: var(--box-shadow);
   padding: 1rem;
-  background: var(--light-grey);
-  color: black;
+  background: var(--light-grey-gradient);
+  color: #22313d;
 }
 
-@media only screen and (max-width: 870px) {
+.tasks {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: lightblue;
+}
+
+@media (max-width: 870px) {
   .main {
     grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .box {
+    padding: 0.5rem;
+    color: black;
+  }
+
+  .box h2 {
+    font-size: 1.4rem;
   }
 }

@@ -12,11 +12,15 @@
 .session-stats {
   display: flex;
   justify-content: space-between;
+  text-align: end;
+  align-items: center;
 }
 
 .session-time {
   display: flex;
+  align-items: center;
   gap: 1rem;
+  padding: 1rem;
 }
 
 .save {
@@ -41,4 +45,15 @@
   padding: 3rem;
   background: var(--light-grey-gradient);
   border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .session-time h3 {
+    font-size: 1rem;
+  }
 }

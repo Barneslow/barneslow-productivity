@@ -24,11 +24,13 @@ const TimerContainer = () => {
 
   return (
     <TimerContextProvider>
-      <div className={styles.container}>
-        <Timer />
-        <div className={styles["sub-container"]}>
-          <CurrentSession />
-          <TimerSettings />
+      <div className={styles.background}>
+        <div className={styles.container}>
+          <Timer />
+          <div className={styles["sub-container"]}>
+            <CurrentSession />
+            <TimerSettings />
+          </div>
         </div>
       </div>
     </TimerContextProvider>

@@ -1,11 +1,12 @@
 import Task from "./Task";
-import styles from "./TasksList.module.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AddTask from "./AddTask";
 import sortWithNullValue from "../../utils/sortWithNullValue";
 import TaskArchive from "../Archive/TaskArchive";
+
+import styles from "./TaskList.module.css";
 
 const TasksList = (props) => {
   const tasks = useSelector((state) => state.task.tasks);
@@ -71,9 +72,9 @@ const TasksList = (props) => {
       <div className={styles["tasks-list"]}>
         <div className={styles.sorting}>
           <button className={styles.button} onClick={sortByDateCreated}>
-            Date Created
+            Created
           </button>
-          <button className={styles.button}>Due Date</button>
+          <button className={styles.button}>Due</button>
           <button className={styles.button}>Completed</button>
           <button className={archiveClasses} onClick={showArchiveHandler}>
             Archive

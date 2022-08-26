@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { updateUserAction } from "../../store/userSlice";
 
 import styles from "./UpdateUserProfile.module.css";
+import UpdateButtons from "../UI/UpdateButtons";
 
 const formSchema = Yup.object({
   userName: Yup.string().required("Username is required"),
@@ -26,7 +27,7 @@ const UpdateUserProfile = (props) => {
 
     onSubmit: (values) => {
       console.log(values);
-      dispatch(updateUserAction(values));
+      // dispatch(updateUserAction(values));
       props.onClose();
     },
     validationSchema: formSchema,
@@ -88,12 +89,7 @@ const UpdateUserProfile = (props) => {
           </div>
         </div>
       </div>
-      <button type="button" onClick={props.onClose} className="ui red button">
-        Cancel
-      </button>
-      <button type="submit" value="Submit" className="ui green button">
-        Update Settings
-      </button>
+      <UpdateButtons onClose={props.onClose} />
     </form>
   );
 };

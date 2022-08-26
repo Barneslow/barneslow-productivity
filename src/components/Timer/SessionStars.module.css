@@ -2,3 +2,9 @@
   display: flex;
   margin: 1rem;
 }
+
+@media (max-width: 768px) {
+  .stars-container {
+    margin: 0;
+  }
+}

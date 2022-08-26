@@ -25,3 +25,10 @@ export const secondsToMinsAndSecs = (totalSeconds) => {
 
   return { minutes, seconds };
 };
+
+// export const secondsToMins = (totalSeconds) => {
+//   totalSeconds = Number(totalSeconds);
+//   const minutes = Math.floor((totalSeconds % 3600) / 60);
+
+//   return minutes;
+// };

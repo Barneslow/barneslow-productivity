@@ -10,6 +10,10 @@ import { frequencyCounter } from "../utils/frequencyCounter";
 import { secondsToHms } from "../utils/secondsToHms";
 import { sessionTimeSinceMonday } from "../utils/sessionTimeSinceMonday";
 
+import UserTasks from "../components/User/UserTasks";
+import UserSessions from "../components/User/UserSessions";
+import CurrentTasks from "../components/User/CurrentTasks";
+
 const Layout = (props) => {
   const { user } = useSelector((state) => state.user);
   const { sessions } = useSelector((state) => state.session);
@@ -29,6 +33,13 @@ const Layout = (props) => {
 
   const time = secondsToHms(user?.weeklyGoal - totalTime);
 
+  let timeRemaining;
+  if (user?.weeklyGoal > totalTime) {
+    timeRemaining = `Time Remaining - ${time.hours}:${time.minutes}:${time.seconds}`;
+  } else {
+    timeRemaining = "Weekly Goal Complete";
+  }
+
   return (
     <div className={styles.layout}>
       <main className={styles.main}>
@@ -38,20 +49,25 @@ const Layout = (props) => {
               <WeeklyChart sessions={sessions} />
             </div>
             <div className={styles["chart-container"]}>
-              <GoalChart sessions={sessions} />
+              <GoalChart sessions={sessions} totalTime={totalTime} />
               <div className={styles.box}>
-                <h2>{`Time Remaining - ${time.hours}:${time.minutes}:${time.seconds}`}</h2>
+                <h2>{timeRemaining}</h2>
               </div>
             </div>
             <div className={styles["chart-container"]}>
               <MonthlyChart sessions={sessions} />
             </div>
-            <div className={styles["chart-container"]}>
+            <div className={styles["rating-container"]}>
               <RatingsChart rating={rating} />
             </div>
           </>
         )}
       </main>
+      <div className={styles.tasks}>
+        <UserSessions />
+        <UserTasks />
+        <CurrentTasks />
+      </div>
     </div>
   );
 };

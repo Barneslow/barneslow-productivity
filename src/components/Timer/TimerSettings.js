@@ -73,7 +73,6 @@ const TimerSettings = () => {
       {!showSettings && (
         <>
           <h2 className={styles.title}>Settings</h2>
-
           <IconButton
             className={styles.settings}
             sx={{

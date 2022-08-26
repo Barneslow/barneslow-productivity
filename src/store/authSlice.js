@@ -36,8 +36,8 @@ export const registerUserAction = createAsyncThunk(
         "Content-Type": "application/json",
       },
     };
+
     try {
-      //make http call
       const { data } = await axios.post(
         `${baseUrl}/api/users/register`,
         userData,

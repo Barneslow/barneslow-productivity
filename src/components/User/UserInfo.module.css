@@ -4,12 +4,20 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-.information {
+.container {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  align-items: center;
   width: 100%;
   padding: 1rem;
   gap: 1rem;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
 }
 
 .title {
@@ -49,4 +57,25 @@
 
 .cancel {
   position: absolute;
+}
+
+@media (max-width: 600px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .profile {
+    width: 100%;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .user-image {
+    width: 50%;
+  }
 }

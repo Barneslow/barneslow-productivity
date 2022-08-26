@@ -1,0 +1,45 @@
+.container {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 100%;
+  box-shadow: var(--darker-box-shadow);
+}
+
+.icon {
+  width: 66%;
+}
+
+.container span {
+  width: 24px;
+  height: 24px;
+}
+
+.count {
+  position: absolute;
+  font-size: 1.3rem;
+  font-weight: bold;
+  bottom: 25px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: 40px;
+    height: 40px;
+  }
+
+  .count {
+    position: absolute;
+    font-size: 1rem;
+    font-weight: bold;
+    bottom: 7px;
+  }
+}

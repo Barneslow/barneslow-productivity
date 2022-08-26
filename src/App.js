@@ -11,7 +11,9 @@ import Privacy from "./Layout/Legal/Privacy";
 import Dashboard from "./Layout/Dashboard";
 import TimerContainer from "./components/Timer/TimerContainer";
 import LeaderBoardContainer from "./components/LeaderBoard/LeaderBoardContainer";
-import Settings from "./components/Settings/SettingsModal";
+import Settings from "./components/Settings/Settings";
+import ViewUser from "./components/User/ViewUser";
+import StoreContainer from "./components/Cart/StoreContainer";
 
 function App() {
   return (
@@ -23,7 +25,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/privacy" element={<Privacy />} />
-
+          <Route path="/user/:id" element={<ViewUser />} />
+          <Route path="/store" element={<StoreContainer />} />
           <Route
             path="/"
             element={

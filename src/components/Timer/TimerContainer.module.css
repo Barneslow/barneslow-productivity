@@ -1,14 +1,32 @@
+.background {
+  background: var(--light-red-gradient);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .container {
   display: flex;
+  width: fit-content;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 4rem;
   gap: 2rem;
-  background: var(--light-red-gradient);
 }
 
 .sub-container {
   display: flex;
   gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 3rem;
+    padding: 0.5rem;
+  }
+
+  .sub-container {
+    flex-direction: column;
+  }
 }

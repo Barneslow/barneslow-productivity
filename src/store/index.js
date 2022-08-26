@@ -1,5 +1,6 @@
 import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
 import authSlice from "./authSlice";
+import emojiSlice from "./emojiSlice";
 import noteSlice from "./noteSlice";
 import sessionSlice from "./sessionSlice";
 import taskSlice from "./taskSlice";
@@ -14,6 +15,7 @@ const store = configureStore({
     user: userSlice.reducer,
     session: sessionSlice.reducer,
     task: taskSlice.reducer,
+    emoji: emojiSlice.reducer,
   },
 });
 

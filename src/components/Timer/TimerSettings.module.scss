@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   box-shadow: var(--darker-box-shadow);
   padding: 3rem;
   background: var(--light-grey-gradient);
@@ -23,6 +24,7 @@
 
 .settings {
   box-shadow: var(--box-shadow);
+  width: fit-content;
 }
 
 .settings:hover {

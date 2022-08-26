@@ -52,6 +52,31 @@ export const fetchUserAction = createAsyncThunk(
   }
 );
 
+export const fetchViewUserAction = createAsyncThunk(
+  "user/viewUser",
+  async (id, { rejectWithValue, getState, dispatch }) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const { data } = await axios.get(
+        `${baseUrl}/api/users/view-user/${id}`,
+        {},
+        config
+      );
+
+      return data;
+    } catch (error) {
+      if (!error?.response) {
+        throw error;
+      }
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 export const updateUserAction = createAsyncThunk(
   "user/update",
   async (updatedUser, { rejectWithValue, getState, dispatch }) => {
@@ -69,6 +94,37 @@ export const updateUserAction = createAsyncThunk(
       const { data } = await axios.post(
         `${baseUrl}/api/users/${userAuth?._id}`,
         updatedUser,
+        config
+      );
+
+      return data;
+    } catch (error) {
+      if (!error?.response) {
+        throw error;
+      }
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const updateUserPassword = createAsyncThunk(
+  "user/update-password",
+  async (password, { rejectWithValue, getState, dispatch }) => {
+    const user = getState().authentication;
+    const { userAuth } = user;
+
+    console.log(password);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const { data } = await axios.post(
+        `${baseUrl}/api/users/update-password`,
+        password,
         config
       );
 
@@ -155,6 +211,23 @@ const userSlice = createSlice({
       state.serverError = action?.error?.message;
     });
 
+    builder.addCase(fetchViewUserAction.pending, (state, action) => {
+      state.loading = true;
+      state.appError = undefined;
+      state.serverError = undefined;
+    });
+    builder.addCase(fetchViewUserAction.fulfilled, (state, action) => {
+      state.viewedUser = action.payload;
+      state.loading = false;
+      state.appError = undefined;
+      state.serverError = undefined;
+    });
+    builder.addCase(fetchViewUserAction.rejected, (state, action) => {
+      state.loading = false;
+      state.appError = action?.payload?.message;
+      state.serverError = action?.error?.message;
+    });
+
     builder.addCase(updateUserAction.pending, (state, action) => {
       state.loading = true;
       state.appError = undefined;
@@ -167,6 +240,23 @@ const userSlice = createSlice({
       state.serverError = undefined;
     });
     builder.addCase(updateUserAction.rejected, (state, action) => {
+      state.loading = false;
+      state.appError = action?.payload?.message;
+      state.serverError = action?.error?.message;
+    });
+
+    builder.addCase(updateUserPassword.pending, (state, action) => {
+      state.loading = true;
+      state.appError = undefined;
+      state.serverError = undefined;
+    });
+    builder.addCase(updateUserPassword.fulfilled, (state, action) => {
+      state.updatedPassword = action.payload;
+      state.loading = false;
+      state.appError = undefined;
+      state.serverError = undefined;
+    });
+    builder.addCase(updateUserPassword.rejected, (state, action) => {
       state.loading = false;
       state.appError = action?.payload?.message;
       state.serverError = action?.error?.message;
