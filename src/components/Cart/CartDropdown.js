@@ -6,8 +6,7 @@ import CartItem from "./CartItem";
 import styles from "./CartDropdown.module.css";
 
 const CartDropdown = () => {
-  // const cartItems = useSelector(selectCartItems);
-  const cartItems = 0;
+  const { cartItems } = useSelector((state) => state.emoji);
   const navigate = useNavigate();
 
   const goToCheckoutHandler = () => {
@@ -23,7 +22,9 @@ const CartDropdown = () => {
           <h2 className={styles.empty}>Your cart is empty</h2>
         )}
       </div>
-      <button onClick={goToCheckoutHandler}>GO TO CHECKOUT</button>
+      <button className="positive ui button" onClick={goToCheckoutHandler}>
+        GO TO CHECKOUT
+      </button>
     </div>
   );
 };

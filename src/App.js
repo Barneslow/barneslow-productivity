@@ -14,6 +14,7 @@ import LeaderBoardContainer from "./components/LeaderBoard/LeaderBoardContainer"
 import Settings from "./components/Settings/Settings";
 import ViewUser from "./components/User/ViewUser";
 import StoreContainer from "./components/Cart/StoreContainer";
+import Checkout from "./components/Cart/Checkout";
 
 function App() {
   return (
@@ -72,6 +73,14 @@ function App() {
             element={
               <PrivateProtectedRoute>
                 <Session />
+              </PrivateProtectedRoute>
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <PrivateProtectedRoute>
+                <Checkout />
               </PrivateProtectedRoute>
             }
           />

@@ -13,17 +13,6 @@ const EmojiStore = () => {
   const [filteredEmoji, setFilterEmoji] = useState(emojis);
   const { emojisData } = useSelector((state) => state.emoji);
 
-  //   useEffect(() => {
-  //     // const fetchData = async () => {
-  //     //   const { data } = await axios.get(
-  //     //     "https://jsonplaceholder.typicode.com/users"
-  //     //   );
-  //     //   setEmoji(data);
-  //     // };
-
-  //     dispatch(fetchAllEmojisAction());
-  //   }, []);
-
   useEffect(() => {
     if (emojisData) {
       setEmoji(emojisData);

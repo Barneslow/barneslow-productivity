@@ -23,15 +23,43 @@ export const fetchAllEmojisAction = createAsyncThunk(
   }
 );
 
+const addCartItem = (cartItems, productToAdd) => {
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === productToAdd.id
+  );
+
+  if (existingCartItem) return cartItems;
+
+  return [...cartItems, { ...productToAdd }];
+};
+
+const clearCartItem = (cartItems, cartItemToRemove) => {
+  const existingCartItem = cartItems.filter(
+    (cartItem) => cartItem.id !== cartItemToRemove.id
+  );
+
+  return existingCartItem;
+};
+
 const emojiSlice = createSlice({
   name: "emoji",
   initialState: {
-    emojiData: [],
+    emojisData: [],
+    cartItems: [],
     isCartOpen: false,
   },
   reducers: {
     setIsCartOpen(state) {
       state.isCartOpen = !state.isCartOpen;
+    },
+    addItemToCart(state, action) {
+      const newCart = addCartItem(state.cartItems, action.payload);
+
+      state.cartItems = newCart;
+    },
+    clearItemFromCart(state, action) {
+      const newCart = clearCartItem(state.cartItems, action.payload);
+      state.cartItems = newCart;
     },
   },
 

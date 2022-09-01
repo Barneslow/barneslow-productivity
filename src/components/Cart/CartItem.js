@@ -1,15 +1,13 @@
 import styles from "./CartItem.module.css";
 
 const CartItem = ({ cartItem }) => {
-  const { name, imageUrl, price, quantity } = cartItem;
+  const { name, source, price } = cartItem;
   return (
     <div className={styles.container}>
-      <img src={imageUrl} alt={`${name}`} />
+      <img src={source} alt={`${name}`} />
       <div className={styles.details}>
         <span>{name}</span>
-        <span>
-          {quantity} x ${price}
-        </span>
+        <span>€{price}</span>
       </div>
     </div>
   );

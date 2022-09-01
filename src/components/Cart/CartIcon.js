@@ -9,10 +9,7 @@ import CartDropdown from "./CartDropdown";
 const CartIcon = () => {
   const dispatch = useDispatch();
 
-  // const cartCount = useSelector(selectCartCount);
   const { isCartOpen } = useSelector((state) => state.emoji);
-
-  console.log(isCartOpen);
 
   const toggleIsCartOpen = () => dispatch(emojiActions.setIsCartOpen());
 
