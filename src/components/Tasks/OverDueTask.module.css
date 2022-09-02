@@ -18,12 +18,49 @@
   color: red;
 }
 
-.item p {
-  margin: 0;
-  margin-bottom: 0.25rem;
+.overdue {
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  color: red;
 }
 
 .block {
   padding: 1rem;
   text-align: center;
+}
+
+@media (max-width: 640px) {
+  .block {
+    padding: 0.2rem;
+  }
+
+  .block h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 470px) {
+  .block h3 {
+    font-size: 0.9rem;
+    padding: 0;
+  }
+
+  .title {
+    font-size: 0.7rem;
+  }
+
+  .date {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .date {
+    display: none;
+  }
+
+  .title {
+    display: none;
+  }
 }

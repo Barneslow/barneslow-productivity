@@ -59,7 +59,7 @@ const CompleteTask = ({ onChangeState, task }) => {
       </div>
       <div className={styles.block}>
         <>
-          <span>Completed</span>
+          <span className={styles.date}>Completed</span>
           {task?.completedAt ? (
             <h3>{dateFormatter(task?.completedAt)}</h3>
           ) : (
@@ -69,14 +69,16 @@ const CompleteTask = ({ onChangeState, task }) => {
       </div>
       <div className={styles.block}>
         <>
-          <span>Completed in:</span>
+          <span className={styles.date}>Completed in:</span>
           <h3>{completedIn}</h3>
         </>
       </div>
       <div className={styles.block}>
         <Checkbox
           checkedIcon={
-            <CheckCircleIcon sx={{ color: "green", fontSize: 30 }} />
+            <CheckCircleIcon
+              sx={{ color: "green", fontSize: { sm: 30, md: 40 } }}
+            />
           }
           checked={true}
           onChange={handleChange}
@@ -84,7 +86,9 @@ const CompleteTask = ({ onChangeState, task }) => {
         <Tooltip title="Archive">
           <Checkbox
             checkedIcon={
-              <ArchiveIcon sx={{ color: archiveColour, fontSize: 30 }} />
+              <ArchiveIcon
+                sx={{ color: archiveColour, fontSize: { sm: 30, md: 40 } }}
+              />
             }
             checked={true}
             onChange={handleArchive}

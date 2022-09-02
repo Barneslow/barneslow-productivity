@@ -90,4 +90,9 @@
   .button {
     padding: 0.5rem;
   }
+
+  .tasks-list {
+    padding: 1rem;
+    width: 100%;
+  }
 }

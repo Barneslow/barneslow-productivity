@@ -36,7 +36,7 @@ const OverDueTask = ({ onChangeState, task }) => {
       </div>
       <div className={styles.block}>
         <>
-          <h3 className={styles.title}>OVERDUE</h3>
+          <h3 className={styles.overdue}>OVERDUE</h3>
           <Moment className={styles.title} fromNow>
             {task.dueDate}
           </Moment>
@@ -45,13 +45,19 @@ const OverDueTask = ({ onChangeState, task }) => {
       <div className={styles.block}>
         <>
           <h3>{dateFormatter(task.createdAt)}</h3>
-          <Moment fromNow>{task.createdAt}</Moment>
+          <Moment className={styles.date} fromNow>
+            {task.createdAt}
+          </Moment>
         </>
       </div>
       <div>
         <Tooltip title="Edit Task">
           <Checkbox
-            icon={<AddTaskIcon sx={{ color: "blue", fontSize: 30 }} />}
+            icon={
+              <AddTaskIcon
+                sx={{ color: "blue", fontSize: { sm: 30, md: 40 } }}
+              />
+            }
             checked={false}
             onChange={handleChange}
           />
@@ -59,7 +65,9 @@ const OverDueTask = ({ onChangeState, task }) => {
       </div>
       <Tooltip title="Delete Task">
         <IconButton onClick={deleteTaskHandler}>
-          <DeleteForeverIcon sx={{ color: "red", fontSize: 30 }} />
+          <DeleteForeverIcon
+            sx={{ color: "red", fontSize: { sm: 30, md: 40 } }}
+          />
         </IconButton>
       </Tooltip>
     </li>

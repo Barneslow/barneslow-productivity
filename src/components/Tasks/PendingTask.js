@@ -36,23 +36,31 @@ const PendingTask = ({ onChangeState, task }) => {
       </div>
       <div className={styles.block}>
         <>
-          <h3>{dateFormatter(task.dueDate)}</h3>(
-          <Moment fromNow>{task.dueDate}</Moment>)
+          <h3>{dateFormatter(task.dueDate)}</h3>
+          <Moment className={styles.date} fromNow>
+            {task.dueDate}
+          </Moment>
         </>
       </div>
       <div className={styles.block}>
         <>
           <h3>{dateFormatter(task.createdAt)}</h3>
-          <Moment fromNow>{task.createdAt}</Moment>
+          <Moment className={styles.date} fromNow>
+            {task.createdAt}
+          </Moment>
         </>
       </div>
       <Checkbox
-        icon={<AddTaskIcon sx={{ color: "blue", fontSize: 30 }} />}
+        icon={
+          <AddTaskIcon sx={{ color: "blue", fontSize: { sm: 30, md: 40 } }} />
+        }
         checked={false}
         onChange={handleChange}
       />
       <IconButton onClick={deleteTaskHandler}>
-        <DeleteForeverIcon sx={{ color: "red", fontSize: 30 }} />
+        <DeleteForeverIcon
+          sx={{ color: "red", fontSize: { sm: 30, md: 40 } }}
+        />
       </IconButton>
     </li>
   );

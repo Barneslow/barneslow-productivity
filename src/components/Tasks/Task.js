@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import CompleteTask from "./CompleteTask";
 import OverDueTask from "./OverDueTask";
 import PendingTask from "./PendingTask";

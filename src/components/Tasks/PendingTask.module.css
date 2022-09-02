@@ -10,12 +10,34 @@
   align-items: center;
 }
 
-.item p {
-  margin: 0;
-  margin-bottom: 0.25rem;
-}
-
 .block {
   padding: 1rem;
   text-align: center;
+}
+
+@media (max-width: 640px) {
+  .block {
+    padding: 0.2rem;
+  }
+
+  .block h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 470px) {
+  .block h3 {
+    font-size: 0.9rem;
+    padding: 0;
+  }
+
+  .date {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .date {
+    display: none;
+  }
 }
