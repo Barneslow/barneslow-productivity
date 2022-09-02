@@ -1,6 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { fetchUserAction } from "../../store/userSlice";
 import { SessionBarChart, SessionRadialChart } from "../Stats/ApexCharts";
 import Card from "../UI/Card";
 
@@ -10,9 +8,6 @@ const SessionTime = ({ time, breakTime, date }) => {
   const dispatch = useDispatch();
   const { userAuth } = useSelector((state) => state.authentication);
 
-  useEffect(() => {
-    dispatch(fetchUserAction(userAuth?.id));
-  }, [dispatch, userAuth?.id]);
 
   return (
     <Card>

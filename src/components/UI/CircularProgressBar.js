@@ -3,7 +3,6 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
 const TestProgressBar = () => {
   const value = 10;
-  console.log("fire");
   return (
     <div>
       <CircularProgressbar

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -14,9 +14,9 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import PunchClockIcon from "@mui/icons-material/PunchClock";
 
-import image from "../../images/patrick.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LogoutUserAction } from "../../store/authSlice";
+import { fetchUserAction } from "../../store/userSlice";
 
 const pages = ["Dashboard", "Study", "Tasks", "Leaderboard", "Store"];
 const settings = [
@@ -29,13 +29,25 @@ const settings = [
   "Logout",
 ];
 
-const UserNavBar = () => {
+const UserNavBar = ({ userAuth }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [showUpdateUserModal, setshowUpdateUserModal] = useState(false);
   const [modalContent, setModalContent] = useState("");
+
+  useEffect(() => {
+    dispatch(fetchUserAction(userAuth?.id));
+  }, [dispatch, userAuth?.id]);
+
+  const user = useSelector((state) => state.user.user);
+
+
+  let profilePhoto;
+  if (user) {
+    profilePhoto = user.profilePhoto;
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -207,7 +219,7 @@ const UserNavBar = () => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src={image} />
+                  <Avatar alt="Remy Sharp" src={profilePhoto} />
                 </IconButton>
               </Tooltip>
               <Menu

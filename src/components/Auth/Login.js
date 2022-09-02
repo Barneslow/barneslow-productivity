@@ -42,7 +42,6 @@ const Login = () => {
           value={formik.values.email}
           onChange={formik.handleChange("email")}
           onBlur={formik.handleBlur("email")}
-          className="w-full pr-6 pl-4 py-4 font-bold placeholder-gray-300 rounded-r-full focus:outline-none"
           type="email"
           placeholder="Enter email"
         />

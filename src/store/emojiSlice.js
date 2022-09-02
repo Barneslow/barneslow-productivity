@@ -47,6 +47,8 @@ const emojiSlice = createSlice({
     emojisData: [],
     cartItems: [],
     isCartOpen: false,
+    cartTotal: 0,
+    cartCount: 0,
   },
   reducers: {
     setIsCartOpen(state) {
@@ -54,12 +56,19 @@ const emojiSlice = createSlice({
     },
     addItemToCart(state, action) {
       const newCart = addCartItem(state.cartItems, action.payload);
+      const newCartTotal = state.cartTotal + action.payload.price;
 
       state.cartItems = newCart;
+      state.cartCount++;
+      state.cartTotal = newCartTotal;
     },
     clearItemFromCart(state, action) {
       const newCart = clearCartItem(state.cartItems, action.payload);
+      const newCartTotal = state.cartTotal - action.payload.price;
+
       state.cartItems = newCart;
+      state.cartCount--;
+      state.cartTotal = newCartTotal;
     },
   },
 

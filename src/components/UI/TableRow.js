@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./TableRow.module.css";
 
 const TableRow = ({ selectable, data }) => {
+  const navigate = useNavigate();
   let className = styles.row;
   let status = data?.status;
 
@@ -24,7 +26,7 @@ const TableRow = ({ selectable, data }) => {
   }
 
   const handleClick = (e) => {
-    console.log("fire");
+    console.log(e.target);
   };
   return (
     <div className={className} onClick={handleClick}>

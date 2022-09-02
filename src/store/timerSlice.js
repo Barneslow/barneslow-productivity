@@ -22,7 +22,6 @@ const timerSlice = createSlice({
       state.sessionBreak += action.payload.break;
     },
     resetCurrentSession(state) {
-      console.log("fire");
       state.session = INITIAL_STATE.session;
       state.sessionBreak = INITIAL_STATE.sessionBreak;
     },

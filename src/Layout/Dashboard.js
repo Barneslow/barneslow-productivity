@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUserAction } from "../store/userSlice";
 import { fetchUserSessionsAction } from "../store/sessionSlice";
 
 import Layout from "./Layout";
@@ -13,12 +12,11 @@ import styles from "./Dashboard.module.css";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { userAuth } = useSelector((state) => state.authentication);
+  const userAuth = useSelector((state) => state.authentication.userAuth);
 
   const [viewable, setViewable] = useState("Dashboard");
 
   useEffect(() => {
-    dispatch(fetchUserAction(userAuth?.id));
     dispatch(fetchUserSessionsAction());
   }, [dispatch, userAuth?.id]);
 

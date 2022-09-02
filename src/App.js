@@ -15,6 +15,8 @@ import Settings from "./components/Settings/Settings";
 import ViewUser from "./components/User/ViewUser";
 import StoreContainer from "./components/Cart/StoreContainer";
 import Checkout from "./components/Cart/Checkout";
+import ForgotPasswordForm from "./components/Auth/ForgotPasswordForm";
+import ResetPasswordForm from "./components/Auth/ResetPasswordForm";
 
 function App() {
   return (
@@ -24,6 +26,11 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/forgot-password" element={<ForgotPasswordForm />} />
+          <Route
+            path="/reset-password/:token"
+            element={<ResetPasswordForm />}
+          />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/user/:id" element={<ViewUser />} />

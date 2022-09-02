@@ -18,7 +18,7 @@ const TimerContainer = () => {
   const { userAuth } = useSelector((state) => state.authentication);
 
   useEffect(() => {
-    dispatch(fetchUserAction(userAuth?.id));
+    // dispatch(fetchUserAction(userAuth?.id));
     dispatch(fetchUserSessionsAction());
   }, [dispatch, userAuth?.id]);
 

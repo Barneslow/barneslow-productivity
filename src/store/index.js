@@ -1,4 +1,4 @@
-import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./authSlice";
 import emojiSlice from "./emojiSlice";
 import noteSlice from "./noteSlice";

@@ -9,7 +9,7 @@ import CartDropdown from "./CartDropdown";
 const CartIcon = () => {
   const dispatch = useDispatch();
 
-  const { isCartOpen } = useSelector((state) => state.emoji);
+  const { isCartOpen, cartCount } = useSelector((state) => state.emoji);
 
   const toggleIsCartOpen = () => dispatch(emojiActions.setIsCartOpen());
 
@@ -17,7 +17,7 @@ const CartIcon = () => {
     <div className={styles.container} onClick={toggleIsCartOpen}>
       <ShoppingIcon className={styles.icon} />
       {isCartOpen && <CartDropdown />}
-      <div className={styles.count}>1</div>
+      <div className={styles.count}>{cartCount}</div>
     </div>
   );
 };

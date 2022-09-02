@@ -13,8 +13,14 @@ const EmojiCard = ({ emoji }) => {
   const [purchase, setPurchase] = useState(false);
 
   const purchaseHandler = () => {
-    setPurchase(!purchase);
-    dispatch(emojiActions.addItemToCart(emoji));
+    if (purchase) {
+      setPurchase(false);
+      dispatch(emojiActions.clearItemFromCart(emoji));
+    } else {
+      setPurchase(true);
+
+      dispatch(emojiActions.addItemToCart(emoji));
+    }
   };
 
   const stars = 100 * price;

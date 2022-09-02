@@ -4,8 +4,9 @@ import Login from "./Login";
 import Register from "./Register";
 
 import InsightsIcon from "@mui/icons-material/Insights";
-import styles from "./Login.module.css";
 import { useState } from "react";
+
+import styles from "./LoginPage.module.css";
 
 const LoginPage = () => {
   const [regState, setRegState] = useState(true);
@@ -37,7 +38,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-      <div className={styles.copywrite}>
+      <div className={styles.copy}>
         <span>
           <InsightsIcon />
         </span>

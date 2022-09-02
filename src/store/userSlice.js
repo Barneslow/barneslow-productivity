@@ -113,7 +113,6 @@ export const updateUserPassword = createAsyncThunk(
     const user = getState().authentication;
     const { userAuth } = user;
 
-    console.log(password);
     const config = {
       headers: {
         Authorization: `Bearer ${userAuth?.token}`,

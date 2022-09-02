@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { fetchUserAction } from "../../store/userSlice";
+// import { fetchUserAction } from "../../store/userSlice";
 import { dateFormatter } from "../../utils/dateFormater";
 import { secondsToHhrsAndMins } from "../../utils/secondsToHms";
 
@@ -16,9 +16,9 @@ const UserInfo = (props) => {
 
   const { userAuth } = useSelector((state) => state.authentication);
 
-  useEffect(() => {
-    dispatch(fetchUserAction(userAuth?.id));
-  }, [dispatch, userAuth?.id]);
+  // useEffect(() => {
+  //   dispatch(fetchUserAction(userAuth?.id));
+  // }, [dispatch, userAuth?.id]);
 
   const [showUpdateUserModal, setshowUpdateUserModal] = useState(false);
   const [showUpdateGoalsModal, setshowUpdateGoalsModal] = useState(false);
