@@ -11,6 +11,7 @@ const formSchema = Yup.object({
   email: Yup.string().required("Email is required"),
   firstName: Yup.string().required("First name is required"),
   lastName: Yup.string().required("Last name is required"),
+  bio: Yup.string().required("User bio is required"),
 });
 
 const UpdateUserProfile = (props) => {
@@ -23,11 +24,12 @@ const UpdateUserProfile = (props) => {
       email: user.email,
       firstName: user.firstName,
       lastName: user.lastName,
+      bio: user.bio,
     },
 
     onSubmit: (values) => {
       console.log(values);
-      // dispatch(updateUserAction(values));
+      dispatch(updateUserAction(values));
       props.onClose();
     },
     validationSchema: formSchema,
@@ -86,6 +88,18 @@ const UpdateUserProfile = (props) => {
             <div className={styles.error}>
               {formik.touched.lastName && formik.errors.lastName}
             </div>
+          </div>
+        </div>
+        <div className="field">
+          <label>Bio</label>
+          <textarea
+            value={formik.values.bio}
+            onChange={formik.handleChange("bio")}
+            onBlur={formik.handleBlur("bio")}
+            type="text"
+          />
+          <div className={styles.error}>
+            {formik.touched.bio && formik.errors.bio}
           </div>
         </div>
       </div>

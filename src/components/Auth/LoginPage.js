@@ -43,7 +43,7 @@ const LoginPage = () => {
           <InsightsIcon />
         </span>
         <h2>Ready to start?</h2>
-        <h2>Login Now!</h2>
+        <h2> {regState ? "Login Now" : "Register Your Free Account"}</h2>
       </div>
     </section>
   );

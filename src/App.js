@@ -13,7 +13,7 @@ import TimerContainer from "./components/Timer/TimerContainer";
 import LeaderBoardContainer from "./components/LeaderBoard/LeaderBoardContainer";
 import Settings from "./components/Settings/Settings";
 import ViewUser from "./components/User/ViewUser";
-import StoreContainer from "./components/Cart/StoreContainer";
+import StoreContainer from "./components/Shop/ShopContainer";
 import Checkout from "./components/Cart/Checkout";
 import ForgotPasswordForm from "./components/Auth/ForgotPasswordForm";
 import ResetPasswordForm from "./components/Auth/ResetPasswordForm";

@@ -43,5 +43,61 @@
     "name": "Gandalf",
     "price": "9.99",
     "source": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/57a463cc-0c73-4032-82b7-b55b6bc88626/d6iyrzb-9586c65e-5ed8-4561-86c9-7a3179ff64bc.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzU3YTQ2M2NjLTBjNzMtNDAzMi04MmI3LWI1NWI2YmM4ODYyNlwvZDZpeXJ6Yi05NTg2YzY1ZS01ZWQ4LTQ1NjEtODZjOS03YTMxNzlmZjY0YmMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.6VmmcJM0LtPceSbChFrlq1eP6KrRGb1y-AreCm3ltjg"
+  },
+
+  {
+    "name": "Winky Face",
+    "price": "1.99",
+    "source": "https://res.cloudinary.com/barneslow/image/upload/v1662132133/BarneslowProductivity/WinkyFace_gdgute.png"
+  },
+  {
+    "name": "Laughing Face",
+    "price": "1.99",
+    "source": "https://res.cloudinary.com/barneslow/image/upload/v1662132134/BarneslowProductivity/Laughing_fih3rv.png"
+  },
+  {
+    "name": "Angry Face",
+    "price": "1.99",
+    "source": "https://res.cloudinary.com/barneslow/image/upload/v1662132134/BarneslowProductivity/Angry_eamk4k.png"
+  },
+  {
+    "name": "Crying Face",
+    "price": "1.99",
+    "source": "https://res.cloudinary.com/barneslow/image/upload/v1662132133/BarneslowProductivity/CryingFace_hczso2.png"
+  },
+  {
+    "name": "Cool Face",
+    "price": "1.99",
+    "source": "https://res.cloudinary.com/barneslow/image/upload/v1662132133/BarneslowProductivity/Cool_b6vxlo.png"
+  },
+  {
+    "name": "Heart Eyes",
+    "price": "1.99",
+    "source": "https://res.cloudinary.com/barneslow/image/upload/v1662132133/BarneslowProductivity/HeartEyes_p3s9il.png"
+  },
+  {
+    "name": "Tongue Out",
+    "price": "1.99",
+    "source": "https://res.cloudinary.com/barneslow/image/upload/v1662132133/BarneslowProductivity/Tongue_ihroa4.png"
+  },
+  {
+    "name": "Side Eyes",
+    "price": "1.99",
+    "source": "https://res.cloudinary.com/barneslow/image/upload/v1662132134/BarneslowProductivity/Sideeye_xhvrx9.png"
+  },
+  {
+    "name": "Thinking Face",
+    "price": "1.99",
+    "source": "https://res.cloudinary.com/barneslow/image/upload/v1662132134/BarneslowProductivity/Thinking_msanyp.png"
+  },
+  {
+    "name": "Kisses",
+    "price": "1.99",
+    "source": "https://res.cloudinary.com/barneslow/image/upload/v1662132134/BarneslowProductivity/Kisses_e0dvla.png"
+  },
+  {
+    "name": "Angel Face",
+    "price": "1.99",
+    "source": "https://res.cloudinary.com/barneslow/image/upload/v1662132134/BarneslowProductivity/Angel_lsnv9q.png"
   }
 ]

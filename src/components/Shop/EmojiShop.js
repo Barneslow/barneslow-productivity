@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 
 import EmojiList from "./EmojiList";
 import SearchBox from "../User/SearchBox";
 
-import styles from "./EmojiStore.module.css";
+import styles from "./EmojiShop.module.css";
 import { useSelector } from "react-redux";
 
-const EmojiStore = () => {
+const EmojiShop = () => {
   const [searchField, setSearchField] = useState("");
   const [emojis, setEmoji] = useState([]);
   const [filteredEmoji, setFilterEmoji] = useState(emojis);
-  const { emojisData } = useSelector((state) => state.emoji);
+  const emojisData = useSelector((state) => state.emoji.emojisData);
 
   useEffect(() => {
     if (emojisData) {
@@ -32,11 +31,11 @@ const EmojiStore = () => {
 
   return (
     <div className={styles.store}>
-      <h2 className={styles.title}>Emoji Store</h2>
+      <h2 className={styles.title}>Emoji Shop</h2>
       <SearchBox onChangeHandler={onSearchChange} placeholder="Search emoji" />
       <EmojiList emojis={filteredEmoji} />
     </div>
   );
 };
 
-export default EmojiStore;
+export default EmojiShop;

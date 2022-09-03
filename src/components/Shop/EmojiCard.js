@@ -3,28 +3,30 @@ import { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import styles from "./EmojiCard.module.css";
 import { emojiActions } from "../../store/emojiSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const EmojiCard = ({ emoji }) => {
-  // console.log(emoji);
   const dispatch = useDispatch();
-  const { id, name, source, price } = emoji;
+  const { name, source, price } = emoji;
 
-  const [purchase, setPurchase] = useState(false);
+  const cartItems = useSelector((state) => state.emoji.cartItems);
+
+  const inCart = cartItems.filter((item) => {
+    return item.name === emoji.name;
+  });
+
+  const purchase = inCart.length !== 0;
 
   const purchaseHandler = () => {
     if (purchase) {
-      setPurchase(false);
       dispatch(emojiActions.clearItemFromCart(emoji));
     } else {
-      setPurchase(true);
-
       dispatch(emojiActions.addItemToCart(emoji));
     }
   };
 
   const stars = 100 * price;
-  let background = "grey";
+  let background = "var(--off-white)";
 
   if (purchase) {
     background = "var(--orange)";

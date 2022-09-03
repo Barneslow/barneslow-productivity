@@ -12,14 +12,17 @@ const formSchema = Yup.object({
   firstName: Yup.string().required("First name is required"),
   lastName: Yup.string().required("Last name is required"),
   country: Yup.string().required("Country is required"),
+  bio: Yup.string().required("Bio is required"),
 });
 
 const UpdateUserSettings = () => {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user.user);
 
-  const { user, loading, serverError, appError, userAuth } = userState;
+  const { loading, serverError, appError, userAuth } = userState;
 
+  console.log(user);
   const formik = useFormik({
     initialValues: {
       userName: user?.userName,
@@ -27,10 +30,10 @@ const UpdateUserSettings = () => {
       firstName: user?.firstName,
       lastName: user?.lastName,
       country: user?.country,
+      bio: user?.bio,
     },
 
     onSubmit: (values) => {
-      console.log(values);
       dispatch(updateUserAction(values));
     },
     validationSchema: formSchema,
@@ -95,6 +98,18 @@ const UpdateUserSettings = () => {
               value={formik.values.country}
               onChange={formik.handleChange("country")}
             />
+          </div>
+        </div>
+        <div className="field">
+          <label>Bio</label>
+          <textarea
+            value={formik.values.bio}
+            onChange={formik.handleChange("bio")}
+            onBlur={formik.handleBlur("bio")}
+            type="text"
+          />
+          <div className={styles.error}>
+            {formik.touched.bio && formik.errors.bio}
           </div>
         </div>
       </div>

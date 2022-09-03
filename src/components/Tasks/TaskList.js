@@ -25,6 +25,7 @@ const TasksList = (props) => {
     });
 
     setTasksArray(sortedArray);
+    setShowArchive(false);
   };
 
   const sortByDateCreated = () => {
@@ -36,6 +37,7 @@ const TasksList = (props) => {
     });
 
     setTasksArray(sortedArray);
+    setShowArchive(false);
   };
 
   const sortByCompleted = () => {
@@ -45,6 +47,7 @@ const TasksList = (props) => {
     sortedArray = [...tasks].sort(sortWithNullValue(true));
 
     setTasksArray(sortedArray);
+    setShowArchive(false);
   };
 
   useEffect(() => {
@@ -80,7 +83,7 @@ const TasksList = (props) => {
           <button className={styles.button} onClick={sortByCompleted}>
             Completed
           </button>
-          <button className={archiveClasses} onClick={showArchiveHandler}>
+          <button className={styles.button} onClick={showArchiveHandler}>
             Archive
           </button>
         </div>

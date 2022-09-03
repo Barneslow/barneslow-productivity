@@ -2,11 +2,11 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllEmojisAction } from "../../store/emojiSlice";
 
-import EmojiStore from "./EmojiStore";
-import styles from "./StoreContainer.module.css";
-import CartIcon from "./CartIcon";
+import EmojiStore from "./EmojiShop";
+import styles from "./ShopContainer.module.css";
+import CartIcon from "../Cart/CartIcon";
 
-const StoreContainer = () => {
+const ShopContainer = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,4 +20,4 @@ const StoreContainer = () => {
   );
 };
 
-export default StoreContainer;
+export default ShopContainer;
