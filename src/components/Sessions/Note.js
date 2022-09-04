@@ -23,14 +23,12 @@ const Note = ({ note }) => {
       text: "",
     },
     onSubmit: (values) => {
-      console.log(values);
       setIsEditing(false);
     },
     validationSchema: formSchema,
   });
 
   const onChangeHandler = () => {
-    console.log("fire");
     setIsEditing(true);
   };
 

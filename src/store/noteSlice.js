@@ -62,8 +62,6 @@ export const createNoteAction = createAsyncThunk(
     const { userAuth } = user;
     const { id, description } = note;
 
-    console.log(id);
-    console.log(description);
 
     const config = {
       headers: {

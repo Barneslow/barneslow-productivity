@@ -193,7 +193,6 @@ const sessionSlice = createSlice({
       state.serverError = undefined;
     });
     builder.addCase(createSessionAction.fulfilled, (state, action) => {
-      console.log(state.sessions);
       state.session = action.payload;
       state.sessions = [...state.sessions, action.payload];
       state.loading = false;

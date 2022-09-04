@@ -6,8 +6,6 @@ import PublicNavBar from "./PublicNavBar";
 const NavBar = () => {
   const userAuth = useSelector((state) => state.authentication.userAuth);
 
-  console.log("navbar");
-
   return (
     <>{userAuth ? <UserNavBar userAuth={userAuth} /> : <PublicNavBar />}</>
   );

@@ -25,7 +25,6 @@ const SaveSession = (props) => {
     props.setShowModal(false);
   };
 
-  console.log(timerActions);
   const cancelHandler = () => {
     props.setShowModal(false);
   };

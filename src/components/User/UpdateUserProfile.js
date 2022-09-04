@@ -28,7 +28,6 @@ const UpdateUserProfile = (props) => {
     },
 
     onSubmit: (values) => {
-      console.log(values);
       dispatch(updateUserAction(values));
       props.onClose();
     },

@@ -32,7 +32,6 @@ const UpdateUserWeeklyGoal = (props) => {
   };
 
   const setSessionGoalHandler = (e, newValue) => {
-    console.log(newValue);
     setSessionTime(newValue);
   };
 
