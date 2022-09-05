@@ -27,6 +27,7 @@
 @media (max-width: 1000px) {
   .container {
     padding: 0.5rem;
+    border-radius: 0;
   }
 
   .day {
@@ -55,6 +56,26 @@
 
   .month {
     font-size: 0.8rem;
+  }
+
+  .year {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding: 0;
+    flex-direction: row;
+  }
+
+  .day {
+    font-size: 1rem;
+    margin: 0.5rem;
+  }
+
+  .month {
+    font-size: 1rem;
   }
 
   .year {
