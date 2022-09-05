@@ -96,7 +96,7 @@ const Timer = () => {
       }
 
       tick();
-    }, 1000);
+    }, 1);
 
     return () => {
       clearInterval(interval);

@@ -24,6 +24,7 @@
 
 .add-session {
   display: flex;
+  background: #4c6583;
   justify-content: center;
   width: 50%;
   border-radius: 10px;
@@ -36,8 +37,22 @@
 }
 
 .add-session:hover {
-  filter: brightness(1.6);
   cursor: pointer;
   opacity: 1;
-  background: #4c6583;
+  background: var(--orange);
+}
+
+@media (max-width: 768px) {
+  .title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+  }
+
+  .center {
+    padding: 1rem;
+  }
+
+  .add-session {
+    width: 90%;
+  }
 }

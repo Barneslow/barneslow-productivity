@@ -1,10 +1,10 @@
 .container {
   width: 80px;
   height: 80px;
-  position: absolute;
+  position: fixed;
   right: 1rem;
-  top: 1rem;
-
+  top: 5rem;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;

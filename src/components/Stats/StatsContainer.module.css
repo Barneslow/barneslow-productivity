@@ -15,6 +15,34 @@
   justify-content: space-evenly;
 }
 
+.button {
+  cursor: pointer;
+  display: inline-block;
+  min-height: 1em;
+  outline: 0;
+  border: none;
+  vertical-align: baseline;
+  background-color: #e0e1e2;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 700;
+  margin: 0 0 0.25em 0;
+  padding: 0.78571429em 1.5em 0.78571429em;
+  border-radius: 5px;
+  box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgb(34 36 38 / 15%) inset;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease,
+    box-shadow 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
+}
+
+.button:hover {
+  background-color: #cacbcd;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.button.active {
+  background-color: green;
+  color: white;
+}
+
 @media (max-width: 768px) {
   .main-container {
     padding: 0.5rem;

@@ -13,20 +13,6 @@ const SessionStats = ({ session }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [showModal, setShowModal] = useState(false);
-
-  const deleteNoteHandler = () => {
-    setShowModal(true);
-  };
-
-  const confirmHandler = () => {
-    dispatch(deleteSessionAction(id));
-    navigate("/dashboard");
-  };
-  const cancelHandler = () => {
-    setShowModal(false);
-  };
-
   return (
     <div className={styles.border}>
       <h2 className={styles.title}>Session Details</h2>
