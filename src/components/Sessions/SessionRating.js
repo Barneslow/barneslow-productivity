@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { updateSessionAction } from "../../store/sessionSlice";
 import SessionStars from "../Timer/SessionStars";
 
+import styles from "./SessionRating.module.css";
+
 const SessionRating = (props) => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -21,7 +23,7 @@ const SessionRating = (props) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <SessionStars stars={rating} setStars={setStars} />
     </div>
   );

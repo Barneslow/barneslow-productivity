@@ -19,11 +19,9 @@ const Session = () => {
 
   return (
     <div className={styles.container}>
-      <Card>
-        <SessionStats session={session} />
-        <SessionRating rating={session?.rating} />
-        <SessionNotes />
-      </Card>
+      <SessionStats session={session} />
+      <SessionRating rating={session?.rating} />
+      <SessionNotes />
     </div>
   );
 };

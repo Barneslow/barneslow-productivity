@@ -16,3 +16,9 @@
   border-bottom: var(--box-shadow);
   width: 100%;
 }
+
+@media (max-width: 760px) {
+  .title {
+    font-size: 2rem;
+  }
+}

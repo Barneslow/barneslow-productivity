@@ -36,7 +36,7 @@ const DeleteSession = () => {
           <h2 className={styles.header}>Are you sure?</h2>
           <div className={styles.buttons}>
             <IconButton onClick={confirmHandler}>
-              <CheckCircleIcon sx={{ color: "green", fontSize: 60 }} />
+              <CheckCircleIcon sx={{ color: "green", fontSize: { sm: 60 } }} />
             </IconButton>
             <IconButton onClick={cancelHandler}>
               <CancelIcon sx={{ color: "red", fontSize: 60 }} />
@@ -49,7 +49,7 @@ const DeleteSession = () => {
           <IconButton onClick={deleteNoteHandler}>
             <DeleteForeverIcon
               // className={styles["delete-button"]}
-              sx={{ color: "red", fontSize: 60 }}
+              sx={{ color: "red", fontSize: { sm: 40, md: 60 } }}
             />
           </IconButton>
         </Tooltip>

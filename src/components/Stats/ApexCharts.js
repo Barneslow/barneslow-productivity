@@ -449,6 +449,41 @@ export const SessionRadialChart = (props) => {
     },
 
     labels: ["Study", "Break"],
+
+    responsive: [
+      {
+        breakpoint: 900,
+        options: {
+          chart: {
+            height: "350",
+          },
+        },
+      },
+      {
+        breakpoint: 800,
+        options: {
+          chart: {
+            height: "300",
+          },
+        },
+      },
+      {
+        breakpoint: 700,
+        options: {
+          chart: {
+            height: "250",
+          },
+        },
+      },
+      {
+        breakpoint: 500,
+        options: {
+          chart: {
+            height: "200",
+          },
+        },
+      },
+    ],
   });
 
   return (
@@ -513,6 +548,9 @@ export const SessionBarChart = (props) => {
 
     xaxis: {
       categories: [isoDate],
+      labels: {
+        show: false,
+      },
     },
 
     fill: {
@@ -529,6 +567,45 @@ export const SessionBarChart = (props) => {
       colors: ["black"],
       width: 2,
     },
+
+    responsive: [
+      {
+        breakpoint: 900,
+        options: {
+          chart: {
+            height: "350",
+          },
+        },
+      },
+      {
+        breakpoint: 800,
+        options: {
+          chart: {
+            height: "300",
+          },
+          legend: {
+            position: "top",
+            offsetY: 10,
+          },
+        },
+      },
+      {
+        breakpoint: 700,
+        options: {
+          chart: {
+            height: "250",
+          },
+        },
+      },
+      {
+        breakpoint: 500,
+        options: {
+          chart: {
+            height: "200",
+          },
+        },
+      },
+    ],
   });
 
   return (

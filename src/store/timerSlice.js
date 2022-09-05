@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const INITIAL_STATE = {
   session: 0,
   sessionBreak: 0,
-  workMinutes: 0.05,
-  breakMinutes: 0.1,
+  workMinutes: 25,
+  breakMinutes: 5,
   isPaused: true,
 };
 

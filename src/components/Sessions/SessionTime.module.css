@@ -1,4 +1,13 @@
 .chart-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--light-grey-gradient);
+  width: 100%;
 }
