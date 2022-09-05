@@ -1,18 +1,19 @@
 import UserSessions from "./UserSessions";
 
-import Card from "../UI/Card";
 import UserInfo from "./UserInfo";
 import CurrentTasks from "./CurrentTasks";
 import UserTasks from "./UserTasks";
 
+import styles from "./UserCard.module.css";
+
 const UserCard = (props) => {
   return (
-    <Card>
+    <div className={styles.container}>
       <UserInfo />
       <UserSessions />
       <UserTasks />
       <CurrentTasks />
-    </Card>
+    </div>
   );
 };
 

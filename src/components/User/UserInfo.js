@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-// import { fetchUserAction } from "../../store/userSlice";
+import { useSelector } from "react-redux";
+import { useState, useEffect, useRef } from "react";
 import { dateFormatter } from "../../utils/dateFormater";
 import { secondsToHhrsAndMins } from "../../utils/secondsToHms";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 import Modal from "../UI/Modal";
 import UpdateUserGoals from "./UpdateUserGoals";
@@ -11,29 +11,36 @@ import SettingsModal from "../Settings/SettingsModal";
 import styles from "./UserInfo.module.css";
 
 const UserInfo = (props) => {
-  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
-
-  const { userAuth } = useSelector((state) => state.authentication);
-
-  // useEffect(() => {
-  //   dispatch(fetchUserAction(userAuth?.id));
-  // }, [dispatch, userAuth?.id]);
-
   const [showUpdateUserModal, setshowUpdateUserModal] = useState(false);
   const [showUpdateGoalsModal, setshowUpdateGoalsModal] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const popupRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      console.log("fire");
+      console.log(popupRef.current);
+      popupRef.current && disableBodyScroll(popupRef.current);
+    } else {
+      popupRef.current && enableBodyScroll(popupRef.current);
+    }
+  }, [isOpen]);
 
   const showModalHandler = (e) => {
     setshowUpdateUserModal(true);
+    setIsOpen(true);
   };
 
   const closeModal = (e) => {
     setshowUpdateUserModal(false);
     setshowUpdateGoalsModal(false);
+    setIsOpen(false);
   };
 
   const showGoalModalHandler = (e) => {
     setshowUpdateGoalsModal(true);
+    setIsOpen(true);
   };
 
   let biography;
@@ -46,12 +53,12 @@ const UserInfo = (props) => {
   return (
     <>
       {showUpdateUserModal && (
-        <Modal onClose={closeModal}>
+        <Modal onClose={closeModal} ref={popupRef}>
           <SettingsModal onClose={closeModal} user={user} />
         </Modal>
       )}
       {showUpdateGoalsModal && (
-        <Modal onClose={closeModal}>
+        <Modal onClose={closeModal} ref={popupRef}>
           <UpdateUserGoals onClose={closeModal} user={user} />
         </Modal>
       )}

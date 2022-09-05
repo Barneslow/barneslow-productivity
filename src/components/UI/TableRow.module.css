@@ -25,3 +25,9 @@
   background-color: #e3eb8e;
   cursor: pointer;
 }
+
+@media (max-width: 400px) {
+  .goals {
+    padding: 0;
+  }
+}

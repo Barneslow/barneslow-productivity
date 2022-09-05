@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUserSessionsAction } from "../store/sessionSlice";
 
 import Layout from "./Layout";
-import UserContainer from "../components/User/UserContainer";
+import UserCard from "../components/User/UserCard";
 import StatsContainer from "../components/Stats/StatsContainer";
 import TabSwitcher from "./navigation/TabSwitcher";
 
@@ -65,7 +65,7 @@ const Dashboard = () => {
           exit: styles["dashboard-primary-exit"],
         }}
       >
-        <UserContainer />
+        <UserCard />
       </CSSTransition>
     </div>
   );
