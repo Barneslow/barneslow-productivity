@@ -21,3 +21,13 @@
   border: 1px solid rgb(0, 0, 0, 0.5);
   border-radius: 5px;
 }
+
+@media (max-width: 500px) {
+  .container {
+    padding: 2rem 0 2rem 0;
+  }
+
+  .form-container {
+    padding: 1rem;
+  }
+}

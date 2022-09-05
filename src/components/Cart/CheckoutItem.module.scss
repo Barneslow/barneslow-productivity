@@ -25,6 +25,10 @@
     justify-content: center;
   }
 
+  .price {
+    font-weight: bold;
+  }
+
   .quantity {
     display: flex;
 
@@ -43,5 +47,11 @@
     justify-content: center;
     font-size: 30px;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 500px) {
+  .checkout-item-container {
+    font-size: 1rem;
   }
 }
