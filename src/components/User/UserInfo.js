@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect, useRef } from "react";
 import { dateFormatter } from "../../utils/dateFormater";
 import { secondsToHhrsAndMins } from "../../utils/secondsToHms";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 import Modal from "../UI/Modal";
 import UpdateUserGoals from "./UpdateUserGoals";
@@ -19,11 +19,11 @@ const UserInfo = (props) => {
 
   useEffect(() => {
     if (isOpen) {
-      console.log("fire");
       console.log(popupRef.current);
       popupRef.current && disableBodyScroll(popupRef.current);
     } else {
-      popupRef.current && enableBodyScroll(popupRef.current);
+      console.log("fire");
+      clearAllBodyScrollLocks();
     }
   }, [isOpen]);
 
