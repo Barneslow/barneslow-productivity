@@ -1,6 +1,7 @@
 .card-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border: 2px solid black;
   border-radius: 5px;
   padding: 1rem;
@@ -34,12 +35,33 @@
 .price-container {
   display: flex;
   justify-content: space-around;
+  box-shadow: var(--box-shadow);
+  align-items: flex-end;
 }
 
 .name {
   color: var(--dark-grey);
+  font-size: 1rem;
+  margin: 0.2rem;
 }
 
 .price {
   font-weight: bold;
+  font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+  .card-container {
+    width: 100px;
+    padding: 0.5rem;
+  }
+
+  .image-container {
+    height: 100px;
+  }
+
+  .price {
+    font-weight: bold;
+    font-size: 0.7rem;
+  }
 }

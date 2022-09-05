@@ -45,7 +45,14 @@ const EmojiCard = ({ emoji }) => {
       <div className={styles["price-container"]}>
         <h2 className={styles.price}>€ {price}</h2>
         <h2 className={styles.price}>
-          <StarIcon sx={{ color: "yellow", stroke: "black" }} /> {stars}
+          <StarIcon
+            sx={{
+              color: "yellow",
+              stroke: "black",
+              fontSize: { xs: 10, sm: 15, md: 20 },
+            }}
+          />{" "}
+          {stars}
         </h2>
       </div>
     </div>
