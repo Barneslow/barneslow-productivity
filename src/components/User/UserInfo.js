@@ -9,6 +9,7 @@ import UpdateUserGoals from "./UpdateUserGoals";
 import SettingsModal from "../Settings/SettingsModal";
 
 import styles from "./UserInfo.module.css";
+import EditUserProfileImage from "./EditiUserProfileImage";
 
 const UserInfo = (props) => {
   const { user } = useSelector((state) => state.user);
@@ -50,6 +51,11 @@ const UserInfo = (props) => {
     if (biography.length > 100) biography = biography.substring(0, 100) + "...";
   }
 
+  //   <EditUserProfileImage
+  //   imageSrc={user?.profilePhoto}
+  //   userName={user?.userName}
+  // />
+
   return (
     <>
       {showUpdateUserModal && (
@@ -65,7 +71,10 @@ const UserInfo = (props) => {
 
       <div className={styles.profile}>
         <div className={styles.container}>
-          <img className={styles["user-image"]} src={user?.profilePhoto} />
+          <EditUserProfileImage
+            imageSrc={user?.profilePhoto}
+            userName={user?.userName}
+          />
           <div className={styles.information}>
             <h2 className={styles.title}>{user?.userName}</h2>
             <div className={styles.box}>

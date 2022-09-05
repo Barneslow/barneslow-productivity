@@ -3,8 +3,7 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import Dropzone from "react-dropzone";
 import styled from "styled-components";
-
-import styles from "./UserProfileImage.module.css";
+import styles from "./EditUserProfileImage.module.css";
 import imageUploadIcon from "../../images/uploadPhoto.svg";
 import { useDispatch } from "react-redux";
 import { uploadProfilePhoto } from "../../store/userSlice";
@@ -52,7 +51,7 @@ const EditUserProfileImage = (props) => {
   //   const content = isEditing ?
 
   return (
-    <div className={styles["profile-image-container"]}>
+    <div>
       {!isEditing && (
         <>
           <div className={styles["image-box"]}>
@@ -66,7 +65,6 @@ const EditUserProfileImage = (props) => {
               </div>
             </div>
           </div>
-          <h2 className={styles.username}>{props.userName}</h2>
         </>
       )}
       {isEditing && (

@@ -1,9 +1,5 @@
 .image-box {
-  height: 100px;
-  width: 100px;
-  display: flex;
-  align-items: center;
-  margin: 1rem;
+  width: 100%;
 }
 
 .image {
