@@ -12,7 +12,9 @@ import styles from "./UserInfo.module.css";
 import EditUserProfileImage from "./EditiUserProfileImage";
 
 const UserInfo = (props) => {
-  const { user } = useSelector((state) => state.user);
+  const { user, appError, serverError, loading } = useSelector(
+    (state) => state.user
+  );
   const [showUpdateUserModal, setshowUpdateUserModal] = useState(false);
   const [showUpdateGoalsModal, setshowUpdateGoalsModal] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +25,6 @@ const UserInfo = (props) => {
       console.log(popupRef.current);
       popupRef.current && disableBodyScroll(popupRef.current);
     } else {
-      console.log("fire");
       clearAllBodyScrollLocks();
     }
   }, [isOpen]);
@@ -51,11 +52,6 @@ const UserInfo = (props) => {
     if (biography.length > 100) biography = biography.substring(0, 100) + "...";
   }
 
-  //   <EditUserProfileImage
-  //   imageSrc={user?.profilePhoto}
-  //   userName={user?.userName}
-  // />
-
   return (
     <>
       {showUpdateUserModal && (
@@ -71,10 +67,19 @@ const UserInfo = (props) => {
 
       <div className={styles.profile}>
         <div className={styles.container}>
-          <EditUserProfileImage
-            imageSrc={user?.profilePhoto}
-            userName={user?.userName}
-          />
+          <div>
+            <EditUserProfileImage
+              imageSrc={user?.profilePhoto}
+              userName={user?.userName}
+            />
+            {appError || serverError ? (
+              <div className={styles["error-container"]}>
+                <h3 className={styles.error}>
+                  {appError} / {serverError}
+                </h3>
+              </div>
+            ) : null}
+          </div>
           <div className={styles.information}>
             <h2 className={styles.title}>{user?.userName}</h2>
             <div className={styles.box}>

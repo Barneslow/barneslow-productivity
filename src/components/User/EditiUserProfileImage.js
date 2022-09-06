@@ -5,8 +5,9 @@ import Dropzone from "react-dropzone";
 import styled from "styled-components";
 import styles from "./EditUserProfileImage.module.css";
 import imageUploadIcon from "../../images/uploadPhoto.svg";
-import { useDispatch } from "react-redux";
-import { uploadProfilePhoto } from "../../store/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { uploadProfilePhotoAction } from "../../store/userSlice";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 const formSchema = Yup.object({
   image: Yup.string().required("Photo is required"),
@@ -32,6 +33,7 @@ const Container = styled.div`
 const EditUserProfileImage = (props) => {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
+  const { loading } = useSelector((state) => state.user);
 
   const formik = useFormik({
     initialValues: {
@@ -39,7 +41,7 @@ const EditUserProfileImage = (props) => {
     },
     onSubmit: (values) => {
       setIsEditing(false);
-      dispatch(uploadProfilePhoto(values?.image));
+      dispatch(uploadProfilePhotoAction(values?.image));
     },
     validationSchema: formSchema,
   });
@@ -58,10 +60,14 @@ const EditUserProfileImage = (props) => {
             <div className={styles.root}>
               <img className={styles.image} src={props.imageSrc} />
               <div className={styles.overlay} onClick={openModal}>
-                <img
-                  className={styles["overlay-image"]}
-                  src={imageUploadIcon}
-                />
+                {loading ? (
+                  <LoadingSpinner />
+                ) : (
+                  <img
+                    className={styles["overlay-image"]}
+                    src={imageUploadIcon}
+                  />
+                )}
               </div>
             </div>
           </div>

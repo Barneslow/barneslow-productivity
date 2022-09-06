@@ -137,14 +137,11 @@ export const updateUserPassword = createAsyncThunk(
   }
 );
 
-export const uploadProfilePhoto = createAsyncThunk(
+export const uploadProfilePhotoAction = createAsyncThunk(
   "user/upload-profile-photo",
   async (image, { rejectWithValue, getState, dispatch }) => {
     const user = getState().authentication;
     const { userAuth } = user;
-
-    console.log("fire");
-    console.log(image);
 
     const config = {
       headers: {
@@ -166,9 +163,8 @@ export const uploadProfilePhoto = createAsyncThunk(
 
       return data;
     } catch (error) {
-      console.log(error);
-
       if (!error?.response) {
+        console.log("no error");
         throw error;
       }
       return rejectWithValue(error?.response?.data);
@@ -261,6 +257,23 @@ const userSlice = createSlice({
       state.serverError = undefined;
     });
     builder.addCase(updateUserPassword.rejected, (state, action) => {
+      state.loading = false;
+      state.appError = action?.payload?.message;
+      state.serverError = action?.error?.message;
+    });
+
+    builder.addCase(uploadProfilePhotoAction.pending, (state, action) => {
+      state.loading = true;
+      state.appError = undefined;
+      state.serverError = undefined;
+    });
+    builder.addCase(uploadProfilePhotoAction.fulfilled, (state, action) => {
+      state.profilePhoto = action.payload;
+      state.loading = false;
+      state.appError = undefined;
+      state.serverError = undefined;
+    });
+    builder.addCase(uploadProfilePhotoAction.rejected, (state, action) => {
       state.loading = false;
       state.appError = action?.payload?.message;
       state.serverError = action?.error?.message;
