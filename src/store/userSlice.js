@@ -143,6 +143,7 @@ export const uploadProfilePhoto = createAsyncThunk(
     const user = getState().authentication;
     const { userAuth } = user;
 
+    console.log("fire");
     console.log(image);
 
     const config = {
