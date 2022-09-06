@@ -143,6 +143,8 @@ export const uploadProfilePhoto = createAsyncThunk(
     const user = getState().authentication;
     const { userAuth } = user;
 
+    console.log(image);
+
     const config = {
       headers: {
         Authorization: `Bearer ${userAuth?.token}`,
@@ -163,6 +165,8 @@ export const uploadProfilePhoto = createAsyncThunk(
 
       return data;
     } catch (error) {
+      console.log(error);
+
       if (!error?.response) {
         throw error;
       }
