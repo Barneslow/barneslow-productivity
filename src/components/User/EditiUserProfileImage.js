@@ -59,16 +59,18 @@ const EditUserProfileImage = (props) => {
           <div className={styles["image-box"]}>
             <div className={styles.root}>
               <img className={styles.image} src={props.imageSrc} />
-              <div className={styles.overlay} onClick={openModal}>
-                {loading ? (
+              {loading ? (
+                <div className={styles.loading}>
                   <LoadingSpinner />
-                ) : (
+                </div>
+              ) : (
+                <div className={styles.overlay} onClick={openModal}>
                   <img
                     className={styles["overlay-image"]}
                     src={imageUploadIcon}
                   />
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         </>
