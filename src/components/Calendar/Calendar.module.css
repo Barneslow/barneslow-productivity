@@ -47,3 +47,9 @@
     width: auto;
   }
 }
+
+@media (max-width: 380px) {
+  .calendar {
+    width: 300px;
+  }
+}
