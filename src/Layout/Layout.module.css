@@ -41,7 +41,8 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  background-color: lightblue;
+  background: var(--light-grey-gradient);
+  box-shadow: var(--box-shadow);
 }
 
 @media (max-width: 870px) {

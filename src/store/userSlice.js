@@ -35,6 +35,8 @@ export const fetchUserAction = createAsyncThunk(
         "Content-Type": "application/json",
       },
     };
+
+    console.log("user fetched");
     try {
       const { data } = await axios.get(
         `${baseUrl}/api/users/${id}`,
@@ -164,7 +166,6 @@ export const uploadProfilePhotoAction = createAsyncThunk(
       return data;
     } catch (error) {
       if (!error?.response) {
-        console.log("no error");
         throw error;
       }
       return rejectWithValue(error?.response?.data);

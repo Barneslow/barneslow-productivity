@@ -22,7 +22,6 @@ const UserInfo = (props) => {
 
   useEffect(() => {
     if (isOpen) {
-      console.log(popupRef.current);
       popupRef.current && disableBodyScroll(popupRef.current);
     } else {
       clearAllBodyScrollLocks();

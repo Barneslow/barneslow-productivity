@@ -22,7 +22,6 @@ const UpdateUserSettings = () => {
 
   const { loading, serverError, appError, userAuth } = userState;
 
-  console.log(user);
   const formik = useFormik({
     initialValues: {
       userName: user?.userName,

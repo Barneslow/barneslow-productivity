@@ -8,7 +8,7 @@ import { dateFormatter } from "../../utils/dateFormater";
 
 const CurrentTasks = () => {
   const dispatch = useDispatch();
-  const { tasks } = useSelector((state) => state.task);
+  const tasks = useSelector((state) => state.task.tasks);
 
   useEffect(() => {
     dispatch(fetchUserTasksAction());

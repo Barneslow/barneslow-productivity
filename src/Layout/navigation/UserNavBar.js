@@ -38,11 +38,11 @@ const UserNavBar = ({ userAuth }) => {
   const [modalContent, setModalContent] = useState("");
 
   useEffect(() => {
+    console.log("fire nav");
     dispatch(fetchUserAction(userAuth?.id));
   }, [dispatch, userAuth?.id]);
 
   const user = useSelector((state) => state.user.user);
-
 
   let profilePhoto;
   if (user) {
@@ -182,14 +182,12 @@ const UserNavBar = ({ userAuth }) => {
                 mr: 2,
                 display: { xs: "flex", md: "none" },
                 flexGrow: 1,
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
+                fontSize: "2rem",
+                fontWeight: 900,
                 textDecoration: "none",
               }}
             >
-              LOGO
+              Barneslow Productivity
             </Typography>
             <Box
               sx={{
@@ -219,7 +217,15 @@ const UserNavBar = ({ userAuth }) => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src={profilePhoto} />
+                  <Avatar
+                    sx={{
+                      // boxShadow: "var(--white-box-shadow)",
+                      border: 1,
+                      borderColor: "white",
+                    }}
+                    alt="Remy Sharp"
+                    src={profilePhoto}
+                  />
                 </IconButton>
               </Tooltip>
               <Menu

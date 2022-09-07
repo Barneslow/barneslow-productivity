@@ -1,10 +1,35 @@
-.container {
+.form {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  text-align: center;
+  gap: 1rem;
 }
 
 .title {
   padding: 1rem;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: center;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+}
+
+.settings {
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.settings h2 {
+  font-size: 1.5rem;
+}
+
+.button-box {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
 }

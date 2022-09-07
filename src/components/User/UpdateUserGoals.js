@@ -14,14 +14,15 @@ import { useDispatch } from "react-redux";
 import { updateUserAction } from "../../store/userSlice";
 
 const formSchema = Yup.object({
-  goal: Yup.string().required("Goal tme is required"),
+  weeklyGoal: Yup.number().required("Weekly goal time is required"),
+  sessionGoal: Yup.number().required("Session goal time is required"),
 });
 
 const UpdateUserWeeklyGoal = (props) => {
   const dispatch = useDispatch();
-  const { goals, sessionGoal } = props.user;
+  const { weeklyGoal, sessionGoal } = props.user;
 
-  const hours = secondsToHours(goals);
+  const hours = secondsToHours(weeklyGoal);
   const minutes = secondsToMinutes(sessionGoal);
 
   const [workTime, setWorkTime] = useState(hours);
@@ -29,15 +30,23 @@ const UpdateUserWeeklyGoal = (props) => {
 
   const setGoalHandler = (e, newValue) => {
     setWorkTime(newValue);
+    formik.handleChange("weeklyGoal");
+
+    formik.values.weeklyGoal = newValue;
   };
 
   const setSessionGoalHandler = (e, newValue) => {
     setSessionTime(newValue);
+
+    formik.handleChange("sessionGoal");
+
+    formik.values.sessionGoal = newValue;
   };
 
   const formik = useFormik({
     initialValues: {
-      goal: props.user.weeklyGoal,
+      weeklyGoal: hours,
+      sessionGoal: minutes,
     },
 
     onSubmit: (values) => {
@@ -46,7 +55,6 @@ const UpdateUserWeeklyGoal = (props) => {
         sessionGoal: minutesToSeconds(sessionTime),
       };
 
-      console.log(data);
 
       dispatch(updateUserAction(data));
       props.onClose();
@@ -54,34 +62,42 @@ const UpdateUserWeeklyGoal = (props) => {
     validationSchema: formSchema,
   });
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <h1>Set Your Weekly Goal</h1>
-      <p>(Time set in hours)</p>
+    <form className={styles.form} onSubmit={formik.handleSubmit}>
+      <div className={styles["settings-container"]}>
+        <div className={styles.settings}>
+          <h2>Set Your Weekly Goal</h2>
+          <p>(Time set in hours)</p>
+        </div>
 
-      <PrettoSlider
-        step={0.25}
-        min={0.25}
-        max={60}
-        value={workTime}
-        onChange={setGoalHandler}
-      />
+        <PrettoSlider
+          step={0.25}
+          min={0.25}
+          max={60}
+          value={formik.values.weeklyGoal}
+          onChange={setGoalHandler}
+        />
 
-      <h2 className={styles.title}>{workTime}: Hours</h2>
+        <h2 className={styles.title}>{workTime}: Hours</h2>
+      </div>
 
-      <h1>Set Your Session Goal</h1>
-      <p>(Time set in minutes)</p>
+      <div className={styles["settings-container"]}>
+        <div className={styles.settings}>
+          <h2>Set Your Session Goal</h2>
+          <p>(Time set in minutes)</p>
+        </div>
 
-      <PrettoSlider
-        step={15}
-        min={15}
-        max={480}
-        value={sessionTime}
-        onChange={setSessionGoalHandler}
-      />
+        <PrettoSlider
+          step={15}
+          min={15}
+          max={240}
+          value={formik.values.sessionGoal}
+          onChange={setSessionGoalHandler}
+        />
 
-      <h2 className={styles.title}>{sessionTime}: Minutes</h2>
+        <h2 className={styles.title}>{sessionTime}: Minutes</h2>
+      </div>
 
-      <div>
+      <div className={styles["button-box"]}>
         <button type="button" onClick={props.onClose} className="ui red button">
           Cancel
         </button>

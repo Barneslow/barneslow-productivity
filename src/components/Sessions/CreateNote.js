@@ -26,7 +26,6 @@ const CreateNote = () => {
         id,
         description: values.description,
       };
-      console.log(data);
 
       dispatch(createNoteAction(data));
     },

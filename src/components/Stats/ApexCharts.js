@@ -137,7 +137,7 @@ export const MonthlyChart = (props) => {
         data: time,
       },
     ]);
-  }, [sessions]);
+  }, [sessions.length]);
 
   return (
     <div id="chart">
@@ -256,7 +256,7 @@ export const WeeklyChart = (props) => {
   useEffect(() => {
     const time = [0, 0, 0, 0, 0, 0, 0];
 
-    if (!sessions) return;
+    if (sessions.length === 0) return;
 
     for (const session of sessions) {
       const isoDate = new Date(session.createdAt);
@@ -271,7 +271,7 @@ export const WeeklyChart = (props) => {
         data: time,
       },
     ]);
-  }, [sessions]);
+  }, [sessions.length]);
 
   return (
     <div id="chart">
@@ -286,18 +286,18 @@ export const WeeklyChart = (props) => {
 };
 
 export const GoalChart = (props) => {
-  const { user } = useSelector((state) => state.user);
+  const weeklyGoal = useSelector((state) => state.user.user.weeklyGoal);
   const { sessions, totalTime } = props;
 
   const [series, setSeries] = useState([0]);
 
   useEffect(() => {
-    const goalTime = user?.weeklyGoal;
+    const goalTime = weeklyGoal;
 
     const percentage = (totalTime / goalTime) * 100;
 
     setSeries([percentage.toFixed(2)]);
-  }, [user?.weeklyGoal, sessions]);
+  }, [weeklyGoal, sessions.length]);
 
   const [options, setOptions] = useState({
     chart: {

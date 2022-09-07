@@ -6,7 +6,8 @@ import UserTasks from "./UserTasks";
 
 import styles from "./UserCard.module.css";
 
-const UserCard = (props) => {
+const UserCard = () => {
+  console.log("user card render");
   return (
     <div className={styles.container}>
       <UserInfo />

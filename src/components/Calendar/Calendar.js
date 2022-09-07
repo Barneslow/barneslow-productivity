@@ -1,0 +1,60 @@
+import React, { useState } from "react";
+import Calendar from "react-calendar";
+
+import moment from "moment";
+
+import "react-calendar/dist/Calendar.css";
+
+import styles from "./Calendar.module.css";
+import { useSelector } from "react-redux";
+import Task from "../Tasks/Task";
+
+const TaskCalander = () => {
+  const { tasks } = useSelector((state) => state.task);
+  const [events, setEvents] = useState([]);
+
+  const dateArr = [];
+
+  tasks?.map((task) => dateArr.push(moment(task.dueDate).format("DD-MM-YYYY")));
+
+  const [date, setDate] = useState(new Date());
+
+  const onChange = (date) => {
+    const filteredEvents = tasks.filter((task) => {
+      return (
+        moment(date).format("DD-MM-YYYY") ===
+        moment(task.dueDate).format("DD-MM-YYYY")
+      );
+    });
+
+    console.log(filteredEvents);
+
+    setEvents(filteredEvents);
+    setDate(date);
+  };
+
+  return (
+    <div className={styles.container}>
+      <Calendar
+        className={styles.calendar}
+        onChange={onChange}
+        value={date}
+        tileClassName={({ date, view }) => {
+          if (dateArr.find((x) => x === moment(date).format("DD-MM-YYYY"))) {
+            return `${styles.highlight}`;
+          }
+        }}
+      />
+      <div className={styles.tasks}>
+        <h2 className={styles.title}>Events</h2>
+        <div>
+          {events.map((event) => (
+            <Task key={event.id} data={event} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TaskCalander;

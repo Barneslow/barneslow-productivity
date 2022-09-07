@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { sessionTimeSinceMonday } from "../../utils/sessionTimeSinceMonday";
 import StudySessionList from "../Study/StudySessionList";
 import { GoalChart, MonthlyChart, WeeklyChart } from "./ApexCharts";
 
@@ -10,6 +11,13 @@ const StatsContainer = () => {
   const [weeklyBtn, setWeeklyBtn] = useState(false);
   const [monthlyBtn, setMonthlyBtn] = useState(true);
   const [goalBtn, setGoalBtn] = useState(false);
+
+  let totalTime;
+  if (sessions?.length > 0) {
+    totalTime = sessionTimeSinceMonday(sessions);
+  } else {
+    totalTime = 0;
+  }
 
   const [chart, setChart] = useState(<MonthlyChart sessions={sessions} />);
 
@@ -36,7 +44,7 @@ const StatsContainer = () => {
       setGoalBtn(!goalBtn);
       setWeeklyBtn(false);
       setMonthlyBtn(false);
-      setChart(<GoalChart sessions={sessions} />);
+      setChart(<GoalChart sessions={sessions} totalTime={totalTime} />);
     }
   };
 

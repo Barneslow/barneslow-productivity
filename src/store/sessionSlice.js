@@ -99,7 +99,6 @@ export const updateSessionAction = createAsyncThunk(
       },
     };
 
-    console.log(updatedSession);
 
     try {
       const { data } = await axios.post(

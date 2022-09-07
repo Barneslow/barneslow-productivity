@@ -13,10 +13,13 @@ import { sessionTimeSinceMonday } from "../utils/sessionTimeSinceMonday";
 import UserTasks from "../components/User/UserTasks";
 import UserSessions from "../components/User/UserSessions";
 import CurrentTasks from "../components/User/CurrentTasks";
+import TaskCalander from "../components/Calendar/Calendar";
 
-const Layout = (props) => {
-  const { user } = useSelector((state) => state.user);
-  const { sessions } = useSelector((state) => state.session);
+const Layout = () => {
+  const user = useSelector((state) => state.user.user);
+  const sessions = useSelector((state) => state.session.sessions);
+
+  console.log("layout");
 
   const ratingArray = [];
 
@@ -64,6 +67,7 @@ const Layout = (props) => {
         )}
       </main>
       <div className={styles.tasks}>
+        <TaskCalander />
         <UserSessions />
         <UserTasks />
         <CurrentTasks />
