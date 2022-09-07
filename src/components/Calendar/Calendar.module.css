@@ -21,11 +21,16 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  padding: 0.5rem;
 }
 
 .title {
   font-size: 2rem;
-  padding: 0.5rem;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  background-color: var(--dark-grey);
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 0.2rem;
 }
 
 .highlight {
@@ -37,7 +42,6 @@
 
 @media (max-width: 600px) {
   .container {
-    padding: 0;
     font-size: 1.5rem;
     flex-direction: column;
     width: fit-content;
@@ -56,5 +60,10 @@
 
   .container {
     width: 100%;
+    padding: 1rem 0 0 0;
+  }
+
+  .events {
+    max-height: 300px;
   }
 }

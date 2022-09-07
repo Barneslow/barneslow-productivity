@@ -187,7 +187,7 @@ const UserNavBar = ({ userAuth }) => {
                 textDecoration: "none",
               }}
             >
-              Barneslow Productivity
+              BP
             </Typography>
             <Box
               sx={{
