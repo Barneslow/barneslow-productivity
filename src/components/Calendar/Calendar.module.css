@@ -13,11 +13,11 @@
   border: 1px solid;
 }
 
-.tasks {
+.events {
   display: flex;
   flex-direction: column;
-  height: 100%;
   box-shadow: var(--darker-box-shadow);
+  height: 100%;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -25,6 +25,7 @@
 
 .title {
   font-size: 2rem;
+  padding: 0.5rem;
 }
 
 .highlight {

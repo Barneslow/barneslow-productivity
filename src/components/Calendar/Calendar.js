@@ -8,6 +8,7 @@ import "react-calendar/dist/Calendar.css";
 import styles from "./Calendar.module.css";
 import { useSelector } from "react-redux";
 import Task from "../Tasks/Task";
+import TaskList from "../Tasks/TaskList";
 
 const TaskCalander = () => {
   const { tasks } = useSelector((state) => state.task);
@@ -45,13 +46,10 @@ const TaskCalander = () => {
           }
         }}
       />
-      <div className={styles.tasks}>
+
+      <div className={styles.events}>
         <h2 className={styles.title}>Events</h2>
-        <div>
-          {events.map((event) => (
-            <Task key={event.id} data={event} />
-          ))}
-        </div>
+        <TaskList tasksArray={events} />
       </div>
     </div>
   );

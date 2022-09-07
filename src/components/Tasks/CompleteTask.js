@@ -73,28 +73,26 @@ const CompleteTask = ({ onChangeState, task }) => {
           <h3>{completedIn}</h3>
         </>
       </div>
-      <div className={styles.block}>
+      <Checkbox
+        checkedIcon={
+          <CheckCircleIcon
+            sx={{ color: "green", fontSize: { sm: 30, md: 40 } }}
+          />
+        }
+        checked={true}
+        onChange={handleChange}
+      />
+      <Tooltip title="Archive">
         <Checkbox
           checkedIcon={
-            <CheckCircleIcon
-              sx={{ color: "green", fontSize: { sm: 30, md: 40 } }}
+            <ArchiveIcon
+              sx={{ color: archiveColour, fontSize: { sm: 30, md: 40 } }}
             />
           }
           checked={true}
-          onChange={handleChange}
+          onChange={handleArchive}
         />
-        <Tooltip title="Archive">
-          <Checkbox
-            checkedIcon={
-              <ArchiveIcon
-                sx={{ color: archiveColour, fontSize: { sm: 30, md: 40 } }}
-              />
-            }
-            checked={true}
-            onChange={handleArchive}
-          />
-        </Tooltip>
-      </div>
+      </Tooltip>
     </li>
   );
 };
