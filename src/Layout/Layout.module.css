@@ -28,6 +28,7 @@
 
 .layout {
   display: grid;
+  background: lightblue;
 }
 
 .box {
@@ -40,8 +41,6 @@
 .tasks {
   display: flex;
   flex-direction: column;
-  background: var(--light-grey-gradient);
-  box-shadow: var(--box-shadow);
 }
 
 @media (max-width: 870px) {

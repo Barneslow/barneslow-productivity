@@ -3,11 +3,10 @@ import Calendar from "react-calendar";
 
 import moment from "moment";
 
-import "react-calendar/dist/Calendar.css";
+import "./reactCalendar.css";
 
 import styles from "./Calendar.module.css";
 import { useSelector } from "react-redux";
-import Task from "../Tasks/Task";
 import TaskList from "../Tasks/TaskList";
 
 const TaskCalander = () => {
@@ -37,7 +36,6 @@ const TaskCalander = () => {
   return (
     <div className={styles.container}>
       <Calendar
-        className={styles.calendar}
         onChange={onChange}
         value={date}
         tileClassName={({ date, view }) => {
@@ -46,7 +44,6 @@ const TaskCalander = () => {
           }
         }}
       />
-
       <div className={styles.events}>
         <h2 className={styles.title}>Events</h2>
         <TaskList tasksArray={events} />
