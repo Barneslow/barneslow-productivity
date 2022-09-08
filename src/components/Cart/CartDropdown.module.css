@@ -27,3 +27,11 @@
   font-size: 18px;
   margin: 50px auto;
 }
+
+@media (max-width: 640px) {
+  .cart-dropdown-container {
+    top: 45px;
+    right: 0;
+    width: 200px;
+  }
+}
