@@ -34,6 +34,9 @@ const Leader = (props) => {
     navigate(`/user/${user?._id}`, { state: { placement, source } });
   };
 
+  console.log(source);
+  console.log(srcSet);
+
   return (
     <div onClick={navigateHandler} className={styles.container}>
       <div className={styles.box}>
@@ -43,6 +46,13 @@ const Leader = (props) => {
         <h3>
           {totalTime.hours}:{totalTime.minutes}
         </h3>
+
+        <img
+          src="https://flagcdn.com/w40/za.png"
+          srcset="https://flagcdn.com/w80/za.png 2x"
+          width="40"
+          alt="South Africa"
+        ></img>
       </div>
       <div className={styles.box}>
         <img
@@ -51,7 +61,7 @@ const Leader = (props) => {
           srcSet={srcSet}
           width="40"
           alt={user?.country}
-        />
+        ></img>
       </div>
       <div className={styles.box}>
         {placement <= 3 ? (
