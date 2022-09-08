@@ -28,6 +28,8 @@ const Leader = (props) => {
     source = `https:/flagcdn.com/w40/${countryCode.code.toLowerCase()}.png`;
   }
 
+  console.log(source);
+
   const navigateHandler = () => {
     navigate(`/user/${user?._id}`, { state: { placement, source } });
   };
@@ -43,7 +45,7 @@ const Leader = (props) => {
         </h3>
       </div>
       <div className={styles.box}>
-        <img className={styles.flag} src={source} />
+        <img className={styles.flag} src={`${source}`} />
       </div>
       <div className={styles.box}>
         {placement <= 3 ? (
