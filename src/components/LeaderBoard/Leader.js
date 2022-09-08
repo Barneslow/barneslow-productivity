@@ -25,7 +25,7 @@ const Leader = (props) => {
     source =
       "https://res.cloudinary.com/barneslow/image/upload/v1660661933/BarneslowProductivity/Flag.svg_n6ucee.png";
   } else {
-    source = `https:/flagcdn.com/${countryCode.code.toLowerCase()}.svg`;
+    source = `https:/flagcdn.com/w40/${countryCode.code.toLowerCase()}.png`;
   }
 
   const navigateHandler = () => {
@@ -43,7 +43,7 @@ const Leader = (props) => {
         </h3>
       </div>
       <div className={styles.box}>
-        <img className={styles.flag} src={source} />
+        <embed className={styles.flag} src={source} />
       </div>
       <div className={styles.box}>
         {placement <= 3 ? (

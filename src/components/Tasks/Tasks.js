@@ -89,16 +89,23 @@ const Tasks = (props) => {
         </div>
         {!showArchive && (
           <>
-            <div className={styles["add-task"]}>
+            <div className={styles["add-task-container"]}>
               {!addTask ? (
-                <>
-                  <h3>Add Task</h3>
+                <div
+                  className={styles["add-task"]}
+                  onClick={showAddTaskHandler}
+                >
                   <AddCircleIcon
                     className={styles.add}
-                    sx={{ fontSize: 50, color: "#c2fafa;", stroke: "teal" }}
-                    onClick={showAddTaskHandler}
+                    sx={{
+                      color: "white",
+                      fontSize: 30,
+                      opacity: 0.9,
+                      stroke: "black",
+                    }}
                   />
-                </>
+                  <h2>Add Task</h2>
+                </div>
               ) : (
                 <AddTask onClose={cancelTaskHandler} />
               )}
