@@ -8,7 +8,7 @@
   grid-auto-flow: column dense;
   grid-template-rows: 1fr;
   align-items: center;
-  animation: Slide_Up 200ms ease;
+  animation: Slide_Up 300ms ease;
 }
 
 .block {
