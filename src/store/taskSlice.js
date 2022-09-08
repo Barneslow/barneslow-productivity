@@ -59,6 +59,8 @@ export const createTaskAction = createAsyncThunk(
   async (task, { rejectWithValue, getState, dispatch }) => {
     const user = getState().authentication;
 
+    console.log(task);
+
     const { userAuth } = user;
 
     const config = {

@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createTaskAction } from "../../store/taskSlice";
-import BasicDatePicker from "../UI/DatePicker";
+import { BasicDatePicker, BasicDateTimePicker } from "../UI/DatePicker";
 import styles from "./AddTask.module.css";
 
 function AddTask(props) {
   const dispatch = useDispatch();
   const [description, setDescription] = useState("");
-  const [dueDate, setdueDate] = useState();
+  const [dueTime, setDueTime] = useState();
 
   const saveTask = (e) => {
     e.preventDefault();
+
+    const dueDate = dueTime?.$d;
 
     const data = {
       description,
@@ -34,9 +36,9 @@ function AddTask(props) {
         onChange={(e) => setDescription(e.target.value)}
       />
       <label className={styles.title} htmlFor="date">
-        Date
+        Set A Deadline
       </label>
-      <BasicDatePicker sendData={(date) => setdueDate(date)} />
+      <BasicDateTimePicker sendData={(date) => setDueTime(date)} />
 
       <div className="ui buttons">
         <button className="ui negative button" onClick={props.onClose}>

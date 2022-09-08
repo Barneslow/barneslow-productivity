@@ -27,8 +27,6 @@ const TaskCalander = () => {
       );
     });
 
-    console.log(filteredEvents);
-
     setEvents(filteredEvents);
     setDate(date);
   };
