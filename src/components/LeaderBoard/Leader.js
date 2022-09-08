@@ -28,8 +28,6 @@ const Leader = (props) => {
     source = `https:/flagcdn.com/w40/${countryCode.code.toLowerCase()}.png`;
   }
 
-  console.log(source);
-
   const navigateHandler = () => {
     navigate(`/user/${user?._id}`, { state: { placement, source } });
   };
@@ -43,6 +41,14 @@ const Leader = (props) => {
         <h3>
           {totalTime.hours}:{totalTime.minutes}
         </h3>
+        <img
+          src="https://flagcdn.com/16x12/za.png"
+          srcSet="https://flagcdn.com/32x24/za.png 2x,
+    https://flagcdn.com/48x36/za.png 3x"
+          width="16"
+          height="12"
+          alt="South Africa"
+        ></img>
       </div>
       <div className={styles.box}>
         <img className={styles.flag} src={`${source}`} />
