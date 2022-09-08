@@ -20,12 +20,14 @@ const Leader = (props) => {
   );
 
   let source;
+  let srcSet;
 
   if (!user?.country) {
     source =
       "https://res.cloudinary.com/barneslow/image/upload/v1660661933/BarneslowProductivity/Flag.svg_n6ucee.png";
   } else {
     source = `https:/flagcdn.com/w40/${countryCode.code.toLowerCase()}.png`;
+    srcSet = `https://flagcdn.com/w80/${countryCode.code.toLowerCase()}.png 2x`;
   }
 
   const navigateHandler = () => {
@@ -41,17 +43,15 @@ const Leader = (props) => {
         <h3>
           {totalTime.hours}:{totalTime.minutes}
         </h3>
-        <img
-          src="https://flagcdn.com/16x12/za.png"
-          srcSet="https://flagcdn.com/32x24/za.png 2x,
-    https://flagcdn.com/48x36/za.png 3x"
-          width="16"
-          height="12"
-          alt="South Africa"
-        ></img>
       </div>
       <div className={styles.box}>
-        <img className={styles.flag} src={`${source}`} />
+        <img
+          className={styles.flag}
+          src={source}
+          srcSet={srcSet}
+          width="40"
+          alt={user?.country}
+        />
       </div>
       <div className={styles.box}>
         {placement <= 3 ? (
