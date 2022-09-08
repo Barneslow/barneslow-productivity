@@ -9,6 +9,7 @@
   grid-auto-flow: column dense;
   grid-template-rows: 1fr;
   align-items: center;
+  animation: Slide_Up 200ms ease;
 }
 
 .title {
@@ -62,5 +63,15 @@
 
   .title {
     display: none;
+  }
+}
+
+@keyframes Slide_Up {
+  0% {
+    transform: translateY(100px);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }

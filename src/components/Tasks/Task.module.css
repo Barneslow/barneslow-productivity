@@ -1,0 +1,19 @@
+.task-primary-enter {
+  transform: translate(0, 100px);
+  opacity: 0;
+}
+.task-primary-enter-active {
+  transform: translate(0, 0);
+  opacity: 1;
+  transition: all 500ms ease;
+}
+.task-primary-exit {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.task-primary-exit-active {
+  transform: translate(0, 100px);
+  transition: all 0 ease;
+  opacity: 0;
+}

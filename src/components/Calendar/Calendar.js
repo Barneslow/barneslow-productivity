@@ -19,16 +19,16 @@ const TaskCalander = () => {
 
   const [date, setDate] = useState(new Date());
 
-  const onChange = (date) => {
+  const onChange = (newDate) => {
     const filteredEvents = tasks.filter((task) => {
       return (
-        moment(date).format("DD-MM-YYYY") ===
+        moment(newDate).format("DD-MM-YYYY") ===
         moment(task.dueDate).format("DD-MM-YYYY")
       );
     });
 
     setEvents(filteredEvents);
-    setDate(date);
+    setDate(newDate);
   };
 
   return (

@@ -3,7 +3,10 @@ import CompleteTask from "./CompleteTask";
 import OverDueTask from "./OverDueTask";
 import PendingTask from "./PendingTask";
 
-const Task = ({ data }) => {
+import styles from "./Task.module.css";
+
+const Task = ({ data, inProp }) => {
+  const [view, setView] = useState(inProp);
   const [currentState, setCurrentState] = useState(data.status);
   let task;
 

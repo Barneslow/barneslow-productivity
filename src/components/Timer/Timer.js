@@ -1,7 +1,8 @@
 import { useContext, useState, useEffect, useRef } from "react";
+import { CSSTransition } from "react-transition-group";
+
 import { useDispatch, useSelector } from "react-redux";
 import { selectTimer, timerActions } from "../../store/timerSlice";
-
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 

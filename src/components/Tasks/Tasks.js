@@ -103,7 +103,7 @@ const Tasks = (props) => {
                 <AddTask onClose={cancelTaskHandler} />
               )}
             </div>
-            <TaskList tasksArray={tasksArray} />
+            <TaskList tasksArray={tasksArray} inProp={true} />
           </>
         )}
         {showArchive && <TaskArchive />}
