@@ -43,7 +43,7 @@ const Leader = (props) => {
         </h3>
       </div>
       <div className={styles.box}>
-        <embed className={styles.flag} src={source} />
+        <img className={styles.flag} src={source} />
       </div>
       <div className={styles.box}>
         {placement <= 3 ? (
