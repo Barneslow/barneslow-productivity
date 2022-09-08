@@ -20,14 +20,12 @@ const Leader = (props) => {
   );
 
   let source;
-  let srcSet;
 
   if (!user?.country) {
     source =
       "https://res.cloudinary.com/barneslow/image/upload/v1660661933/BarneslowProductivity/Flag.svg_n6ucee.png";
   } else {
-    source = `https:/flagcdn.com/w40/${countryCode.code.toLowerCase()}.png`;
-    srcSet = `https://flagcdn.com/w80/${countryCode.code.toLowerCase()}.png 2x`;
+    source = `${countryCode.code.toLowerCase()}`;
   }
 
   const navigateHandler = () => {
@@ -35,7 +33,6 @@ const Leader = (props) => {
   };
 
   console.log(source);
-  console.log(srcSet);
 
   return (
     <div onClick={navigateHandler} className={styles.container}>
@@ -57,8 +54,8 @@ const Leader = (props) => {
       <div className={styles.box}>
         <img
           className={styles.flag}
-          src={source}
-          srcSet={srcSet}
+          src={`https://flagcdn.com/w40/${source}.png`}
+          srcset={`https://flagcdn.com/w80/${source}.png 2x`}
           width="40"
           alt={user?.country}
         ></img>
