@@ -6,7 +6,6 @@
   border-radius: 6px;
   background-color: #c2e7f0;
   grid-auto-flow: column dense;
-  grid-template-rows: 1fr;
   align-items: center;
   animation: Slide_Up 300ms ease;
 }
@@ -27,6 +26,10 @@
 }
 
 @media (max-width: 470px) {
+  .item {
+    padding: 0.5rem;
+  }
+
   .block h3 {
     font-size: 0.9rem;
     padding: 0;
@@ -38,6 +41,13 @@
 }
 
 @media (max-width: 420px) {
+  .created {
+    display: none;
+  }
+
+  .block h3 {
+    font-size: 0.7rem;
+  }
   .date {
     display: none;
   }

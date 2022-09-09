@@ -1,0 +1,24 @@
+.button {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--button-box-shadow);
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255, 0.5);
+  gap: 5px;
+}
+
+.button span {
+  font-size: 1.2rem;
+}
+
+.button:hover {
+  background: var(--dark-grey);
+  color: white;
+  cursor: pointer;
+}

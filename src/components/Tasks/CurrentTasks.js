@@ -7,12 +7,7 @@ import TableRow from "../UI/TableRow";
 import { dateFormatter } from "../../utils/dateFormater";
 
 const CurrentTasks = () => {
-  const dispatch = useDispatch();
   const tasks = useSelector((state) => state.task.tasks);
-
-  useEffect(() => {
-    dispatch(fetchUserTasksAction());
-  }, [dispatch]);
 
   const nonArchivedTasks = tasks?.filter((task) => !task.isArchive);
 

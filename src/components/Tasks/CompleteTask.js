@@ -67,16 +67,17 @@ const CompleteTask = ({ onChangeState, task }) => {
           )}
         </>
       </div>
-      <div className={styles.block}>
+      <div className={`${styles.block} ${styles.created}`}>
         <>
           <span className={styles.date}>Completed in:</span>
           <h3>{completedIn}</h3>
         </>
       </div>
       <Checkbox
+        sx={{ padding: 0 }}
         checkedIcon={
           <CheckCircleIcon
-            sx={{ color: "green", fontSize: { sm: 30, md: 40 } }}
+            sx={{ color: "green", fontSize: { xs: 20, sm: 30, md: 40 } }}
           />
         }
         checked={true}
@@ -84,9 +85,13 @@ const CompleteTask = ({ onChangeState, task }) => {
       />
       <Tooltip title="Archive">
         <Checkbox
+          sx={{ padding: 0 }}
           checkedIcon={
             <ArchiveIcon
-              sx={{ color: archiveColour, fontSize: { sm: 30, md: 40 } }}
+              sx={{
+                color: archiveColour,
+                fontSize: { xs: 20, sm: 30, md: 40 },
+              }}
             />
           }
           checked={true}

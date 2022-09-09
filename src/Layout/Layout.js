@@ -10,10 +10,11 @@ import { frequencyCounter } from "../utils/frequencyCounter";
 import { secondsToHms } from "../utils/secondsToHms";
 import { sessionTimeSinceMonday } from "../utils/sessionTimeSinceMonday";
 
-import UserTasks from "../components/User/UserTasks";
+import UserTasks from "../components/Tasks/UserTasks";
 import UserSessions from "../components/User/UserSessions";
-import CurrentTasks from "../components/User/CurrentTasks";
-import TaskCalander from "../components/Calendar/Calendar";
+import CurrentTasks from "../components/Tasks/CurrentTasks";
+import TaskCalander from "../components/Calendar/TaskCalendar";
+import TaskInformation from "../components/Tasks/TaskInformation";
 
 const Layout = () => {
   const user = useSelector((state) => state.user.user);
@@ -66,12 +67,7 @@ const Layout = () => {
           </>
         )}
       </main>
-      <div className={styles.tasks}>
-        <TaskCalander />
-        <UserSessions />
-        <UserTasks />
-        <CurrentTasks />
-      </div>
+      <TaskInformation />
     </div>
   );
 };

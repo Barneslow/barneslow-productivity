@@ -17,7 +17,7 @@ import StoreContainer from "./components/Shop/ShopContainer";
 import Checkout from "./components/Cart/Checkout";
 import ForgotPasswordForm from "./components/Auth/ForgotPasswordForm";
 import ResetPasswordForm from "./components/Auth/ResetPasswordForm";
-import Calendar from "./components/Calendar/Calendar";
+// import TaskCalendar from "./components/TaskCalendar/Calendar";
 
 function App() {
   return (
@@ -93,14 +93,14 @@ function App() {
             }
           />
 
-          <Route
+          {/* <Route
             path="/calendar"
             element={
               <PrivateProtectedRoute>
                 <Calendar />
               </PrivateProtectedRoute>
             }
-          />
+          /> */}
         </Routes>
         <Footer />
       </div>

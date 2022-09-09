@@ -1,8 +1,8 @@
 import UserSessions from "./UserSessions";
 
 import UserInfo from "./UserInfo";
-import CurrentTasks from "./CurrentTasks";
-import UserTasks from "./UserTasks";
+import CurrentTasks from "../Tasks/CurrentTasks";
+import UserTasks from "../Tasks/UserTasks";
 
 import styles from "./UserCard.module.css";
 

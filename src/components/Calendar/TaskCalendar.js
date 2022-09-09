@@ -5,21 +5,39 @@ import moment from "moment";
 
 import "./reactCalendar.css";
 
-import styles from "./Calendar.module.css";
+import styles from "./TaskCalendar.module.css";
 import { useSelector } from "react-redux";
 import TaskList from "../Tasks/TaskList";
+import { useEffect } from "react";
 
-const TaskCalander = () => {
+const TaskCalander = ({ status, setStatus }) => {
   const { tasks } = useSelector((state) => state.task);
   const [events, setEvents] = useState([]);
 
-  const dateArr = [];
+  let dateArr = [];
 
   tasks?.map((task) => dateArr.push(moment(task.dueDate).format("DD-MM-YYYY")));
 
   const [date, setDate] = useState(new Date());
 
+  useEffect(() => {
+    if (status) {
+      let filteredTasks = [];
+
+      if (status === "total") {
+        filteredTasks = tasks;
+      } else {
+        filteredTasks = tasks?.filter((task) => {
+          return task.status === status;
+        });
+      }
+
+      setEvents(filteredTasks);
+    }
+  }, [status]);
+
   const onChange = (newDate) => {
+    console.log("firing onchange");
     const filteredEvents = tasks.filter((task) => {
       return (
         moment(newDate).format("DD-MM-YYYY") ===
@@ -27,6 +45,7 @@ const TaskCalander = () => {
       );
     });
 
+    setStatus(undefined);
     setEvents(filteredEvents);
     setDate(newDate);
   };
@@ -43,7 +62,10 @@ const TaskCalander = () => {
         }}
       />
       <div className={styles.events}>
-        <h2 className={styles.title}>Events</h2>
+        <h2 className={styles.title}>Tasks</h2>
+        <p className={styles.date}>
+          {date.toDateString().split(" ").slice(1).join(" ")}
+        </p>
         <TaskList tasksArray={events} />
       </div>
     </div>

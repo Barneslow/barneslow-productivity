@@ -24,6 +24,11 @@
     rgb(45, 206, 137),
     rgb(45, 206, 204)
   );
+  --light-orange-gradient: radial-gradient(
+    circle at 10% 20%,
+    rgb(251, 221, 19, 0.5) 0.1%,
+    rgb(255, 153, 1, 0.5) 90%
+  );
   --orange-gradient: linear-gradient(
     310deg,
     rgb(251, 99, 64),
@@ -43,6 +48,8 @@
     rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   --inset-box-shadow: inset 0 0 10px;
+  --button-box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .container {

@@ -38,12 +38,6 @@
   color: #22313d;
 }
 
-.tasks {
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem;
-}
-
 @media (max-width: 870px) {
   .main {
     grid-template-columns: 1fr;
