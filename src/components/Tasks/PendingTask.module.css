@@ -41,10 +41,6 @@
 }
 
 @media (max-width: 420px) {
-  .created {
-    display: none;
-  }
-
   .block h3 {
     font-size: 0.7rem;
   }

@@ -67,7 +67,7 @@ const CompleteTask = ({ onChangeState, task }) => {
           )}
         </>
       </div>
-      <div className={`${styles.block} ${styles.created}`}>
+      <div className={styles.block}>
         <>
           <span className={styles.date}>Completed in:</span>
           <h3>{completedIn}</h3>

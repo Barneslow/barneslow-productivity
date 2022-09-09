@@ -16,7 +16,6 @@ const TaskInformation = () => {
     <div className={styles.container}>
       <TaskCalander status={status} setStatus={setStatus} />
       <UserTasks onClick={changeStatusHandler} />
-      <ViewMoreBtn path={"tasks"} />
     </div>
   );
 };

@@ -11,7 +11,8 @@ const ViewMoreBtn = ({ path }) => {
 
   return (
     <button onClick={navigateHandler} className={styles.button}>
-      <span>View More</span> <DoubleArrowIcon />
+      <span>View More</span>{" "}
+      <DoubleArrowIcon sx={{ fontSize: { xs: 20, sm: 30, md: 40 } }} />
     </button>
   );
 };

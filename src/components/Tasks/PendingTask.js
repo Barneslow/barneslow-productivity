@@ -42,7 +42,7 @@ const PendingTask = ({ onChangeState, task }) => {
           </Moment>
         </>
       </div>
-      <div className={`${styles.block} ${styles.created}`}>
+      <div className={styles.block}>
         <>
           <h3>{dateFormatter(task.createdAt)}</h3>
           <Moment className={styles.date} fromNow>

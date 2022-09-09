@@ -1,6 +1,5 @@
 .container {
   display: flex;
-  position: relative;
   flex-direction: column;
   box-shadow: var(--darker-box-shadow);
   background: var(--light-grey-gradient);
