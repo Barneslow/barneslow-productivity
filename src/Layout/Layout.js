@@ -10,10 +10,6 @@ import { frequencyCounter } from "../utils/frequencyCounter";
 import { secondsToHms } from "../utils/secondsToHms";
 import { sessionTimeSinceMonday } from "../utils/sessionTimeSinceMonday";
 
-import UserTasks from "../components/Tasks/UserTasks";
-import UserSessions from "../components/User/UserSessions";
-import CurrentTasks from "../components/Tasks/CurrentTasks";
-import TaskCalander from "../components/Calendar/TaskCalendar";
 import TaskInformation from "../components/Tasks/TaskInformation";
 
 const Layout = () => {
@@ -46,6 +42,7 @@ const Layout = () => {
 
   return (
     <div className={styles.layout}>
+      <TaskInformation />
       <main className={styles.main}>
         {user && sessions && (
           <>
@@ -67,7 +64,6 @@ const Layout = () => {
           </>
         )}
       </main>
-      <TaskInformation />
     </div>
   );
 };

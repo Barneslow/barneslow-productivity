@@ -59,8 +59,6 @@ export const createTaskAction = createAsyncThunk(
   async (task, { rejectWithValue, getState, dispatch }) => {
     const user = getState().authentication;
 
-    console.log(task);
-
     const { userAuth } = user;
 
     const config = {
@@ -139,14 +137,24 @@ export const deleteTaskAction = createAsyncThunk(
 );
 
 const newTasksArr = (state, payload) => {
-  const newArr = state.filter((task) => task.id !== payload.id);
+  const newArr = state.filter((task) => {
+    return task.id !== payload.id;
+  });
+
+  return newArr;
+};
+
+const udpatedTaskArr = (state, payload) => {
+  const newArr = state.map(
+    (obj) => [payload].find((o) => o.id === obj.id) || obj
+  );
 
   return newArr;
 };
 
 const taskSlice = createSlice({
   name: "task",
-  initialState: {},
+  initialState: { task: {}, tasks: [] },
 
   extraReducers: (builder) => {
     builder.addCase(fetchUserTasksAction.pending, (state, action) => {
@@ -208,6 +216,7 @@ const taskSlice = createSlice({
     });
     builder.addCase(updateTaskAction.fulfilled, (state, action) => {
       state.updatedTask = action.payload;
+      state.tasks = udpatedTaskArr(state.tasks, action.payload);
       state.loading = false;
       state.appError = undefined;
       state.serverError = undefined;

@@ -8,11 +8,15 @@ import TaskArchive from "../Archive/TaskArchive";
 import styles from "./Tasks.module.css";
 import TaskList from "./TaskList";
 
-const Tasks = (props) => {
+const Tasks = () => {
   const tasks = useSelector((state) => state.task.tasks);
   const [addTask, setAddTask] = useState(false);
   const [tasksArray, setTasksArray] = useState();
   const [showArchive, setShowArchive] = useState(false);
+
+  useEffect(() => {
+    setTasksArray(tasks);
+  }, [tasks]);
 
   const archivedTasks = tasks?.filter((task) => task.isArchive);
 
@@ -110,7 +114,7 @@ const Tasks = (props) => {
                 <AddTask onClose={cancelTaskHandler} />
               )}
             </div>
-            <TaskList tasksArray={tasksArray} inProp={true} />
+            <TaskList state={"full"} tasksArray={tasksArray} />
           </>
         )}
         {showArchive && <TaskArchive />}

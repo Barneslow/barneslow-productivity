@@ -17,21 +17,21 @@ const UserTasks = ({ onClick }) => {
           <h3 className={styles.title}>Total Tasks</h3>
           <button onClick={() => onClick("total")} className={styles.total}>
             <i className="tasks icon blue"></i>
-            {tasks.length}
+            {tasks?.length}
           </button>
         </div>
         <div className={styles.block}>
           <h3 className={styles.title}>Pending Tasks</h3>
           <button onClick={() => onClick("pending")} className={styles.total}>
             <i className="sync icon orange"></i>
-            {pending.length}
+            {pending?.length}
           </button>
         </div>
         <div className={styles.block}>
           <h3 className={styles.title}>Completed Tasks</h3>
           <button onClick={() => onClick("completed")} className={styles.total}>
             <i className="icon checkmark green"></i>
-            {completed.length}
+            {completed?.length}
           </button>
         </div>
         <div className={styles.view}>

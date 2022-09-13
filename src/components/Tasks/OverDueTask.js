@@ -1,13 +1,14 @@
-import styles from "./OverDueTask.module.css";
 import Moment from "react-moment";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import { Checkbox, IconButton, Tooltip } from "@mui/material";
+import { Checkbox, IconButton } from "@mui/material";
 import { dateFormatter } from "../../utils/dateFormater";
 import { useDispatch } from "react-redux";
 import { deleteTaskAction, updateTaskAction } from "../../store/taskSlice";
 
-const OverDueTask = ({ onChangeState, task }) => {
+import styles from "./Task.module.css";
+
+const OverDueTask = ({ task }) => {
   const dispatch = useDispatch();
 
   const handleChange = () => {
@@ -17,8 +18,6 @@ const OverDueTask = ({ onChangeState, task }) => {
       id: task.id,
     };
 
-    onChangeState("completed");
-
     dispatch(updateTaskAction(updatedTask));
   };
 
@@ -27,56 +26,42 @@ const OverDueTask = ({ onChangeState, task }) => {
   };
 
   return (
-    <li className={styles.item}>
+    <li className={`${styles.item} ${styles.overdue}`}>
       <div className={styles.block}>
-        <h3>{task.description}</h3>
+        <h3>{task.title}</h3>
       </div>
       <div className={styles.block}>
         <i className="icon close red"></i>
       </div>
       <div className={styles.block}>
-        <>
-          <h3 className={styles.overdue}>OVERDUE</h3>
-          <Moment className={styles.title} fromNow>
-            {task.dueDate}
-          </Moment>
-        </>
+        <h3 className={styles["overdue-title"]}>OVERDUE</h3>
+        <Moment className={styles["past-due"]} fromNow>
+          {task.dueDate}
+        </Moment>
       </div>
       <div className={styles.block}>
-        <>
-          <h3>{dateFormatter(task.createdAt)}</h3>
-          <Moment className={styles.date} fromNow>
-            {task.createdAt}
-          </Moment>
-        </>
+        <h3>{dateFormatter(task.createdAt)}</h3>
+        <Moment className={styles.date} fromNow>
+          {task.createdAt}
+        </Moment>
       </div>
-      <div>
-        <Tooltip title="Complete Task">
-          <Checkbox
-            sx={{ padding: 0 }}
-            icon={
-              <AddTaskIcon
-                sx={{
-                  color: "blue",
-                  fontSize: { xs: 20, sm: 30, md: 40 },
-                }}
-              />
-            }
-            checked={false}
-            onChange={handleChange}
-          />
-        </Tooltip>
-      </div>
-      <Tooltip title="Delete Task">
+      <div className={styles.block}>
+        <Checkbox
+          sx={{ padding: 0 }}
+          icon={
+            <AddTaskIcon
+              sx={{ color: "blue", fontSize: { xs: 20, sm: 30, md: 40 } }}
+            />
+          }
+          checked={false}
+          onChange={handleChange}
+        />
         <IconButton sx={{ padding: 0 }} onClick={deleteTaskHandler}>
           <DeleteForeverIcon
-            sx={{
-              color: "red",
-              fontSize: { xs: 20, sm: 30, md: 40 },
-            }}
+            sx={{ color: "red", fontSize: { xs: 20, sm: 30, md: 40 } }}
           />
         </IconButton>
-      </Tooltip>
+      </div>
     </li>
   );
 };

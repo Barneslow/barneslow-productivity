@@ -1,15 +1,15 @@
-import styles from "./CompleteTask.module.css";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { Tooltip } from "@mui/material";
 import ArchiveIcon from "@mui/icons-material/Archive";
-import { Checkbox } from "@mui/material";
+import { Checkbox, Tooltip } from "@mui/material";
 import { dateFormatter } from "../../utils/dateFormater";
 import { formatDistance } from "date-fns";
 import { useDispatch } from "react-redux";
 import { updateTaskAction } from "../../store/taskSlice";
 import { useState } from "react";
 
-const CompleteTask = ({ onChangeState, task }) => {
+import styles from "./Task.module.css";
+
+const CompleteTask = ({ task }) => {
   const dispatch = useDispatch();
   const [taskArchive, setTaskArchive] = useState(task.isArchive);
 
@@ -29,10 +29,10 @@ const CompleteTask = ({ onChangeState, task }) => {
     const updatedTask = {
       completedAt: null,
       status: "pending",
+
       id: task.id,
     };
 
-    onChangeState("pending");
     dispatch(updateTaskAction(updatedTask));
   };
 
@@ -50,9 +50,9 @@ const CompleteTask = ({ onChangeState, task }) => {
   const archiveColour = taskArchive ? "blue" : "darkgrey";
 
   return (
-    <li className={styles.item}>
+    <li className={`${styles.item} ${styles.completed}`}>
       <div className={styles.block}>
-        <h3>{task.description}</h3>
+        <h3>{task.title}</h3>
       </div>
       <div className={styles.block}>
         <i className="icon checkmark green"></i>
@@ -68,36 +68,36 @@ const CompleteTask = ({ onChangeState, task }) => {
         </>
       </div>
       <div className={styles.block}>
-        <>
-          <span className={styles.date}>Completed in:</span>
-          <h3>{completedIn}</h3>
-        </>
+        <span className={styles.date}>Completed in:</span>
+        <h3>{completedIn}</h3>
       </div>
-      <Checkbox
-        sx={{ padding: 0 }}
-        checkedIcon={
-          <CheckCircleIcon
-            sx={{ color: "green", fontSize: { xs: 20, sm: 30, md: 40 } }}
-          />
-        }
-        checked={true}
-        onChange={handleChange}
-      />
-      <Tooltip title="Archive">
+      <div className={styles.block}>
         <Checkbox
           sx={{ padding: 0 }}
           checkedIcon={
-            <ArchiveIcon
-              sx={{
-                color: archiveColour,
-                fontSize: { xs: 20, sm: 30, md: 40 },
-              }}
+            <CheckCircleIcon
+              sx={{ color: "green", fontSize: { xs: 20, sm: 30, md: 40 } }}
             />
           }
           checked={true}
-          onChange={handleArchive}
+          onChange={handleChange}
         />
-      </Tooltip>
+        <Tooltip title="Archive">
+          <Checkbox
+            sx={{ padding: 0 }}
+            checkedIcon={
+              <ArchiveIcon
+                sx={{
+                  color: archiveColour,
+                  fontSize: { xs: 20, sm: 30, md: 40 },
+                }}
+              />
+            }
+            checked={true}
+            onChange={handleArchive}
+          />
+        </Tooltip>
+      </div>
     </li>
   );
 };

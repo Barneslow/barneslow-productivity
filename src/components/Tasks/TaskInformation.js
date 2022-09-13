@@ -3,7 +3,6 @@ import UserTasks from "./UserTasks";
 
 import styles from "./TaskInformation.module.css";
 import { useState } from "react";
-import ViewMoreBtn from "../UI/ViewMoreBtn";
 
 const TaskInformation = () => {
   const [status, setStatus] = useState();

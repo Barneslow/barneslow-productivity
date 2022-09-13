@@ -9,3 +9,14 @@ export const dateFormatter = (dataStr) => {
 
   return `${month} ${day}th ${year}`;
 };
+
+export const dateFormatterMonthDay = (dataStr) => {
+  if (!dataStr) return;
+
+  const value = new Date(dataStr).toDateString().split(" ");
+
+  const day = value[2];
+  const month = value[1];
+
+  return `${month} ${day}th`;
+};

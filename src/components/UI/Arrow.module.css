@@ -1,0 +1,34 @@
+.right {
+  position: absolute;
+  right: 10px;
+}
+
+.right:hover {
+  color: var(--orange);
+  cursor: pointer;
+}
+
+.save {
+  color: green;
+  position: absolute;
+  right: 10px;
+  border: none;
+  background: none;
+}
+
+.save:hover {
+  stroke: black;
+  stroke-width: 0.5;
+  color: var(--green);
+  cursor: pointer;
+}
+
+.left {
+  position: absolute;
+  left: 10px;
+}
+
+.left:hover {
+  color: var(--orange);
+  cursor: pointer;
+}

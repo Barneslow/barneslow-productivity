@@ -6,10 +6,9 @@ import moment from "moment";
 import "./reactCalendar.css";
 
 import styles from "./TaskCalendar.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import TaskList from "../Tasks/TaskList";
 import { useEffect } from "react";
-import ViewMoreBtn from "../UI/ViewMoreBtn";
 
 const TaskCalander = ({ status, setStatus }) => {
   const { tasks } = useSelector((state) => state.task);
@@ -35,7 +34,7 @@ const TaskCalander = ({ status, setStatus }) => {
 
       setEvents(filteredTasks);
     }
-  }, [status]);
+  }, [status, tasks]);
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -73,7 +72,7 @@ const TaskCalander = ({ status, setStatus }) => {
             ? `${capitalizeFirstLetter(status)} Tasks`
             : `${date.toDateString().split(" ").slice(1).join(" ")}`}
         </p>
-        <TaskList tasksArray={events} />
+        <TaskList state={"preview"} tasksArray={events} />
       </div>
     </div>
   );

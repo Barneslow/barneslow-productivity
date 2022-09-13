@@ -9,7 +9,8 @@
 
 .tasks {
   box-shadow: var(--box-shadow);
-  width: fit-content;
+  width: 100%;
+  max-width: 800px;
   height: 100%;
   overflow: scroll;
   padding: 1rem;

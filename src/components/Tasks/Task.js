@@ -3,26 +3,20 @@ import CompleteTask from "./CompleteTask";
 import OverDueTask from "./OverDueTask";
 import PendingTask from "./PendingTask";
 
-import styles from "./Task.module.css";
+const Task = ({ task }) => {
+  const [status, setStatus] = useState();
 
-const Task = ({ data, inProp }) => {
-  const [view, setView] = useState(inProp);
-  const [currentState, setCurrentState] = useState(data.status);
-  let task;
+  let content;
 
-  const changeStateHandler = (state) => {
-    setCurrentState(state);
-  };
-
-  if (new Date(data.dueDate) < new Date() && currentState !== "completed") {
-    task = <OverDueTask task={data} onChangeState={changeStateHandler} />;
-  } else if (currentState === "completed") {
-    task = <CompleteTask task={data} onChangeState={changeStateHandler} />;
-  } else if (currentState === "pending") {
-    task = <PendingTask task={data} onChangeState={changeStateHandler} />;
+  if (new Date(task.dueDate) < new Date() && task.status !== "completed") {
+    content = <OverDueTask task={task} />;
+  } else if (task.status === "completed") {
+    content = <CompleteTask task={task} />;
+  } else if (task.status === "pending") {
+    content = <PendingTask task={task} />;
   }
 
-  return <>{task}</>;
+  return <>{content}</>;
 };
 
 export default Task;

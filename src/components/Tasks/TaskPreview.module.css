@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  margin: 1rem 0;
+  animation: var(Slide_Up) 300ms ease;
+}
+
+.block {
+  width: 25%;
+  text-align: center;
+}
+
+.blue {
+  background-color: #c2e7f0;
+  border: 1px solid var(--light-blue);
+}
+
+.green {
+  background-color: rgba(26, 245, 26, 0.15);
+  border: 1px solid green;
+}
+
+.red {
+  background-color: rgba(255, 0, 0, 0.15);
+  border: 1px solid red;
+}

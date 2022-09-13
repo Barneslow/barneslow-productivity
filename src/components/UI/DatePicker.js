@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { forwardRef } from "react";
 import TextField from "@mui/material/TextField";
+import { useFormik } from "formik";
 
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -15,6 +16,7 @@ export const BasicDatePicker = forwardRef((props, ref) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
+        toolbarPlaceholder
         label="Set A Day"
         value={value}
         onChange={(newValue) => {
@@ -51,12 +53,22 @@ export const BasicDateTimePicker = forwardRef((props, ref) => {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateTimePicker
         label="Set A Deadline"
-        value={value}
+        value={value ? value : props.placeholder}
         onChange={(newValue) => {
           setValue(newValue);
           props.sendData(newValue);
         }}
-        renderInput={(params) => <TextField {...params} />}
+        placeholder={new Date(props.placeholder)}
+        renderInput={(params) => {
+          return (
+            <TextField
+              {...params}
+              inputProps={{
+                ...params.inputProps,
+              }}
+            />
+          );
+        }}
       />
     </LocalizationProvider>
   );

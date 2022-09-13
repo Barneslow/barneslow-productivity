@@ -71,3 +71,13 @@ h1 {
   margin: 1rem;
   text-decoration: underline;
 }
+
+@keyframes Slide_Up {
+  0% {
+    transform: translateY(100px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
