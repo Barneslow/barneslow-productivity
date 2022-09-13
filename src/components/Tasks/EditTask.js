@@ -104,18 +104,28 @@ const EditTask = ({ task, cancelEdit }) => {
         unmountOnExit
         classNames={classNames}
       >
-        <div className={styles.block}>
-          <label className={styles.label}>Title</label>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder={title}
-            value={formik.values.title}
-            onChange={formik.handleChange("title")}
-            onBlur={formik.handleBlur("title")}
-          ></input>{" "}
+        <div className={styles["inner-container"]}>
+          <label for="title" className={styles.label}>
+            Title
+          </label>
+          <div className={styles.block}>
+            <div className={styles.nav}></div>
+            <input
+              name="title"
+              className={styles.input}
+              type="text"
+              placeholder={title}
+              value={formik.values.title}
+              onChange={formik.handleChange("title")}
+              onBlur={formik.handleBlur("title")}
+            />
+            <div className={styles.nav}>
+              {!formik.errors.title && (
+                <ArrowRight onClick={handleClickRight} />
+              )}
+            </div>
+          </div>
           <div className={styles.error}>{formik.errors.title}</div>
-          {!formik.errors.title && <ArrowRight onClick={handleClickRight} />}
         </div>
       </CSSTransition>
 
@@ -126,21 +136,30 @@ const EditTask = ({ task, cancelEdit }) => {
         unmountOnExit
         classNames={classNames}
       >
-        <div className={styles.block}>
-          <label className={styles.label}>Description</label>
-          <textarea
-            type="text"
-            placeholder={description}
-            value={formik.values.description}
-            onChange={formik.handleChange("description")}
-            onBlur={formik.handleBlur("description")}
-            className={styles.description}
-          ></textarea>
+        <div className={styles["inner-container"]}>
+          <label for="description" className={styles.label}>
+            Description
+          </label>
+          <div className={styles.block}>
+            <div className={styles.nav}>
+              <ArrowLeft onClick={handleClickLeft} />
+            </div>
+            <textarea
+              name="description"
+              className={styles.input}
+              type="text"
+              placeholder={description}
+              value={formik.values.description}
+              onChange={formik.handleChange("description")}
+              onBlur={formik.handleBlur("description")}
+            />
+            <div className={styles.nav}>
+              {!formik.errors.description && (
+                <ArrowRight onClick={handleClickRight} />
+              )}
+            </div>
+          </div>
           <div className={styles.error}>{formik.errors.description}</div>
-          {!formik.errors.description && (
-            <ArrowRight onClick={handleClickRight} />
-          )}
-          <ArrowLeft onClick={handleClickLeft} />
         </div>
       </CSSTransition>
 
@@ -151,17 +170,30 @@ const EditTask = ({ task, cancelEdit }) => {
         unmountOnExit
         classNames={classNames}
       >
-        <div className={styles.block}>
-          <label className={styles.label}>Due Date</label>
-          <BasicDateTimePicker
-            placeholder={dueDate}
-            sendData={(date) => setDueTime(date)}
-            value={formik.values.dueDate}
-            onChange={formik.handleChange("dueDate")}
-            onBlur={formik.handleBlur("dueDate")}
-          />
-          <Save />
-          <ArrowLeft onClick={handleClickLeft} />
+        <div className={styles["inner-container"]}>
+          <label for="date" className={styles.label}>
+            Due Date
+          </label>
+          <div className={styles.block}>
+            <div className={styles.nav}>
+              <ArrowLeft onClick={handleClickLeft} />
+            </div>
+            <div className={styles.input}>
+              <BasicDateTimePicker
+                name="date"
+                placeholder={dueDate}
+                sendData={(date) => setDueTime(date)}
+                value={formik.values.dueDate}
+                onChange={formik.handleChange("dueDate")}
+                onBlur={formik.handleBlur("dueDate")}
+              />
+            </div>
+
+            <div className={styles.nav}>
+              {!formik.errors.description && <Save />}
+            </div>
+          </div>
+          <div className={styles.error}>{formik.errors.dueDate}</div>
         </div>
       </CSSTransition>
       <div onClick={cancelEditHandler} className={styles.cancel}>

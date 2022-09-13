@@ -50,7 +50,10 @@ export const BasicDateTimePicker = forwardRef((props, ref) => {
   const [value, setValue] = useState(null);
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <LocalizationProvider
+      dateAdapter={AdapterDayjs}
+      className={props.className}
+    >
       <DateTimePicker
         label="Set A Deadline"
         value={value ? value : props.placeholder}
