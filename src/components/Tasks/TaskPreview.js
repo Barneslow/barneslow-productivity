@@ -19,8 +19,6 @@ const TaskPreview = ({ task }) => {
       id: task.id,
     };
 
-    console.log(updatedTask);
-
     dispatch(updateTaskAction(updatedTask));
   };
 

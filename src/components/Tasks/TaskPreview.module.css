@@ -6,7 +6,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   margin: 1rem 0;
-  animation: var(Slide_Up) 300ms ease;
+  animation: Slide_Up 300ms ease;
 }
 
 .block {
@@ -27,4 +27,14 @@
 .red {
   background-color: rgba(255, 0, 0, 0.15);
   border: 1px solid red;
+}
+
+@keyframes Slide_Up {
+  0% {
+    transform: translateY(100px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
