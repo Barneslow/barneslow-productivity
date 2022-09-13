@@ -27,3 +27,15 @@
   border-radius: 5px;
   margin-bottom: 0.2rem;
 }
+
+.title {
+  font-size: 2rem;
+  width: 100%;
+}
+
+@media (max-width: 850px) {
+  .title {
+    font-size: 2rem;
+    width: 100%;
+  }
+}

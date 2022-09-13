@@ -8,12 +8,31 @@ const ViewSessions = ({ status, setStatus }) => {
   const [sessionArray, setSessionArray] = useState(sessions);
 
   useEffect(() => {
-    if (status === "top") {
+    if (status === "longest") {
       let filteredTasks = [];
-      console.log(status);
 
       filteredTasks = [...sessionArray].sort((sessionA, sessionB) => {
         return sessionA.time > sessionB.time ? -1 : 1;
+      });
+
+      setSessionArray(filteredTasks);
+    }
+
+    if (status === "recent") {
+      let filteredTasks = [];
+
+      filteredTasks = [...sessionArray].sort((sessionA, sessionB) => {
+        return sessionA.createdAt > sessionB.createdAt ? -1 : 1;
+      });
+
+      setSessionArray(filteredTasks);
+    }
+
+    if (status === "rated") {
+      let filteredTasks = [];
+
+      filteredTasks = [...sessionArray].sort((sessionA, sessionB) => {
+        return sessionA.rating > sessionB.rating ? -1 : 1;
       });
 
       setSessionArray(filteredTasks);

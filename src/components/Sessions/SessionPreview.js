@@ -7,6 +7,8 @@ import styles from "./SessionPreview.module.css";
 const SessionPreview = ({ session }) => {
   const isoDate = new Date(session.createdAt);
 
+  console.log(session);
+
   let { hours, minutes, seconds } = secondsToHms(session.time);
 
   const month = isoDate?.toLocaleString("en-US", { month: "long" });
@@ -26,7 +28,10 @@ const SessionPreview = ({ session }) => {
       </div>
       <div className={styles.block}>
         <div className={styles.root}>
-          <StarIcon sx={{ fontSize: 60 }} className={styles.icon} />
+          <StarIcon
+            sx={{ fontSize: { xs: 50, sm: 60 } }}
+            className={styles.icon}
+          />
           <Typography
             sx={{ fontWeight: 900, fontSize: "1.4rem" }}
             className={styles.count}

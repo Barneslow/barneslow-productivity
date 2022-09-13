@@ -16,6 +16,9 @@
   text-align: center;
   font-size: 1rem;
   padding: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .root {
@@ -36,6 +39,17 @@
   position: absolute;
   top: 17px;
   font-size: 1.4rem;
+}
+
+@media (max-width: 480px) {
+  .block h3 {
+    font-size: 1rem;
+  }
+
+  .count {
+    font-size: 1rem;
+    top: 15px;
+  }
 }
 
 @keyframes Slide_Up {

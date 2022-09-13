@@ -20,7 +20,7 @@
 
 .table {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -30,8 +30,10 @@
 .block {
   margin: 0.2rem;
   justify-content: center;
+  align-items: center;
   display: flex;
   flex-direction: column;
+  background: inherit;
   height: 100%;
   border: 1px solid rgb(0, 0, 0, 0.5);
   border-radius: 10px;
@@ -51,11 +53,8 @@
 }
 
 .total {
-  border: none;
   padding: 0.5rem;
   font-size: 2rem;
-  background-color: inherit;
-  width: 100%;
 }
 
 .total-hover:hover {
@@ -88,6 +87,10 @@
 @media (max-width: 480px) {
   .header {
     font-size: 1rem;
+  }
+
+  .block {
+    padding: 0;
   }
 
   .title {

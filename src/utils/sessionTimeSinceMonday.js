@@ -18,3 +18,19 @@ export const sessionTimeSinceMonday = (sessions) => {
 
   return totalTime;
 };
+
+export const sessionsWithinSevenDays = (sessions) => {
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setHours(0, 0, 0, 0);
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+  if (!sessions || sessions.length <= 0) return;
+
+  const filteredSessions = sessions.filter(
+    (session) => new Date(session.createdAt) >= sevenDaysAgo
+  );
+
+  return filteredSessions;
+
+  console.log(sevenDaysAgo);
+};
