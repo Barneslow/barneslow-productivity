@@ -48,6 +48,15 @@
   right: 0;
   top: 0;
   color: red;
+  padding: 0.25rem;
+  /* border: 1px solid rgb(0, 0, 0, 0.5); */
+  box-shadow: var(--button-box-shadow);
+  border-radius: 5px;
+}
+
+.cancel:hover {
+  cursor: pointer;
+  background-color: lightgrey;
 }
 
 /* CSS TRANSITIONS */
