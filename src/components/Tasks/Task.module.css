@@ -41,6 +41,7 @@
   align-items: center;
   padding: 0.5rem;
   width: 100%;
+  border-bottom: 1px solid var(--light-blue);
 }
 
 .description-container {
@@ -48,6 +49,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: var(--blue);
+  width: 100%;
 }
 
 .block {
@@ -94,13 +97,15 @@
 }
 
 .description {
+  background-color: var(--blue);
+  width: 100%;
   padding: 0.5rem;
 }
 
 .view {
   border: none;
-  background-color: inherit;
-  width: 90%;
+  background-color: var(--blue);
+  width: 100%;
 }
 
 .view:hover {
@@ -148,6 +153,11 @@
 @media (max-width: 420px) {
   .date {
     display: none;
+  }
+
+  .description {
+    padding: 0.25rem;
+    font-size: 0.8rem;
   }
 }
 

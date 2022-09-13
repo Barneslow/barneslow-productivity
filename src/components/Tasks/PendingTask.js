@@ -138,6 +138,7 @@ const PendingTask = ({ task }) => {
           {viewDescription ? (
             <div className={styles["description-container"]}>
               <KeyboardDoubleArrowUpIcon
+                sx={{ fontSize: { xs: 10 } }}
                 className={styles.view}
                 onClick={() => setViewDescription(!viewDescription)}
               />
@@ -147,10 +148,13 @@ const PendingTask = ({ task }) => {
               </div>
             </div>
           ) : (
-            <KeyboardDoubleArrowDownIcon
-              className={styles.view}
-              onClick={() => setViewDescription(!viewDescription)}
-            />
+            <div className={styles["description-container"]}>
+              <KeyboardDoubleArrowDownIcon
+                sx={{ fontSize: { xs: 10 } }}
+                className={styles.view}
+                onClick={() => setViewDescription(!viewDescription)}
+              />
+            </div>
           )}
         </>
       )}
