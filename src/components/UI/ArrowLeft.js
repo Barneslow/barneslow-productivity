@@ -8,7 +8,7 @@ const ArrowLeft = ({ onClick }) => {
       <ArrowCircleLeftIcon
         onClick={onClick}
         sx={{
-          fontSize: { xs: 20, sm: 30, md: 40 },
+          fontSize: { sm: 30, md: 40 },
         }}
       />
     </div>
