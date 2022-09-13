@@ -40,11 +40,9 @@ const ViewSessions = ({ status, setStatus }) => {
   }, [status, sessions]);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.events}>
-        <h2 className={styles.title}>Sessions</h2>
-        <SessionList state={"preview"} sessionArray={sessionArray} />
-      </div>
+    <div className={styles.events}>
+      <h2 className={styles.title}>Sessions</h2>
+      <SessionList state={"preview"} sessionArray={sessionArray} />
     </div>
   );
 };

@@ -46,6 +46,10 @@
     font-size: 1rem;
   }
 
+  .block {
+    padding: 0;
+  }
+
   .count {
     top: 15px;
   }
