@@ -1,0 +1,93 @@
+.item {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  display: flex;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid red;
+  border-radius: 6px;
+  background-color: rgba(255, 0, 0, 0.15);
+  justify-content: center;
+  align-items: center;
+  animation: Slide_Up 300ms ease;
+}
+
+.title {
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  color: red;
+}
+
+.overdue {
+  font-weight: bold;
+  color: red;
+}
+
+.block {
+  padding: 1rem;
+  width: 20%;
+  text-align: center;
+}
+
+.block h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.block i {
+  font-size: 2rem;
+}
+
+@media (max-width: 640px) {
+  .block {
+    padding: 0.2rem;
+  }
+
+  .block i {
+    font-size: 1.5rem;
+  }
+
+  .block h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 470px) {
+  .block h3 {
+    font-size: 0.9rem;
+    padding: 0;
+  }
+
+  .block i {
+    font-size: 1rem;
+  }
+
+  .title {
+    font-size: 0.7rem;
+  }
+
+  .date {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .date {
+    display: none;
+  }
+
+  .title {
+    display: none;
+  }
+}
+
+@keyframes Slide_Up {
+  0% {
+    transform: translateY(100px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

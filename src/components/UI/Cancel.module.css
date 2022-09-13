@@ -1,0 +1,6 @@
+.cancel {
+  font-size: 2rem;
+  position: absolute;
+  right: 0;
+  color: red;
+}

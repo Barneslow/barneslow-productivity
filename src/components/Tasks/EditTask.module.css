@@ -42,6 +42,14 @@
   color: red;
 }
 
+.cancel {
+  font-size: 2rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: red;
+}
+
 /* CSS TRANSITIONS */
 .dashboard-primary-enter {
   transform: translateX(200%);

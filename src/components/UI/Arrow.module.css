@@ -1,6 +1,6 @@
 .right {
   position: absolute;
-  right: 10px;
+  right: 0px;
 }
 
 .right:hover {
@@ -11,7 +11,7 @@
 .save {
   color: green;
   position: absolute;
-  right: 10px;
+  right: 0px;
   border: none;
   background: none;
 }
@@ -25,7 +25,7 @@
 
 .left {
   position: absolute;
-  left: 10px;
+  left: 0px;
 }
 
 .left:hover {

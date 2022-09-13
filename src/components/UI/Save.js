@@ -8,7 +8,7 @@ const Save = ({ onClick }) => {
       <CheckCircleIcon
         onClick={onClick}
         sx={{
-          fontSize: { sm: 30, md: 40 },
+          fontSize: { xs: 30, sm: 40 },
         }}
       />
     </button>

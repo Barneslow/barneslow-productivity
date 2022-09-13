@@ -25,8 +25,6 @@ const EditTask = ({ task, cancelEdit }) => {
 
   const { id, description, title, dueDate } = task;
 
-  console.log(dueDate);
-
   const [dueTime, setDueTime] = useState();
 
   const formik = useFormik({
@@ -166,19 +164,11 @@ const EditTask = ({ task, cancelEdit }) => {
           <ArrowLeft onClick={handleClickLeft} />
         </div>
       </CSSTransition>
+      <div onClick={cancelEditHandler} className={styles.cancel}>
+        &#10006;
+      </div>
     </form>
   );
 };
 
 export default EditTask;
-
-{
-  /* <div className={styles.block}>
-<button type="submit" className="ui button positive">
-  Save
-</button>
-<button onClick={cancelEditHandler} className="ui button negative">
-  Cancel
-</button>
-</div> */
-}
