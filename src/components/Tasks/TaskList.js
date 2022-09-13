@@ -10,7 +10,7 @@ const TaskList = ({ tasksArray, state }) => {
           <div className={styles.labels}>
             <h3>Name</h3>
             <h3>Status</h3>
-            <h3>Due Date</h3>
+            <h3>Date</h3>
             <h3>Created</h3>
             <h3>Edit</h3>
           </div>

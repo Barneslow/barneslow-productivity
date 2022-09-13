@@ -33,7 +33,7 @@ const SessionPreview = ({ session }) => {
             className={styles.icon}
           />
           <Typography
-            sx={{ fontWeight: 900, fontSize: "1.4rem" }}
+            sx={{ fontWeight: 900, fontSize: { xs: "1rem", sm: "1.4rem" } }}
             className={styles.count}
           >
             {session.rating}

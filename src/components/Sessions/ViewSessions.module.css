@@ -1,7 +1,7 @@
 .container {
   display: flex;
   gap: 1rem;
-  height: 500px;
+  max-height: 500;
   justify-content: center;
   align-items: center;
 }
@@ -9,7 +9,6 @@
 .events {
   display: flex;
   flex-direction: column;
-  height: 100%;
   width: 100%;
   padding: 1rem;
   text-align: center;
@@ -37,5 +36,11 @@
   .title {
     font-size: 2rem;
     width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .title {
+    font-size: 1.5rem;
   }
 }
