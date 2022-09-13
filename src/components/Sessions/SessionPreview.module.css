@@ -1,0 +1,49 @@
+.study {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  margin: 1rem 0;
+  animation: Slide_Up 300ms ease;
+  border: 1px solid green;
+  background-color: rgba(26, 245, 26, 0.15);
+}
+
+.block {
+  width: 33.3%;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.25rem;
+}
+
+.root {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.icon {
+  color: gold;
+  stroke-width: 0.7;
+  stroke: black;
+}
+
+.count {
+  position: absolute;
+  top: 17px;
+  font-size: 1.4rem;
+}
+
+@keyframes Slide_Up {
+  0% {
+    transform: translateY(100px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

@@ -13,23 +13,32 @@ const UserTasks = ({ onClick }) => {
     <div className={styles.container}>
       <h2 className={styles.header}>USER TASKS</h2>
       <div className={styles.table}>
-        <div className={styles.block}>
+        <div className={`${styles.block} ${styles["block-hover"]}`}>
           <h3 className={styles.title}>Total Tasks</h3>
-          <button onClick={() => onClick("total")} className={styles.total}>
+          <button
+            onClick={() => onClick("total")}
+            className={`${styles.total} ${styles["total-hover"]}`}
+          >
             <i className="tasks icon blue"></i>
             {tasks?.length}
           </button>
         </div>
-        <div className={styles.block}>
+        <div className={`${styles.block} ${styles["block-hover"]}`}>
           <h3 className={styles.title}>Pending Tasks</h3>
-          <button onClick={() => onClick("pending")} className={styles.total}>
+          <button
+            onClick={() => onClick("pending")}
+            className={`${styles.total} ${styles["total-hover"]}`}
+          >
             <i className="sync icon orange"></i>
             {pending?.length}
           </button>
         </div>
-        <div className={styles.block}>
+        <div className={`${styles.block} ${styles["block-hover"]}`}>
           <h3 className={styles.title}>Completed Tasks</h3>
-          <button onClick={() => onClick("completed")} className={styles.total}>
+          <button
+            onClick={() => onClick("completed")}
+            className={`${styles.total} ${styles["total-hover"]}`}
+          >
             <i className="icon checkmark green"></i>
             {completed?.length}
           </button>

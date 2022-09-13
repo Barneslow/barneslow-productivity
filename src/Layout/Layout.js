@@ -11,12 +11,11 @@ import { secondsToHms } from "../utils/secondsToHms";
 import { sessionTimeSinceMonday } from "../utils/sessionTimeSinceMonday";
 
 import TaskInformation from "../components/Tasks/TaskInformation";
+import SessionInformation from "../components/Sessions/SessionInformation";
 
-const Layout = () => {
+const Layout = ({ setState, setValue }) => {
   const user = useSelector((state) => state.user.user);
   const sessions = useSelector((state) => state.session.sessions);
-
-  console.log("layout");
 
   const ratingArray = [];
 
@@ -43,6 +42,7 @@ const Layout = () => {
   return (
     <div className={styles.layout}>
       <TaskInformation />
+      <SessionInformation setState={setState} setValue={setValue} />
       <main className={styles.main}>
         {user && sessions && (
           <>

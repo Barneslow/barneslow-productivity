@@ -2,11 +2,16 @@ import styles from "./ViewMoreBtn.module.css";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import { useNavigate } from "react-router-dom";
 
-const ViewMoreBtn = ({ path }) => {
+const ViewMoreBtn = ({ path, setState, setValue }) => {
   const navigate = useNavigate();
 
   const navigateHandler = () => {
-    navigate(`/${path}`);
+    if (path) {
+      navigate(`/${path}`);
+    } else {
+      setState("Sessions");
+      setValue(1);
+    }
   };
 
   return (

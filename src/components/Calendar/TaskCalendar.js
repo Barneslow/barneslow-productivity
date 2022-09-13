@@ -6,7 +6,7 @@ import moment from "moment";
 import "./reactCalendar.css";
 
 import styles from "./TaskCalendar.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import TaskList from "../Tasks/TaskList";
 import { useEffect } from "react";
 

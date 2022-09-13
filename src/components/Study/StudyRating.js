@@ -3,13 +3,15 @@ import { Typography } from "@mui/material";
 
 import styles from "./StudyRating.module.css";
 
-const StudyRating = (props) => {
+const StudyRating = ({ rating }) => {
   return (
     <div className={styles.ratings}>
       <h3 className={styles.title}>Rating</h3>
       <div className={styles.root}>
         <StarIcon sx={{ fontSize: 50 }} className={styles.icon} />
-        <Typography className={styles.count}>{props.rating}</Typography>
+        <Typography sx={{ fontWeight: 900 }} className={styles.count}>
+          {rating}
+        </Typography>
       </div>
     </div>
   );

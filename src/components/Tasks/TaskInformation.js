@@ -1,8 +1,8 @@
+import { useState } from "react";
 import TaskCalander from "../Calendar/TaskCalendar";
 import UserTasks from "./UserTasks";
 
 import styles from "./TaskInformation.module.css";
-import { useState } from "react";
 
 const TaskInformation = () => {
   const [status, setStatus] = useState();

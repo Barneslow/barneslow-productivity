@@ -15,6 +15,7 @@ const Dashboard = () => {
   const userAuth = useSelector((state) => state.authentication.userAuth);
 
   const [viewable, setViewable] = useState("Dashboard");
+  const [value, setValue] = useState(0);
 
   useEffect(() => {
     dispatch(fetchUserSessionsAction());
@@ -22,11 +23,15 @@ const Dashboard = () => {
 
   return (
     <div className={styles.dashboard}>
-      <TabSwitcher view={setViewable} />
+      <TabSwitcher
+        setViewable={setViewable}
+        setValue={setValue}
+        value={value}
+      />
 
       <CSSTransition
         in={viewable === "Dashboard"}
-        timeout={300}
+        timeout={500}
         mountOnEnter
         unmountOnExit
         classNames={{
@@ -36,12 +41,12 @@ const Dashboard = () => {
           exit: styles["dashboard-primary-exit"],
         }}
       >
-        <Layout />
+        <Layout setState={setViewable} setValue={setValue} />
       </CSSTransition>
 
       <CSSTransition
         in={viewable === "Sessions"}
-        timeout={300}
+        timeout={500}
         mountOnEnter
         unmountOnExit
         classNames={{
@@ -55,7 +60,7 @@ const Dashboard = () => {
       </CSSTransition>
       <CSSTransition
         in={viewable === "User"}
-        timeout={300}
+        timeout={500}
         mountOnEnter
         unmountOnExit
         classNames={{
@@ -65,7 +70,7 @@ const Dashboard = () => {
           exit: styles["dashboard-primary-exit"],
         }}
       >
-        <UserCard />
+        <UserCard setState={setViewable} setValue={setValue} />
       </CSSTransition>
     </div>
   );

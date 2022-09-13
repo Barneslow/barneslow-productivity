@@ -3,17 +3,16 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 
-const TabSwitcher = (props) => {
-  const [viewable, setViewable] = useState(0);
+const TabSwitcher = ({ setViewable, setValue, value }) => {
   const handleChange = (event, newValue) => {
-    setViewable(newValue);
+    setValue(newValue);
 
     if (newValue === 0) {
-      props.view("Dashboard");
+      setViewable("Dashboard");
     } else if (newValue === 1) {
-      props.view("Sessions");
+      setViewable("Sessions");
     } else if (newValue === 2) {
-      props.view("User");
+      setViewable("User");
     }
   };
 
@@ -25,7 +24,7 @@ const TabSwitcher = (props) => {
         background: "lightgrey",
       }}
     >
-      <Tabs onChange={handleChange} value={viewable}>
+      <Tabs onChange={handleChange} value={value}>
         <Tab sx={{ color: "black" }} label="Dashboard" />
         <Tab sx={{ color: "black" }} label="Sessions" />
         <Tab sx={{ color: "black" }} label="User" />

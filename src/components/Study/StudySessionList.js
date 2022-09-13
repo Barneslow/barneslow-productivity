@@ -1,6 +1,5 @@
 import StudySession from "./StudySession";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { IconButton } from "@mui/material";
 
 import styles from "./StudySessionList.module.css";
 import { useNavigate } from "react-router-dom";
@@ -35,12 +34,6 @@ const StudySessionList = (props) => {
           />
         ))}
       </ul>
-      {/* <div className={styles.center}>
-        <div className={styles["add-session"]} onClick={addSessionHandler}>
-          <AddCircleIcon sx={{ color: "white", fontSize: 30, opacity: 0.9 }} />
-          <h2>Add Session</h2>
-        </div>
-      </div> */}
     </>
   );
 };

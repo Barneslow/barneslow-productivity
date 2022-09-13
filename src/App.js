@@ -91,15 +91,6 @@ function App() {
               </PrivateProtectedRoute>
             }
           />
-
-          {/* <Route
-            path="/calendar"
-            element={
-              <PrivateProtectedRoute>
-                <Calendar />
-              </PrivateProtectedRoute>
-            }
-          /> */}
         </Routes>
         <Footer />
       </div>
