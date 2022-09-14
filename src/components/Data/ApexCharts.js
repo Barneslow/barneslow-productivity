@@ -4,6 +4,116 @@ import { useSelector } from "react-redux";
 import { secondsToMinutes } from "date-fns/esm";
 import { dateFormatter } from "../../utils/dateFormater";
 
+export const MonthlyLineChart = (props) => {
+  const { sessions } = props;
+
+  console.log(sessions);
+
+  const [series, setSeries] = useState([
+    {
+      name: "Study",
+      data: [28, 29, 33, 36, 32, 32, 33],
+    },
+    {
+      name: "Break",
+      data: [12, 11, 14, 18, 17, 13, 13],
+    },
+    {
+      name: "Goal",
+      data: [15, 15, 15, 15, 15, 15, 15],
+    },
+  ]);
+  const [options, setOptions] = useState({
+    chart: {
+      height: 350,
+      type: "line",
+      dropShadow: {
+        enabled: true,
+        color: "#000",
+        top: 18,
+        left: 7,
+        blur: 10,
+        opacity: 0.2,
+      },
+      toolbar: {
+        show: false,
+      },
+    },
+    colors: ["#77B6EA", "#288C28", "#FF0000"],
+    dataLabels: {
+      enabled: true,
+    },
+    stroke: {
+      curve: "smooth",
+    },
+    title: {
+      text: "Monthly Session Statistics",
+      align: "left",
+    },
+    grid: {
+      borderColor: "#e7e7e7",
+      row: {
+        colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+        opacity: 0.5,
+      },
+    },
+    markers: {
+      size: 1,
+    },
+    xaxis: {
+      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+      title: {
+        text: "Month",
+      },
+    },
+    yaxis: {
+      title: {
+        text: "Time",
+      },
+      min: 5,
+      max: 40,
+    },
+    legend: {
+      position: "top",
+      horizontalAlign: "right",
+      floating: true,
+      offsetY: -25,
+      offsetX: -5,
+    },
+  });
+
+  // useEffect(() => {
+  //   const time = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+  //   if (!sessions) return;
+
+  //   for (const session of sessions) {
+  //     const isoDate = new Date(session.createdAt);
+  //     const sessionMonth = isoDate.getMonth();
+
+  //     time[sessionMonth] += session.time;
+  //   }
+
+  //   setSeries([
+  //     {
+  //       name: "Study Time",
+  //       data: time,
+  //     },
+  //   ]);
+  // }, [sessions.length]);
+
+  return (
+    <div id="chart">
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="line"
+        height={350}
+      />
+    </div>
+  );
+};
+
 export const MonthlyChart = (props) => {
   const { sessions } = props;
 
@@ -109,7 +219,7 @@ export const MonthlyChart = (props) => {
       },
     },
     title: {
-      text: "Monthly Study Chart",
+      text: "Monthly Chart",
       floating: true,
       offsetY: 330,
       align: "center",
@@ -243,7 +353,7 @@ export const WeeklyChart = (props) => {
       },
     },
     title: {
-      text: "Weekly Study Chart",
+      text: "Weekly Chart",
       floating: true,
       offsetY: 330,
       align: "center",
@@ -774,6 +884,72 @@ export const RatingsChart = (props) => {
         options={options}
         series={series}
         type="pie"
+        height="350"
+      />
+    </div>
+  );
+};
+
+export const MarkerChart = ({ sessions, sessionGoal }) => {
+  const data = sessions.map((session) => {
+    const isoDate = new Date(session.createdAt);
+
+    const month = isoDate?.toLocaleString("en-US", { month: "long" });
+    const day = isoDate?.toLocaleString("en-US", { day: "2-digit" });
+
+    return {
+      x: `${day} ${month}`,
+      y: session.time,
+      goals: [
+        {
+          name: "Goal",
+          value: sessionGoal,
+          strokeWidth: 3,
+          strokeColor: "#775DD0",
+        },
+      ],
+    };
+  });
+
+  const [series, setSeries] = useState([
+    {
+      name: "Session",
+      data,
+    },
+  ]);
+
+  const [options, setOptions] = useState({
+    chart: {
+      height: 350,
+      type: "bar",
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+      },
+    },
+    colors: ["#00E396"],
+    dataLabels: {
+      formatter: function (val) {
+        return val;
+      },
+    },
+    legend: {
+      show: true,
+      showForSingleSeries: true,
+      customLegendItems: ["Actual", "Goal"],
+      markers: {
+        fillColors: ["#00E396", "#775DD0"],
+      },
+    },
+  });
+
+  return (
+    <div id="chart">
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="bar"
         height="350"
       />
     </div>

@@ -76,7 +76,6 @@
 @media (max-width: 380px) {
   .container {
     width: 100%;
-    padding: 0.5rem;
     margin: 0;
   }
 

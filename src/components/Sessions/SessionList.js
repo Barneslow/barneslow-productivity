@@ -1,7 +1,7 @@
 import styles from "../Tasks/TaskList.module.css";
 import SessionPreview from "./SessionPreview";
 
-const SessionList = ({ sessionArray, state }) => {
+const SessionList = ({ sessionArray, state, setState }) => {
   return (
     <div className={styles.container}>
       {sessionArray && sessionArray.length !== 0 ? (
@@ -16,11 +16,20 @@ const SessionList = ({ sessionArray, state }) => {
               sessionArray?.map((session) => (
                 <SessionPreview key={session.id} session={session} />
               ))}
+            {state === "full" &&
+              sessionArray?.map((session) => (
+                <SessionPreview
+                  key={session.id}
+                  session={session}
+                  state={state}
+                  setState={setState}
+                />
+              ))}
           </ul>
         </>
       ) : (
         <div className={styles.empty}>
-          <h3 className={styles.alert}>No pending tasks</h3>
+          <h3 className={styles.alert}>No Sessions</h3>
         </div>
       )}
     </div>

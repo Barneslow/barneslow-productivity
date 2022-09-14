@@ -30,27 +30,25 @@ const UserSessions = ({ onClick, setState, setValue }) => {
   return (
     <div className={styles.container}>
       <h2 className={styles.header}>USER SESSIONS</h2>
-      <div className={`${styles.table} ${styles["small-grid"]}`}>
-        <button
-          onClick={() => onClick("rated")}
-          className={`${styles.block} ${styles["block-hover"]}`}
-        >
-          <h3 className={styles.title}>Top Rated</h3>
-          <div
-            onClick={() => onClick("rated")}
-            className={`${styles.total} ${styles["total-hover"]}`}
-          >
-            <i className="star icon yellow"></i> {totalSessions}
-          </div>
-        </button>
+      <div className={styles.table}>
         <button
           onClick={() => onClick("recent")}
           className={`${styles.block} ${styles["block-hover"]}`}
         >
           <h3 className={styles.title}>Recent Sessions</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
-            <i class="calendar check icon red outline"></i>
+            <i className="calendar check icon red outline"></i>
             {recentSessions}
+          </div>
+        </button>
+
+        <button
+          onClick={() => onClick("rated")}
+          className={`${styles.block} ${styles["block-hover"]}`}
+        >
+          <h3 className={styles.title}>Top Rated</h3>
+          <div className={`${styles.total} ${styles["total-hover"]}`}>
+            <i className="star icon yellow"></i>10
           </div>
         </button>
 
@@ -60,7 +58,7 @@ const UserSessions = ({ onClick, setState, setValue }) => {
         >
           <h3 className={styles.title}>Longest Sessions</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
-            <i className="hourglass half icon purple"></i>
+            <i className="hourglass half icon purple"></i>10
           </div>
         </button>
       </div>
@@ -69,7 +67,8 @@ const UserSessions = ({ onClick, setState, setValue }) => {
         <div className={styles.block}>
           <h3 className={styles.title}>Total Sessions</h3>
           <div className={styles.total}>
-            <i className="pencil alternate icon blue"></i> {totalSessions}
+            <i className="pencil alternate icon blue"></i>
+            {totalSessions}
           </div>
         </div>
         <div className={styles.block}>

@@ -1,46 +1,32 @@
-import { secondsToHms } from "../../utils/secondsToHms";
-import StarIcon from "@mui/icons-material/Star";
-import { Typography } from "@mui/material";
-
 import styles from "./SessionPreview.module.css";
+import { useNavigate } from "react-router-dom";
+import StudyBlock from "../Study/StudyBlock";
+import SessionGoals from "./SessionGoals";
 
-const SessionPreview = ({ session }) => {
-  const isoDate = new Date(session.createdAt);
+const SessionPreview = ({ session, state, setState }) => {
+  const navigate = useNavigate();
 
-  console.log(session);
+  const navigateHandler = () => {
+    if (state === "full") return setState(session);
 
-  let { hours, minutes, seconds } = secondsToHms(session.time);
-
-  const month = isoDate?.toLocaleString("en-US", { month: "long" });
-  const day = isoDate?.toLocaleString("en-US", { day: "2-digit" });
-
+    navigate(`sessions/${session.id}`);
+  };
   return (
-    <div className={styles.study}>
+    <button onClick={navigateHandler} className={styles.study}>
       <div className={styles.block}>
-        <h3>
-          {day} {month}
-        </h3>
+        <StudyBlock date={session.createdAt} />
       </div>
       <div className={styles.block}>
-        <h3>
-          {hours}:{minutes}:{seconds}
-        </h3>
+        <StudyBlock time={session.time} />
       </div>
       <div className={styles.block}>
-        <div className={styles.root}>
-          <StarIcon
-            sx={{ fontSize: { xs: 50, sm: 60 } }}
-            className={styles.icon}
-          />
-          <Typography
-            sx={{ fontWeight: 900, fontSize: { xs: "1rem", sm: "1.4rem" } }}
-            className={styles.count}
-          >
-            {session.rating}
-          </Typography>
-        </div>
+        <SessionGoals
+          rating={session.rating}
+          time={session.time}
+          sessionGoal={session.sessionGoal}
+        />
       </div>
-    </div>
+    </button>
   );
 };
 

@@ -1,3 +1,14 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.chart {
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+}
+
 .events {
   display: flex;
   flex-direction: column;
@@ -22,12 +33,12 @@
   margin-bottom: 0.2rem;
 }
 
-.title {
-  font-size: 2rem;
-  width: 100%;
-}
-
 @media (max-width: 850px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
   .title {
     font-size: 2rem;
     width: 100%;
@@ -40,7 +51,7 @@
   }
 
   .events {
-    padding: 0.5rem;
+    padding: 0;
     max-height: 300px;
   }
 }

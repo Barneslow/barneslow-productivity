@@ -1,13 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
-import { SessionBarChart, SessionRadialChart } from "../Stats/ApexCharts";
-import Card from "../UI/Card";
+import { SessionBarChart, SessionRadialChart } from "../Data/ApexCharts";
 
 import styles from "./SessionTime.module.css";
 
 const SessionTime = ({ time, breakTime, date }) => {
-  const dispatch = useDispatch();
-  const { userAuth } = useSelector((state) => state.authentication);
-
   return (
     <div className={styles.container}>
       {time && breakTime && (
