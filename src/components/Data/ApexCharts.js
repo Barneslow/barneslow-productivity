@@ -7,20 +7,22 @@ import { dateFormatter } from "../../utils/dateFormater";
 export const MonthlyLineChart = (props) => {
   const { sessions } = props;
 
-  console.log(sessions);
+  const studyData = sessions.map((session) => session.time);
+  const breakData = sessions.map((session) => session.breakTime);
+  const max = Math.max(...studyData);
 
   const [series, setSeries] = useState([
     {
       name: "Study",
-      data: [28, 29, 33, 36, 32, 32, 33],
+      data: studyData,
     },
     {
       name: "Break",
-      data: [12, 11, 14, 18, 17, 13, 13],
+      data: breakData,
     },
     {
       name: "Goal",
-      data: [15, 15, 15, 15, 15, 15, 15],
+      data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
     },
   ]);
   const [options, setOptions] = useState({
@@ -61,7 +63,20 @@ export const MonthlyLineChart = (props) => {
       size: 1,
     },
     xaxis: {
-      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+      categories: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
       title: {
         text: "Month",
       },
@@ -70,8 +85,8 @@ export const MonthlyLineChart = (props) => {
       title: {
         text: "Time",
       },
-      min: 5,
-      max: 40,
+      min: 0,
+      max: max * 1.2,
     },
     legend: {
       position: "top",
@@ -508,88 +523,145 @@ export const GoalChart = (props) => {
   );
 };
 
-export const SessionRadialChart = (props) => {
-  const { time, breakTime } = props;
+export const SessionRadialChart = ({ time }) => {
   const { user } = useSelector((state) => state.user);
   const goalTime = user?.sessionGoal;
   const timePercent = (time / goalTime) * 100;
-  const breakPercent = (breakTime / goalTime) * 100;
 
-  const [series, setSeries] = useState([timePercent, breakPercent]);
+  useEffect(() => {
+    const goalTime = user?.sessionGoal;
+    const timePercent = (time / goalTime) * 100;
+
+    setOptions({ labels: [`${secondsToMinutes(time)} mins`] });
+
+    setSeries([timePercent]);
+  }, [time]);
+
+  const [series, setSeries] = useState([timePercent]);
   const [options, setOptions] = useState({
+    chart: {
+      type: "radialBar",
+      sparkline: {
+        enabled: true,
+      },
+    },
     plotOptions: {
       radialBar: {
+        startAngle: -135,
+        endAngle: 225,
         hollow: {
           margin: 0,
-        },
-        track: {
+          size: "70%",
+          background: "#fff",
+          image: undefined,
+          imageOffsetX: 0,
+          imageOffsetY: 0,
+          position: "front",
           dropShadow: {
             enabled: true,
-            top: 2,
+            top: 3,
             left: 0,
             blur: 4,
-            opacity: 0.15,
+            opacity: 0.24,
           },
         },
-
+        track: {
+          background: "#fff",
+          strokeWidth: "67%",
+          margin: 0, // margin is in pixels
+          dropShadow: {
+            enabled: true,
+            top: -3,
+            left: 0,
+            blur: 4,
+            opacity: 0.35,
+          },
+        },
         dataLabels: {
           name: {
-            fontSize: "30px",
+            fontSize: "0px",
           },
           value: {
-            fontSize: "30px",
-            formatter: function (val) {
+            show: true,
+            fontSize: "20px",
+            formatter: function (val, opt) {
+              // return `Session Goal: ${secondsToMinutes(goalTime)}`;
+              // return `${secondsToMinutes(time)}mins : ${val.toFixed(2)}%`;
               const value = +val;
               return value.toFixed(2) + "%";
             },
           },
-          total: {
-            show: true,
-            label: "Daily Goal",
-            color: "#2a2a2a",
-            formatter: function (w) {
-              return secondsToMinutes(goalTime) + "mins";
-            },
-          },
+          // total: {
+          //   show: true,
+          //   label: "Session Goal",
+          //   color: "#2a2a2a",
+          //   formatter: function (w) {
+          //     return secondsToMinutes(goalTime) + "mins";
+          //   },
+          // },
         },
       },
     },
+    // title: {
+    //   text: `Goal: ${secondsToMinutes(goalTime)}mins`,
+    //   align: "center",
+    //   style: {
+    //     fontSize: "24px",
+    //     fontWeight: "bold",
+    //     color: "red",
+    //   },
+    // },
+    fill: {
+      type: "gradient",
+      gradient: {
+        shade: "dark",
+        type: "horizontal",
+        shadeIntensity: 0.5,
+        gradientToColors: ["#ABE5A1"],
+        inverseColors: true,
+        opacityFrom: 1,
+        opacityTo: 1,
+        stops: [0, 100],
+      },
+    },
+
+    states: {
+      hover: {
+        filter: {
+          type: "none",
+        },
+      },
+
+      active: {
+        filter: {
+          type: "none",
+        },
+      },
+    },
+
     stroke: {
       lineCap: "round",
     },
-
-    labels: ["Study", "Break"],
+    labels: [`${secondsToMinutes(time)} mins`],
 
     responsive: [
       {
-        breakpoint: 900,
+        breakpoint: 400,
         options: {
           chart: {
-            height: "350",
+            height: 120,
           },
-        },
-      },
-      {
-        breakpoint: 800,
-        options: {
-          chart: {
-            height: "300",
-          },
-        },
-      },
-      {
-        breakpoint: 700,
-        options: {
-          chart: {
-            height: "250",
-          },
-        },
-      },
-      {
-        breakpoint: 500,
-        options: {
-          chart: {
-            height: "200",
+          plotOptions: {
+            radialBar: {
+              dataLabels: {
+                name: {
+                  fontSize: "12px",
+                },
+                value: {
+                  fontSize: "12px",
+                },
+              },
+            },
           },
         },
       },
@@ -602,37 +674,53 @@ export const SessionRadialChart = (props) => {
         options={options}
         series={series}
         type="radialBar"
-        height="350"
+        height="auto"
       />
     </div>
   );
 };
 
-export const SessionBarChart = (props) => {
-  const { time, breakTime, date } = props;
-  const { user } = useSelector((state) => state.user);
-
+export const SessionBarChart = ({ time, breakTime, date }) => {
   const timeInMinutes = (time / 60).toFixed(2);
 
   const breakInMinutes = (breakTime / 60).toFixed(2);
 
   const isoDate = dateFormatter(date);
 
+  useEffect(() => {
+    const timeInMinutes = (time / 60).toFixed(2);
+
+    const breakInMinutes = (breakTime / 60).toFixed(2);
+
+    setSeries([
+      {
+        name: "Work",
+        data: [timeInMinutes],
+      },
+      {
+        name: "Break",
+        data: [breakInMinutes],
+      },
+    ]);
+  }, [time]);
+
   const [series, setSeries] = useState([
     {
-      name: "Work Time",
+      name: "Work",
       data: [timeInMinutes],
     },
     {
-      name: "Break Time",
+      name: "Break",
       data: [breakInMinutes],
     },
   ]);
   const [options, setOptions] = useState({
     chart: {
       type: "bar",
-      height: 350,
       stacked: true,
+      // sparkline: {
+      //   enabled: true,
+      // },
     },
 
     plotOptions: {
@@ -663,6 +751,21 @@ export const SessionBarChart = (props) => {
       },
     },
 
+    yaxis: {
+      floating: true,
+      axisTicks: {
+        show: false,
+      },
+
+      axisBorder: {
+        show: false,
+      },
+
+      labels: {
+        show: false,
+      },
+    },
+
     fill: {
       opacity: 1,
     },
@@ -680,19 +783,8 @@ export const SessionBarChart = (props) => {
 
     responsive: [
       {
-        breakpoint: 900,
-        options: {
-          chart: {
-            height: "350",
-          },
-        },
-      },
-      {
         breakpoint: 800,
         options: {
-          chart: {
-            height: "300",
-          },
           legend: {
             position: "top",
             offsetY: 10,
@@ -700,18 +792,28 @@ export const SessionBarChart = (props) => {
         },
       },
       {
-        breakpoint: 700,
+        breakpoint: 480,
         options: {
-          chart: {
-            height: "250",
+          legend: {
+            position: "top",
+            offsetY: 10,
+            fontSize: 10,
+          },
+
+          dataLabels: {
+            style: {
+              fontSize: "10px",
+              colors: ["#304758"],
+            },
           },
         },
       },
       {
-        breakpoint: 500,
+        breakpoint: 400,
         options: {
           chart: {
-            height: "200",
+            height: 150,
+            width: "100%",
           },
         },
       },
@@ -724,100 +826,7 @@ export const SessionBarChart = (props) => {
         options={options}
         series={series}
         type="bar"
-        height="350"
-      />
-    </div>
-  );
-};
-
-export const RatingsChart1 = (props) => {
-  const { rating } = props;
-
-  const [series, setSeries] = useState([
-    rating["1"],
-    rating["2"],
-    rating["3"],
-    rating["4"],
-    rating["5"],
-  ]);
-
-  const [options, setOptions] = useState({
-    chart: {
-      width: "100%",
-      type: "donut",
-    },
-    labels: ["1 Star", "2 Star", "3 Star", "4 Star", "5 Star"],
-    plotOptions: {
-      pie: {
-        startAngle: -90,
-        endAngle: 270,
-      },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    fill: {
-      type: "gradient",
-    },
-    legend: {
-      formatter: function (val, opts) {
-        return val;
-      },
-      offsetX: 0,
-      fontWeight: 400,
-      fontSize: 20,
-    },
-    title: {
-      text: "Session Ratings",
-      align: "center",
-      offsetX: -50,
-      offsetY: 170,
-
-      style: {
-        fontSize: "20px",
-        fontWeight: "bold",
-        color: "#263238",
-      },
-    },
-    tooltip: {
-      y: {
-        formatter: function (val) {
-          return val;
-        },
-        title: {
-          formatter: function (seriesName) {
-            return seriesName;
-          },
-        },
-      },
-    },
-
-    responsive: [
-      {
-        breakpoint: 1000,
-        options: {
-          chart: {
-            width: "300",
-            offsetX: 30,
-          },
-          legend: {
-            position: "bottom",
-            offsetX: 0,
-            fontWeight: 400,
-            fontSize: 16,
-          },
-        },
-      },
-    ],
-  });
-
-  return (
-    <div id="chart">
-      <ReactApexChart
-        options={options}
-        series={series}
-        type="donut"
-        height="350"
+        height="280"
       />
     </div>
   );

@@ -1,0 +1,81 @@
+.container {
+  display: flex;
+  border: 1px solid;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.block {
+  width: 100%;
+  height: 100%;
+  border: 1px solid;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  grid-area: block;
+}
+
+.rating {
+  height: 100%;
+  border: 1px solid;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  grid-area: rating;
+}
+
+.radial {
+  width: 100%;
+  height: 100%;
+  border: 1px solid;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  grid-area: radial;
+}
+
+.stars {
+  height: 240px;
+}
+
+.button {
+  height: 60px;
+}
+
+@media (max-width: 400px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    grid-template-areas:
+      "radial radial"
+      "block rating";
+  }
+
+  .goal {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .goal h3 {
+    font-size: 1rem;
+  }
+  .radial {
+    height: 150px;
+  }
+  .block {
+    height: 150px;
+  }
+  .rating {
+    height: 150px;
+  }
+}

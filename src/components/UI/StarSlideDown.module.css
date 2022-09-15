@@ -1,0 +1,29 @@
+.ratings {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+}
+
+.icon {
+  animation: Slide_down 600ms ease-in-out;
+}
+
+@media (max-width: 400px) {
+  .ratings {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@keyframes Slide_down {
+  0% {
+    transform: translateY(-100px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
