@@ -6,9 +6,10 @@ const StarSlideDown = ({ rating }) => {
   let ratingArr = Array.from(Array(rating), (e, i) => {
     return (
       <StarIcon
+        key={i}
         className={styles.icon}
         sx={{
-          fontSize: { xs: 40, sm: 50 },
+          fontSize: { xs: 30, sm: 40, md: 60 },
           color: "gold",
           stroke: "black",
           strokeWidth: 0.5,

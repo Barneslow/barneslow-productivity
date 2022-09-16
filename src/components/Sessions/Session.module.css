@@ -1,7 +1,28 @@
-.container {
+.wrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  padding: 2rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  padding: 2rem 0 2rem 0;
+  gap: 2rem;
+}
+
+.block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: var(--card-box-shadow);
+  height: 500px;
+}
+
+.header {
+  max-height: 200px;
 }

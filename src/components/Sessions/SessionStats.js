@@ -1,22 +1,19 @@
-import SessionDate from "./SessionDate";
+import SessionDate from "../UI/FormattedDate";
 import SessionTime from "./SessionTime";
 
 import styles from "./SessionStats.module.css";
 import DeleteSession from "./DeleteSession";
+import { SessionBarChart, SessionRadialChart } from "../Data/ApexCharts";
 
 const SessionStats = ({ session }) => {
   return (
-    <div className={styles.border}>
-      <h2 className={styles.title}>Session Details</h2>
-      <div className={styles["stats-container"]}>
-        <SessionDate date={session?.createdAt} />
-        <SessionTime
-          time={session?.time}
-          breakTime={session?.breakTime}
-          date={session?.createdAt}
-        />
-        <DeleteSession />
-      </div>
+    <div className={styles.container}>
+      <SessionRadialChart time={session.time} />
+      <SessionBarChart
+        time={session.time}
+        breakTime={session.breakTime}
+        date={session.createdAt}
+      />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 .ratings {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   padding: 1rem;
 }

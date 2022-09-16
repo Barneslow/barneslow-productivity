@@ -38,3 +38,17 @@
   font-size: 2rem;
   font-weight: bolder;
 }
+
+@media (max-width: 380px) {
+  .date {
+    font-size: 1.2rem;
+  }
+
+  .time-block {
+    font-size: 1.5rem;
+  }
+
+  .inner-container {
+    width: 100%;
+  }
+}

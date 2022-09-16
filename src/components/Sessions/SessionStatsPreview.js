@@ -10,7 +10,7 @@ const SessionStatsPreview = ({ session }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.radial}>
+      <div className={styles.block}>
         <SessionRadialChart time={session.time} breakTime={session.breakTime} />
         <div className={styles.goal}>
           <h3>Session Goal</h3>
@@ -24,9 +24,9 @@ const SessionStatsPreview = ({ session }) => {
           date={session.createdAt}
         />
       </div>
-      <div className={styles.rating}>
+      <div className={styles.block}>
         <StarSlideDown rating={session.rating} />
-        <ViewMoreBtn />
+        <ViewMoreBtn path={`sessions/${session._id}`} />
       </div>
     </div>
   );

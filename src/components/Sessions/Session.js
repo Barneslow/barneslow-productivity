@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchSessionAction } from "../../store/sessionSlice";
-import Card from "../UI/Card";
 import styles from "./Session.module.css";
-import SessionNotes from "./SessionsNotes";
 import SessionStats from "./SessionStats";
 import SessionRating from "./SessionRating";
+import FormattedDate from "../UI/FormattedDate";
+import NotesList from "../Notes/NotesList";
 
 const Session = () => {
   const dispatch = useDispatch();
@@ -15,13 +15,27 @@ const Session = () => {
 
   useEffect(() => {
     dispatch(fetchSessionAction(id));
-  }, [session?.rating]);
+  }, [id]);
 
   return (
-    <div className={styles.container}>
-      <SessionStats session={session} />
-      <SessionRating rating={session?.rating} />
-      <SessionNotes />
+    <div className={styles.wrapper}>
+      <div className={styles.header}>
+        <FormattedDate date={session?.createdAt} />
+      </div>
+      <div className={styles.container}>
+        <div className={styles.block}>
+          <SessionStats session={session} />
+        </div>
+        <div className={styles.block}>
+          <SessionRating rating={session?.rating} />
+        </div>
+        <div className={styles.block}>
+          <NotesList />
+        </div>
+        <div className={styles.block}>
+          <h1>I love it gary</h1>
+        </div>
+      </div>
     </div>
   );
 };

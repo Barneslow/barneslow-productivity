@@ -544,6 +544,7 @@ export const SessionRadialChart = ({ time }) => {
       sparkline: {
         enabled: true,
       },
+      background: "grey",
     },
     plotOptions: {
       radialBar: {
@@ -568,7 +569,7 @@ export const SessionRadialChart = ({ time }) => {
         track: {
           background: "#fff",
           strokeWidth: "67%",
-          margin: 0, // margin is in pixels
+          margin: 0,
           dropShadow: {
             enabled: true,
             top: -3,
@@ -579,38 +580,21 @@ export const SessionRadialChart = ({ time }) => {
         },
         dataLabels: {
           name: {
-            fontSize: "0px",
+            fontSize: "30px",
           },
           value: {
             show: true,
             fontSize: "20px",
+            fontWeight: "bold",
             formatter: function (val, opt) {
-              // return `Session Goal: ${secondsToMinutes(goalTime)}`;
-              // return `${secondsToMinutes(time)}mins : ${val.toFixed(2)}%`;
               const value = +val;
               return value.toFixed(2) + "%";
             },
           },
-          // total: {
-          //   show: true,
-          //   label: "Session Goal",
-          //   color: "#2a2a2a",
-          //   formatter: function (w) {
-          //     return secondsToMinutes(goalTime) + "mins";
-          //   },
-          // },
         },
       },
     },
-    // title: {
-    //   text: `Goal: ${secondsToMinutes(goalTime)}mins`,
-    //   align: "center",
-    //   style: {
-    //     fontSize: "24px",
-    //     fontWeight: "bold",
-    //     color: "red",
-    //   },
-    // },
+
     fill: {
       type: "gradient",
       gradient: {
@@ -646,11 +630,47 @@ export const SessionRadialChart = ({ time }) => {
 
     responsive: [
       {
-        breakpoint: 400,
+        breakpoint: 701,
         options: {
-          chart: {
-            height: 120,
+          plotOptions: {
+            radialBar: {
+              dataLabels: {
+                name: {
+                  fontSize: "20px",
+                },
+                value: {
+                  fontSize: "20px",
+                },
+              },
+            },
           },
+        },
+      },
+
+      {
+        breakpoint: 601,
+        options: {
+          plotOptions: {
+            radialBar: {
+              dataLabels: {
+                name: {
+                  fontSize: "15px",
+                },
+                value: {
+                  offsetY: 5,
+                  fontSize: "15px",
+                },
+              },
+            },
+          },
+        },
+      },
+      {
+        breakpoint: 401,
+        options: {
+          // chart: {
+          //   height: 120,
+          // },
           plotOptions: {
             radialBar: {
               dataLabels: {
@@ -718,18 +738,20 @@ export const SessionBarChart = ({ time, breakTime, date }) => {
     chart: {
       type: "bar",
       stacked: true,
-      // sparkline: {
-      //   enabled: true,
-      // },
+      toolbar: {
+        show: false,
+      },
+      background: "grey",
+    },
+
+    grid: {
+      show: false,
     },
 
     plotOptions: {
       bar: {
         horizontal: false,
         borderRadius: 10,
-      },
-      stroke: {
-        width: 2,
       },
     },
 
@@ -778,21 +800,21 @@ export const SessionBarChart = ({ time, breakTime, date }) => {
     stroke: {
       show: true,
       colors: ["black"],
-      width: 2,
+      width: 0.5,
     },
 
     responsive: [
       {
-        breakpoint: 800,
+        breakpoint: 801,
         options: {
           legend: {
-            position: "top",
+            position: "bottom",
             offsetY: 10,
           },
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 481,
         options: {
           legend: {
             position: "top",
@@ -809,11 +831,12 @@ export const SessionBarChart = ({ time, breakTime, date }) => {
         },
       },
       {
-        breakpoint: 400,
+        breakpoint: 401,
         options: {
-          chart: {
-            height: 150,
-            width: "100%",
+          dataLabels: {
+            formatter: function (val) {
+              return val;
+            },
           },
         },
       },

@@ -1,0 +1,61 @@
+.note {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--dark-grey);
+  background: var(--blue-gradient);
+  justify-content: center;
+  border-radius: 10px;
+  padding: 2rem 1rem 2rem 1rem;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.description {
+  position: relative;
+  font-size: 1.2rem;
+  color: var(--dark-grey);
+  background: white;
+  box-shadow: var(--box-shadow);
+  border-radius: 3px;
+  padding: 0.5rem;
+  min-height: 5rem;
+  width: 100%;
+}
+
+.date {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.33rem;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.button-box {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.button {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  box-shadow: var(--button-box-shadow);
+  padding: 0.25rem 1rem 0.25rem 1rem;
+  color: var(--dark-grey);
+  font-weight: 800;
+  border-radius: 5px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.error {
+  font-size: 1.4rem;
+  font-weight: bolder;
+  color: red;
+}

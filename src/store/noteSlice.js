@@ -62,7 +62,6 @@ export const createNoteAction = createAsyncThunk(
     const { userAuth } = user;
     const { id, description } = note;
 
-
     const config = {
       headers: {
         Authorization: `Bearer ${userAuth?.token}`,
@@ -74,6 +73,38 @@ export const createNoteAction = createAsyncThunk(
       const { data } = await axios.post(
         `${baseUrl}/api/notes/${id}`,
         { description },
+        config
+      );
+
+      return data;
+    } catch (error) {
+      if (!error?.response) {
+        throw error;
+      }
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const editNoteAction = createAsyncThunk(
+  "notes/edit",
+  async (updatedNote, { rejectWithValue, getState, dispatch }) => {
+    const user = getState().authentication;
+
+    const { userAuth } = user;
+    const { noteId } = updatedNote;
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userAuth?.token}`,
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const { data } = await axios.put(
+        `${baseUrl}/api/notes/${noteId}`,
+        updatedNote,
         config
       );
 
@@ -117,25 +148,27 @@ export const deleteNoteAction = createAsyncThunk(
   }
 );
 
-const newNotesArr = (state, payload) => {
-  const newArr = state.filter((note) => {
-    return note._id !== payload._id;
-  });
+const newNotesArr = (state, payload, correction) => {
+  if (correction == "delete") {
+    const newArr = state.filter((note) => {
+      return note._id !== payload._id;
+    });
 
-  return newArr;
+    return newArr;
+  }
+
+  if (correction == "edit") {
+    const newArr = state.map(
+      (obj) => Array(payload).find((o) => o._id === obj._id) || obj
+    );
+
+    return newArr;
+  }
 };
 
 const noteSlice = createSlice({
   name: "ui",
   initialState: { noteIsVisable: false, notes: [] },
-  // reducers: {
-  //   toggle(state) {
-  //     state.noteIsVisable = !state.noteIsVisable;
-  //   },
-  //   addNote(state, action) {
-  //     state.notes = action.payload;
-  //   },
-  // },
 
   extraReducers: (builder) => {
     builder.addCase(fetchUserNotesAction.pending, (state, action) => {
@@ -174,6 +207,7 @@ const noteSlice = createSlice({
       state.serverError = action?.error?.message;
     });
 
+    // CREATE NOTE
     builder.addCase(createNoteAction.pending, (state, action) => {
       state.loading = true;
       state.appError = undefined;
@@ -193,6 +227,31 @@ const noteSlice = createSlice({
       state.serverError = action?.error?.message;
     });
 
+    // EDIT NOTE
+    builder.addCase(editNoteAction.pending, (state, action) => {
+      state.loading = true;
+      state.appError = undefined;
+      state.serverError = undefined;
+    });
+
+    builder.addCase(editNoteAction.fulfilled, (state, action) => {
+      state.updatedNote = action.payload;
+      state.sessionNotes = newNotesArr(
+        state.sessionNotes,
+        action.payload,
+        "edit"
+      );
+      state.loading = false;
+      state.appError = undefined;
+      state.serverError = undefined;
+    });
+
+    builder.addCase(editNoteAction.rejected, (state, action) => {
+      state.loading = false;
+      state.appError = action?.payload?.message;
+      state.serverError = action?.error?.message;
+    });
+
     builder.addCase(deleteNoteAction.pending, (state, action) => {
       state.loading = true;
       state.appError = undefined;
@@ -200,7 +259,11 @@ const noteSlice = createSlice({
     });
     builder.addCase(deleteNoteAction.fulfilled, (state, action) => {
       state.deletedNote = null;
-      state.sessionNotes = newNotesArr(state.sessionNotes, action.payload);
+      state.sessionNotes = newNotesArr(
+        state.sessionNotes,
+        action.payload,
+        "delete"
+      );
       state.loading = false;
       state.appError = undefined;
       state.serverError = undefined;
