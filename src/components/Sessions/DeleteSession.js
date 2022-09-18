@@ -30,7 +30,7 @@ const DeleteSession = () => {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       {showModal && (
         <Modal>
           <h2 className={styles.header}>Are you sure?</h2>
@@ -44,17 +44,25 @@ const DeleteSession = () => {
           </div>
         </Modal>
       )}
-      <div className={styles.delete}>
-        <Tooltip title="Delete Session">
-          <IconButton onClick={deleteNoteHandler}>
-            <DeleteForeverIcon
-              // className={styles["delete-button"]}
-              sx={{ color: "red", fontSize: { sm: 40, md: 60 } }}
-            />
-          </IconButton>
-        </Tooltip>
-      </div>
-    </>
+      <Tooltip title="Delete Session">
+        <DeleteForeverIcon
+          onClick={deleteNoteHandler}
+          sx={{
+            color: "red",
+            fontSize: { sm: 40, md: 60 },
+            background: "var(--light-grey-gradient)",
+            border: 1,
+            borderColor: "var(--dark-grey)",
+            borderRadius: 2,
+            boxShadow: "var(--button-box-shadow)",
+            "&:hover": {
+              cursor: "pointer",
+              transform: "scale(.97)",
+            },
+          }}
+        />
+      </Tooltip>
+    </div>
   );
 };
 

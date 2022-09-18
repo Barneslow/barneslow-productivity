@@ -5,27 +5,21 @@ import { sessionsWithinSevenDays } from "../../utils/sessionTimeSinceMonday";
 import ViewMoreBtn from "../UI/ViewMoreBtn";
 
 import styles from "../Tasks/UserTasks.module.css";
+import { averageSessionTimeCalc } from "../../utils/Time/averageTimeSessionUtils";
 
 const UserSessions = ({ onClick, setState, setValue }) => {
   const { sessions } = useSelector((state) => state.session);
 
-  let time = sessions?.map((session) => session.time);
-
+  let averageSeconds = secondsToHms(averageSessionTimeCalc(sessions));
+  let averageTime = `${averageSeconds.hours}:${averageSeconds.minutes}:${averageSeconds.seconds}`;
   let totalSessions = sessions?.length;
-  let totalTime;
-  let averageTime;
+
+  let time = sessions?.map((session) => session.time);
+  let totalSeconds = secondsToHms(time?.reduce((acc, cur) => acc + cur));
+
+  let totalTime = `${totalSeconds.hours}:${totalSeconds.minutes}:${totalSeconds.seconds}`;
+
   let recentSessions = sessionsWithinSevenDays(sessions).length;
-
-  if (time?.length > 0) {
-    let totalSeconds = time?.reduce((acc, cur) => acc + cur);
-    let averageSeconds = Math.round(totalSeconds / totalSessions);
-
-    totalSeconds = secondsToHms(totalSeconds);
-    averageSeconds = secondsToHms(averageSeconds);
-
-    totalTime = `${totalSeconds.hours}:${totalSeconds.minutes}:${totalSeconds.seconds}`;
-    averageTime = `${averageSeconds.hours}:${averageSeconds.minutes}:${averageSeconds.seconds}`;
-  }
 
   return (
     <div className={styles.container}>

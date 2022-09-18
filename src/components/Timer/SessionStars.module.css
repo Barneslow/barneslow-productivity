@@ -1,10 +1,7 @@
-.stars-container {
+.container {
   display: flex;
-  margin: 1rem;
-}
-
-@media (max-width: 768px) {
-  .stars-container {
-    margin: 0;
-  }
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 10px;
 }

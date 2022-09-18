@@ -1,24 +1,34 @@
-import GradeIcon from "@mui/icons-material/Grade";
+import StarIcon from "@mui/icons-material/Star";
 import { IconButton } from "@mui/material";
 
 import styles from "./Star.module.css";
 
-const Star = (props) => {
-  if (props.rating) {
+const Star = ({ rating, onClick }) => {
+  if (rating) {
     return (
-      <IconButton onClick={props.onClick}>
-        <GradeIcon
+      <IconButton onClick={onClick}>
+        <StarIcon
           className={styles.star}
-          sx={{ color: "gold", stroke: "black", strokeWidth: 1, fontSize: 30 }}
+          sx={{
+            color: "#ffc23a",
+            stroke: "black",
+            strokeWidth: 0.3,
+            fontSize: 50,
+          }}
         />
       </IconButton>
     );
   } else {
     return (
-      <IconButton onClick={props.onClick}>
-        <GradeIcon
+      <IconButton onClick={onClick}>
+        <StarIcon
           className={styles.star}
-          sx={{ color: "grey", stroke: "black", strokeWidth: 1, fontSize: 30 }}
+          sx={{
+            color: "lightgrey",
+            stroke: "black",
+            strokeWidth: 0.3,
+            fontSize: 50,
+          }}
         />
       </IconButton>
     );

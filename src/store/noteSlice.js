@@ -215,7 +215,7 @@ const noteSlice = createSlice({
     });
     builder.addCase(createNoteAction.fulfilled, (state, action) => {
       state.note = action.payload;
-      state.sessionNotes = [...state.notes, action.payload];
+      state.sessionNotes = [...state.sessionNotes, action.payload];
       state.loading = false;
       state.appError = undefined;
       state.serverError = undefined;

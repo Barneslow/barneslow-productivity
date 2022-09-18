@@ -16,11 +16,13 @@
 
 .block {
   display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 5px;
   box-shadow: var(--card-box-shadow);
   height: 500px;
+  border-radius: 25px;
+  padding: 1rem;
+  border: 1px solid rgb(0, 0, 0, 0.15);
+  background: var(--dark-grey-gradient);
 }
 
 .header {

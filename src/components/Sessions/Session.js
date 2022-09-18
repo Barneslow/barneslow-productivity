@@ -7,6 +7,7 @@ import SessionStats from "./SessionStats";
 import SessionRating from "./SessionRating";
 import FormattedDate from "../UI/FormattedDate";
 import NotesList from "../Notes/NotesList";
+import SessionGraphs from "./SessionGraphs";
 
 const Session = () => {
   const dispatch = useDispatch();
@@ -24,16 +25,19 @@ const Session = () => {
       </div>
       <div className={styles.container}>
         <div className={styles.block}>
+          <SessionGraphs session={session} />
+        </div>
+
+        <div className={styles.block}>
           <SessionStats session={session} />
         </div>
-        <div className={styles.block}>
-          <SessionRating rating={session?.rating} />
-        </div>
+
         <div className={styles.block}>
           <NotesList />
         </div>
+
         <div className={styles.block}>
-          <h1>I love it gary</h1>
+          <SessionRating rating={session?.rating} />
         </div>
       </div>
     </div>

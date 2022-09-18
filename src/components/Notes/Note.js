@@ -68,7 +68,7 @@ const Note = ({ note }) => {
             </button>
             <button onClick={deleteNoteHandler} className={styles.button}>
               <DeleteForeverIcon sx={{ color: "red", fontSize: 30 }} />
-              Edit
+              Delete
             </button>
           </div>
         </div>

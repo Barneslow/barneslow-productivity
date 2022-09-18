@@ -1,9 +1,16 @@
 .star {
-  font-size: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: Slide_In 1000ms ease;
 }
 
-@media (max-width: 768px) {
-  .star {
-    font-size: 30;
+@keyframes Slide_In {
+  0% {
+    transform: translatex(-300px);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }

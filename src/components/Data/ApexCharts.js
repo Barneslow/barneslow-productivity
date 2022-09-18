@@ -523,7 +523,7 @@ export const GoalChart = (props) => {
   );
 };
 
-export const SessionRadialChart = ({ time }) => {
+export const SessionRadialChart = ({ time, fill }) => {
   const { user } = useSelector((state) => state.user);
   const goalTime = user?.sessionGoal;
   const timePercent = (time / goalTime) * 100;
@@ -628,74 +628,69 @@ export const SessionRadialChart = ({ time }) => {
     },
     labels: [`${secondsToMinutes(time)} mins`],
 
-    responsive: [
-      {
-        breakpoint: 701,
-        options: {
-          plotOptions: {
-            radialBar: {
-              dataLabels: {
-                name: {
-                  fontSize: "20px",
-                },
-                value: {
-                  fontSize: "20px",
-                },
-              },
-            },
-          },
-        },
-      },
+    // responsive: [
+    //   {
+    //     breakpoint: 701,
+    //     options: {
+    //       plotOptions: {
+    //         radialBar: {
+    //           dataLabels: {
+    //             name: {
+    //               fontSize: "20px",
+    //             },
+    //             value: {
+    //               fontSize: "20px",
+    //             },
+    //           },
+    //         },
+    //       },
+    //     },
+    //   },
 
-      {
-        breakpoint: 601,
-        options: {
-          plotOptions: {
-            radialBar: {
-              dataLabels: {
-                name: {
-                  fontSize: "15px",
-                },
-                value: {
-                  offsetY: 5,
-                  fontSize: "15px",
-                },
-              },
-            },
-          },
-        },
-      },
-      {
-        breakpoint: 401,
-        options: {
-          // chart: {
-          //   height: 120,
-          // },
-          plotOptions: {
-            radialBar: {
-              dataLabels: {
-                name: {
-                  fontSize: "12px",
-                },
-                value: {
-                  fontSize: "12px",
-                },
-              },
-            },
-          },
-        },
-      },
-    ],
+    //   {
+    //     breakpoint: 601,
+    //     options: {
+    //       plotOptions: {
+    //         radialBar: {
+    //           dataLabels: {
+    //             name: {
+    //               fontSize: "15px",
+    //             },
+    //             value: {
+    //               offsetY: 5,
+    //               fontSize: "15px",
+    //             },
+    //           },
+    //         },
+    //       },
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 401,
+    //     options: {
+    //       // chart: {
+    //       //   height: 120,
+    //       // },
+    //       plotOptions: {
+    //         radialBar: {
+    //           dataLabels: {
+    //             name: {
+    //               fontSize: "12px",
+    //             },
+    //             value: {
+    //               fontSize: "12px",
+    //             },
+    //           },
+    //         },
+    //       },
+    //     },
+    //   },
+    // ],
   });
 
   return (
     <div id="chart">
-      <ReactApexChart
-        options={options}
-        series={series}
-        type="radialBar"
-        height="auto"
-      />
+      <ReactApexChart options={options} series={series} type="radialBar" />
     </div>
   );
 };
@@ -849,7 +844,8 @@ export const SessionBarChart = ({ time, breakTime, date }) => {
         options={options}
         series={series}
         type="bar"
-        height="280"
+        width="100%"
+        height="100%"
       />
     </div>
   );
