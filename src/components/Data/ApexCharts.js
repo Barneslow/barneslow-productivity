@@ -381,7 +381,7 @@ export const WeeklyChart = (props) => {
   useEffect(() => {
     const time = [0, 0, 0, 0, 0, 0, 0];
 
-    if (sessions.length === 0) return;
+    if (sessions?.length === 0) return;
 
     for (const session of sessions) {
       const isoDate = new Date(session.createdAt);
@@ -396,7 +396,7 @@ export const WeeklyChart = (props) => {
         data: time,
       },
     ]);
-  }, [sessions.length]);
+  }, [sessions?.length]);
 
   return (
     <div id="chart">
