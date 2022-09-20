@@ -14,7 +14,7 @@ const NavBar = () => {
   const auth = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state?.user);
 
-  const { isAccountVerified } = user;
+  // const { isAccountVerified } = user;
 
   const { userAuth, tokenSent, appError, serverError, loading } = auth;
 
@@ -29,7 +29,7 @@ const NavBar = () => {
       ) : (
         <PublicNavBar />
       )}
-      {!isAccountVerified && <AccountVerificationAlert />}
+      {/* {!isAccountVerified && <AccountVerificationAlert />} */}
       {tokenSent && <AccountVerificationSuccess />}
       {loading && (
         <div className={styles.container}>
