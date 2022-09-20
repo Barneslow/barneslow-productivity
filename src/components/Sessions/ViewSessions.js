@@ -25,6 +25,7 @@ const ViewSessions = ({ status }) => {
   const rating = frequencyCounter(ratingArray);
 
   useEffect(() => {
+    if (!sessions || sessions.length === 0) return;
     if (status === "longest") {
       let filteredTasks = [...sessions].sort((sessionA, sessionB) => {
         return sessionA.time > sessionB.time ? -1 : 1;
