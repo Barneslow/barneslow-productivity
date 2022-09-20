@@ -15,7 +15,7 @@ const UserSessions = ({ onClick, setState, setValue }) => {
   let totalSessions;
   let totalTime;
 
-  if (sessions) {
+  if (sessions.length > 0) {
     let averageSeconds = secondsToHms(averageSessionTimeCalc(sessions));
     averageTime = `${averageSeconds.hours}:${averageSeconds.minutes}:${averageSeconds.seconds}`;
     totalSessions = sessions?.length;

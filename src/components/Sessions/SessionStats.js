@@ -28,7 +28,7 @@ const SessionStats = ({ session }) => {
   let rankingPercent;
   let percentClassName;
 
-  if (sessions) {
+  if (sessions.length > 0) {
     const averageSeconds = averageSessionTimeCalc(sessions);
     percentDifference = averageTimePercentDifference(
       averageSeconds,
