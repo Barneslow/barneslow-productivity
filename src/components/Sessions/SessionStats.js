@@ -8,7 +8,6 @@ import {
 
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import StarIcon from "@mui/icons-material/Star";
 import { secondsToHms } from "../../utils/secondsToHms";
 import {
   sessionLeaderboardCalc,
@@ -21,30 +20,37 @@ const SessionStats = ({ session }) => {
   const { sessions } = useSelector((state) => state.session);
   const { user } = useSelector((state) => state.user);
 
-  const averageSeconds = averageSessionTimeCalc(sessions);
-  const percentDifference = averageTimePercentDifference(
-    averageSeconds,
-    session.time
-  );
-
-  const ranking = sessionLeaderboardCalc(sessions, session);
-  const rankingPercent = topSessionPercent(sessions, session);
-
-  let percentClassName;
-  rankingPercent < 50
-    ? (percentClassName = `${styles.green}`)
-    : (percentClassName = `${styles.red}`);
-
-  const sessionTime = secondsToHms(session.time);
-
+  let sessionTime;
+  let percentDifference;
   let className;
   let text;
-  if (averageSeconds > session.time) {
-    className = `${styles.red}`;
-    text = "-";
-  } else {
-    className = `${styles.green}`;
-    text = "+";
+  let ranking;
+  let rankingPercent;
+
+  if (sessions) {
+    const averageSeconds = averageSessionTimeCalc(sessions);
+    percentDifference = averageTimePercentDifference(
+      averageSeconds,
+      session.time
+    );
+
+    ranking = sessionLeaderboardCalc(sessions, session);
+    rankingPercent = topSessionPercent(sessions, session);
+
+    let percentClassName;
+    rankingPercent < 50
+      ? (percentClassName = `${styles.green}`)
+      : (percentClassName = `${styles.red}`);
+
+    sessionTime = secondsToHms(session.time);
+
+    if (averageSeconds > session.time) {
+      className = `${styles.red}`;
+      text = "-";
+    } else {
+      className = `${styles.green}`;
+      text = "+";
+    }
   }
 
   return (
@@ -94,8 +100,8 @@ const SessionStats = ({ session }) => {
         <div className={styles["inner-container"]}>
           <DeleteSession />
           <GoalAchieved
-            goal={user.sessionGoal}
-            achieved={session.time >= user.sessionGoal}
+            goal={user?.sessionGoal}
+            achieved={session?.time >= user?.sessionGoal}
           />
         </div>
       </div>

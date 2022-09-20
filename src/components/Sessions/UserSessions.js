@@ -10,16 +10,22 @@ import { averageSessionTimeCalc } from "../../utils/Time/averageTimeSessionUtils
 const UserSessions = ({ onClick, setState, setValue }) => {
   const { sessions } = useSelector((state) => state.session);
 
-  let averageSeconds = secondsToHms(averageSessionTimeCalc(sessions));
-  let averageTime = `${averageSeconds.hours}:${averageSeconds.minutes}:${averageSeconds.seconds}`;
-  let totalSessions = sessions?.length;
+  let recentSessions;
+  let averageTime;
+  let totalSessions;
 
-  let time = sessions?.map((session) => session.time);
-  let totalSeconds = secondsToHms(time?.reduce((acc, cur) => acc + cur));
+  if (sessions) {
+    let averageSeconds = secondsToHms(averageSessionTimeCalc(sessions));
+    averageTime = `${averageSeconds.hours}:${averageSeconds.minutes}:${averageSeconds.seconds}`;
+    totalSessions = sessions?.length;
 
-  let totalTime = `${totalSeconds.hours}:${totalSeconds.minutes}:${totalSeconds.seconds}`;
+    let time = sessions?.map((session) => session.time);
+    let totalSeconds = secondsToHms(time?.reduce((acc, cur) => acc + cur));
 
-  let recentSessions = sessionsWithinSevenDays(sessions).length;
+    let totalTime = `${totalSeconds.hours}:${totalSeconds.minutes}:${totalSeconds.seconds}`;
+
+    recentSessions = sessionsWithinSevenDays(sessions).length;
+  }
 
   return (
     <div className={styles.container}>
