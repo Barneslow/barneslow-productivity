@@ -26,6 +26,7 @@ const SessionStats = ({ session }) => {
   let text;
   let ranking;
   let rankingPercent;
+  let percentClassName;
 
   if (sessions) {
     const averageSeconds = averageSessionTimeCalc(sessions);
@@ -37,7 +38,6 @@ const SessionStats = ({ session }) => {
     ranking = sessionLeaderboardCalc(sessions, session);
     rankingPercent = topSessionPercent(sessions, session);
 
-    let percentClassName;
     rankingPercent < 50
       ? (percentClassName = `${styles.green}`)
       : (percentClassName = `${styles.red}`);

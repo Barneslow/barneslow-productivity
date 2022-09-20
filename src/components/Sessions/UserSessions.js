@@ -13,6 +13,7 @@ const UserSessions = ({ onClick, setState, setValue }) => {
   let recentSessions;
   let averageTime;
   let totalSessions;
+  let totalTime;
 
   if (sessions) {
     let averageSeconds = secondsToHms(averageSessionTimeCalc(sessions));
@@ -22,7 +23,7 @@ const UserSessions = ({ onClick, setState, setValue }) => {
     let time = sessions?.map((session) => session.time);
     let totalSeconds = secondsToHms(time?.reduce((acc, cur) => acc + cur));
 
-    let totalTime = `${totalSeconds.hours}:${totalSeconds.minutes}:${totalSeconds.seconds}`;
+    totalTime = `${totalSeconds.hours}:${totalSeconds.minutes}:${totalSeconds.seconds}`;
 
     recentSessions = sessionsWithinSevenDays(sessions).length;
   }
