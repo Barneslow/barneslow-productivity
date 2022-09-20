@@ -49,7 +49,7 @@ const Leader = (props) => {
           srcSet={`https://flagcdn.com/w80/${source}.png 2x`}
           width="40"
           alt={user?.country}
-        ></img>
+        />
       </div>
       <div className={styles.box}>
         {placement <= 3 ? (

@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  height: fit-content;
+  background-color: red;
+  align-items: center;
+  font-size: 1.4rem;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  color: white;
+}
+
+.button:hover {
+  cursor: pointer;
+}

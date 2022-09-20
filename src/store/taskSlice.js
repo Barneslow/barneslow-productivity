@@ -5,7 +5,7 @@ import { baseUrl } from "../config/baseUrl";
 export const fetchUserTasksAction = createAsyncThunk(
   "task/tasks",
   async (_, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
 
@@ -31,7 +31,7 @@ export const fetchUserTasksAction = createAsyncThunk(
 export const fetchTaskAction = createAsyncThunk(
   "task/findTask",
   async (id, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
 
@@ -57,7 +57,7 @@ export const fetchTaskAction = createAsyncThunk(
 export const createTaskAction = createAsyncThunk(
   "task/create",
   async (task, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
 
@@ -83,7 +83,7 @@ export const createTaskAction = createAsyncThunk(
 export const updateTaskAction = createAsyncThunk(
   "task/update",
   async (updatedTask, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
 
@@ -113,7 +113,7 @@ export const updateTaskAction = createAsyncThunk(
 export const deleteTaskAction = createAsyncThunk(
   "task/delete",
   async (id, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
 

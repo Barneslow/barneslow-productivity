@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  height: fit-content;
+  background-color: green;
+  align-items: center;
+  font-size: 1.4rem;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  color: white;
+  animation: Slide_down 300ms ease;
+}
+
+@keyframes Slide_down {
+  0% {
+    transform: translateY(-30px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

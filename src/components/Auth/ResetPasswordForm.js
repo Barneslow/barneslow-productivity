@@ -35,7 +35,7 @@ const ResetPasswordForm = () => {
     validationSchema: formSchema,
   });
 
-  const auth = useSelector((state) => state.authentication);
+  const auth = useSelector((state) => state.auth);
 
   const { appError, serverError, loading, passwordReset } = auth;
 

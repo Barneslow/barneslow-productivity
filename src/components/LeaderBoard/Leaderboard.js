@@ -20,7 +20,12 @@ const Leaderboard = (props) => {
       <h2>Weekly Leaderboard</h2>
       {users &&
         sortedUsers.map((user, key) => (
-          <Leader user={user} key={user._id} placement={key + 1} />
+          <Leader
+            className="hi there"
+            user={user}
+            key={user._id}
+            placement={key + 1}
+          />
         ))}
     </div>
   );

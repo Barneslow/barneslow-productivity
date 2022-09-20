@@ -5,7 +5,7 @@ import { baseUrl } from "../config/baseUrl";
 export const fetchUserNotesAction = createAsyncThunk(
   "notes/fetchNotes",
   async (_, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
 
@@ -31,7 +31,7 @@ export const fetchUserNotesAction = createAsyncThunk(
 export const fetchSessionNotesAction = createAsyncThunk(
   "notes/sessionNotes",
   async (id, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
 
@@ -57,7 +57,7 @@ export const fetchSessionNotesAction = createAsyncThunk(
 export const createNoteAction = createAsyncThunk(
   "notes/create",
   async (note, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
     const { id, description } = note;
@@ -89,7 +89,7 @@ export const createNoteAction = createAsyncThunk(
 export const editNoteAction = createAsyncThunk(
   "notes/edit",
   async (updatedNote, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
     const { noteId } = updatedNote;
@@ -121,7 +121,7 @@ export const editNoteAction = createAsyncThunk(
 export const deleteNoteAction = createAsyncThunk(
   "notes/delete",
   async (id, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
 

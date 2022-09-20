@@ -25,7 +25,7 @@ const ForgotPasswordForm = () => {
     validationSchema: formSchema,
   });
 
-  const auth = useSelector((state) => state.authentication);
+  const auth = useSelector((state) => state.auth);
 
   const { appError, serverError, loading, token } = auth;
 

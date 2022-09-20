@@ -5,7 +5,7 @@ import { baseUrl } from "../config/baseUrl";
 export const fetchUserSessionsAction = createAsyncThunk(
   "session/sessions",
   async (_, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
 
@@ -31,7 +31,7 @@ export const fetchUserSessionsAction = createAsyncThunk(
 export const fetchSessionAction = createAsyncThunk(
   "session/session",
   async (id, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
 
@@ -57,7 +57,7 @@ export const fetchSessionAction = createAsyncThunk(
 export const createSessionAction = createAsyncThunk(
   "session/create",
   async (session, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
 
@@ -88,7 +88,7 @@ export const createSessionAction = createAsyncThunk(
 export const updateSessionAction = createAsyncThunk(
   "session/update",
   async (updatedSession, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
 
@@ -98,7 +98,6 @@ export const updateSessionAction = createAsyncThunk(
         "Content-Type": "application/json",
       },
     };
-
 
     try {
       const { data } = await axios.post(
@@ -120,7 +119,7 @@ export const updateSessionAction = createAsyncThunk(
 export const deleteSessionAction = createAsyncThunk(
   "session/delete",
   async (id, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
 
     const { userAuth } = user;
 

@@ -1,6 +1,6 @@
 .container {
   height: 100%;
-  background: var(--dark-grey-gradeint);
+  background: var(--dark-grey-gradient);
   width: 100%;
   color: white;
   border-radius: 5px;

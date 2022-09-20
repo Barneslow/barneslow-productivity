@@ -17,6 +17,8 @@ import StoreContainer from "./components/Shop/ShopContainer";
 import Checkout from "./components/Cart/Checkout";
 import ForgotPasswordForm from "./components/Auth/ForgotPasswordForm";
 import ResetPasswordForm from "./components/Auth/ResetPasswordForm";
+import AccountVerification from "./components/Auth/AccountVerification";
+import SendEmail from "./components/Mail/SendEmail";
 
 function App() {
   return (
@@ -40,6 +42,15 @@ function App() {
             element={
               <PrivateProtectedRoute>
                 <Dashboard />
+              </PrivateProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/account-verification/:token"
+            element={
+              <PrivateProtectedRoute>
+                <AccountVerification />
               </PrivateProtectedRoute>
             }
           />
@@ -80,6 +91,14 @@ function App() {
             element={
               <PrivateProtectedRoute>
                 <Session />
+              </PrivateProtectedRoute>
+            }
+          />
+          <Route
+            path="/send-email"
+            element={
+              <PrivateProtectedRoute>
+                <SendEmail />
               </PrivateProtectedRoute>
             }
           />

@@ -4,7 +4,35 @@
   box-shadow: var(--darker-box-shadow);
   background: lightcyan;
   opacity: 0.9;
-  transition: all var(--speed);
+  animation: Slide_In 1000ms ease-in-out;
+}
+
+.container:nth-child(3) {
+  animation-delay: 200ms;
+}
+.container:nth-child(4) {
+  animation-delay: 400ms;
+}
+.container:nth-child(5) {
+  animation-delay: 600ms;
+}
+.container:nth-child(6) {
+  animation-delay: 800ms;
+}
+.container:nth-child(7) {
+  animation-delay: 1000ms;
+}
+.container:nth-child(8) {
+  animation-delay: 1200ms;
+}
+.container:nth-child(9) {
+  animation-delay: 1400ms;
+}
+.container:nth-child(10) {
+  animation-delay: 1600ms;
+}
+.container:nth-child(11) {
+  animation-delay: 1800ms;
 }
 
 .container:hover {
@@ -54,5 +82,25 @@
   .box {
     padding: 0.5rem;
     height: 70px;
+  }
+}
+
+@keyframes Slide_In {
+  0% {
+    transform: translatex(0);
+  }
+
+  1% {
+    transform: translatex(-300px);
+    filter: blur(3px);
+  }
+
+  90% {
+    filter: blur(2px);
+  }
+
+  100% {
+    transform: translateY(0);
+    filter: blur(0);
   }
 }

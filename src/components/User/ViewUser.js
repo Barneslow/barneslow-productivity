@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
 import { fetchViewUserAction } from "../../store/userSlice";
 import { secondsToHms } from "../../utils/secondsToHms";
+import countryData from "../../config/sourceCountries.json";
 
 import TabCard from "../UI/TabCard";
 
@@ -23,6 +24,19 @@ const ViewUser = () => {
     dispatch(fetchViewUserAction(id));
   }, [id]);
 
+  const [countryCode] = countryData.filter(
+    (country) => country.name === viewedUser.country
+  );
+
+  let source;
+
+  if (!viewedUser?.country) {
+    source =
+      "https://res.cloudinary.com/barneslow/image/upload/v1660661933/BarneslowProductivity/Flag.svg_n6ucee.png";
+  } else {
+    source = `${countryCode.code.toLowerCase()}`;
+  }
+
   const time = secondsToHms(viewedUser?.totalSessionTime);
   return (
     <div className={styles.container}>
@@ -33,14 +47,12 @@ const ViewUser = () => {
             <h2 className={styles.title}>{viewedUser?.userName}</h2>
             <p>{viewedUser?.bio}</p>
             <div className={styles.flag}>
-              {location.state && (
-                <img
-                  className={styles["user-flag"]}
-                  src={location.state.source}
-                  alt={viewedUser?.country}
-                  title={viewedUser?.country}
-                />
-              )}
+              <img
+                className={styles["user-flag"]}
+                src={`https://flagcdn.com/w40/${source}.png`}
+                srcSet={`https://flagcdn.com/w80/${source}.png 2x`}
+                alt={viewedUser?.country}
+              />
             </div>
           </div>
 

@@ -1,15 +1,15 @@
-import UserInfo from "./UserInfo";
+import UserProfile from "./UserProfile";
 import CurrentTasks from "../Tasks/CurrentTasks";
 import UserTasks from "../Tasks/UserTasks";
 
-import styles from "./UserCard.module.css";
+import styles from "./User.module.css";
 import UserSessions from "../Sessions/UserSessions";
 
-const UserCard = ({ setState, setValue }) => {
+const User = ({ setState, setValue }) => {
   console.log("user card render");
   return (
     <div className={styles.container}>
-      <UserInfo />
+      <UserProfile />
       <UserSessions setState={setState} setValue={setValue} />
       <UserTasks />
       <CurrentTasks />
@@ -17,4 +17,4 @@ const UserCard = ({ setState, setValue }) => {
   );
 };
 
-export default UserCard;
+export default User;

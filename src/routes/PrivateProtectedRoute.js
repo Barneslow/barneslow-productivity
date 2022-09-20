@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const PrivateProtectedRoute = ({ children }) => {
-  const user = useSelector((state) => state.authentication);
+  const user = useSelector((state) => state.auth);
 
   const { userAuth } = user;
 

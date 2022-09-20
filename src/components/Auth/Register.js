@@ -42,7 +42,7 @@ const Register = () => {
     validationSchema: formSchema,
   });
 
-  const userData = useSelector((state) => state.authentication);
+  const userData = useSelector((state) => state.auth);
 
   const { loading, serverError, appError, userAuth } = userData;
 

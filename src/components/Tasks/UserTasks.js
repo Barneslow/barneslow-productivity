@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import ViewMoreBtn from "../UI/ViewMoreBtn";
-import StyledIconButton from "../UI/StyledIconButton";
 
 import styles from "./UserTasks.module.css";
 
@@ -25,13 +24,6 @@ const UserTasks = ({ onClick }) => {
           </div>
         </button>
 
-        {/* <StyledIconButton onClick={onClick} status={"pending"}>
-          <h3 className={styles.title}>Pending Tasks</h3>
-          <div className={`${styles.total} ${styles["total-hover"]}`}>
-            <i className="sync icon orange"></i>
-            {pending?.length}
-          </div>
-        </StyledIconButton> */}
         <button
           onClick={() => onClick("pending")}
           className={`${styles.block} ${styles["block-hover"]}`}

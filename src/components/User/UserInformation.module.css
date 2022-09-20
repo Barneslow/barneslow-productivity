@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.information {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.flag {
+  width: 40px;
+  box-shadow: var(--box-shadow);
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+@media (max-width: 420px) {
+  .information {
+    padding: 0;
+  }
+
+  .flag {
+    width: 30px;
+  }
+}

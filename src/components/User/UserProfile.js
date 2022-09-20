@@ -8,10 +8,11 @@ import Modal from "../UI/Modal";
 import UpdateUserGoals from "./UpdateUserGoals";
 import SettingsModal from "../Settings/SettingsModal";
 
-import styles from "./UserInfo.module.css";
+import styles from "./UserProfile.module.css";
 import EditUserProfileImage from "./EditiUserProfileImage";
+import UserInformation from "./UserInformation";
 
-const UserInfo = (props) => {
+const UserProfile = (props) => {
   const { user, appError, serverError, loading } = useSelector(
     (state) => state.user
   );
@@ -63,7 +64,6 @@ const UserInfo = (props) => {
           <UpdateUserGoals onClose={closeModal} user={user} />
         </Modal>
       )}
-
       <div className={styles.profile}>
         <div className={styles.container}>
           <div>
@@ -79,39 +79,7 @@ const UserInfo = (props) => {
               </div>
             ) : null}
           </div>
-          <div className={styles.information}>
-            <h2 className={styles.title}>{user?.userName}</h2>
-            <div className={styles.box}>
-              <h4>Name:</h4>
-              <span>
-                {user?.firstName} {user?.lastName}
-              </span>
-            </div>
-            <div className={styles.box}>
-              <h4>Email:</h4>
-              <span>{user?.email}</span>
-            </div>
-            <div className={styles.box}>
-              <h4>Date Joined:</h4>
-              <span>{dateFormatter(user?.createdAt)}</span>
-            </div>
-            <div className={styles.box}>
-              <h4>Weekly Goal:</h4>
-              <span>
-                {` ${secondsToHhrsAndMins(user?.weeklyGoal).hours}hrs
-                  ${secondsToHhrsAndMins(user?.weeklyGoal).minutes}mins
-                `}
-              </span>
-            </div>
-            <div className={styles.box}>
-              <h4>Session Goal:</h4>
-              <span>
-                {` ${secondsToHhrsAndMins(user?.sessionGoal).hours}hrs
-                  ${secondsToHhrsAndMins(user?.sessionGoal).minutes}mins
-                `}
-              </span>
-            </div>
-          </div>
+          <UserInformation user={user} />
         </div>
         <div className={styles.bio}>
           <h2 className={styles.title}>Bio</h2>
@@ -130,4 +98,4 @@ const UserInfo = (props) => {
   );
 };
 
-export default UserInfo;
+export default UserProfile;

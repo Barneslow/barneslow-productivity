@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.loading {
+  background-color: var(--light-grey);
+  color: black;
+  width: 100%;
+}
+
+.error {
+  width: 100%;
+  border: 1px solid white;
+  color: red;
+}

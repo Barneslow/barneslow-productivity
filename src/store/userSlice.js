@@ -5,7 +5,7 @@ import { baseUrl } from "../config/baseUrl";
 export const fetchAllUsersAction = createAsyncThunk(
   "user/users",
   async (_, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
     const { userAuth } = user;
 
     const config = {
@@ -82,7 +82,7 @@ export const fetchViewUserAction = createAsyncThunk(
 export const updateUserAction = createAsyncThunk(
   "user/update",
   async (updatedUser, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
     const { userAuth } = user;
 
     const config = {
@@ -112,7 +112,7 @@ export const updateUserAction = createAsyncThunk(
 export const updateUserPassword = createAsyncThunk(
   "user/update-password",
   async (password, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
     const { userAuth } = user;
 
     const config = {
@@ -142,7 +142,7 @@ export const updateUserPassword = createAsyncThunk(
 export const uploadProfilePhotoAction = createAsyncThunk(
   "user/upload-profile-photo",
   async (image, { rejectWithValue, getState, dispatch }) => {
-    const user = getState().authentication;
+    const user = getState().auth;
     const { userAuth } = user;
 
     const config = {

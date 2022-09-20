@@ -11,7 +11,7 @@ import styles from "./LoginPage.module.css";
 const LoginPage = () => {
   const [regState, setRegState] = useState(true);
 
-  const userData = useSelector((state) => state.authentication);
+  const userData = useSelector((state) => state.auth);
 
   const { loading, serverError, appError, userAuth } = userData;
 

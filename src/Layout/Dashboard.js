@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUserSessionsAction } from "../store/sessionSlice";
 
 import Layout from "./Layout";
-import UserCard from "../components/User/UserCard";
+import User from "../components/User/User";
 import StatsContainer from "../components/Stats/StatsContainer";
 import TabSwitcher from "./navigation/TabSwitcher";
 
@@ -12,7 +12,7 @@ import styles from "./Dashboard.module.css";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const userAuth = useSelector((state) => state.authentication.userAuth);
+  const userAuth = useSelector((state) => state.auth.userAuth);
 
   const [viewable, setViewable] = useState("Dashboard");
   const [value, setValue] = useState(0);
@@ -70,7 +70,7 @@ const Dashboard = () => {
           exit: styles["dashboard-primary-exit"],
         }}
       >
-        <UserCard setState={setViewable} setValue={setValue} />
+        <User setState={setViewable} setValue={setValue} />
       </CSSTransition>
     </div>
   );

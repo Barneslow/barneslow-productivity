@@ -14,12 +14,13 @@ import storage from "redux-persist/lib/storage";
 export const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["auth"],
 };
 
 const rootReducer = combineReducers({
   note: noteSlice.reducer,
   timer: timerSlice.reducer,
-  authentication: authSlice.reducer,
+  auth: authSlice.reducer,
   user: userSlice.reducer,
   session: sessionSlice.reducer,
   task: taskSlice.reducer,
