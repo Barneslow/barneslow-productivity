@@ -19,11 +19,8 @@ const NavBar = () => {
   const { userAuth, tokenSent, appError, serverError, loading } = auth;
 
   useEffect(() => {
-    console.log("fire nav");
     dispatch(fetchUserAction(userAuth?.id));
   }, [dispatch, userAuth?.id]);
-
-  console.log(isAccountVerified);
 
   return (
     <>

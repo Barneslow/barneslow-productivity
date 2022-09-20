@@ -17,7 +17,7 @@ const UserInformation = ({ user }) => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h2 className={styles.title}>{user?.userName}</h2>
-        {user.isAccountVerified && (
+        {user?.isAccountVerified && (
           <VerifiedUserIcon sx={{ fontSize: 40, color: "var(--light-blue)" }} />
         )}
       </div>
