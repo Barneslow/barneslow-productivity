@@ -40,50 +40,50 @@ function App() {
           <Route
             path="/"
             element={
-              <PrivateProtectedRoute>
-                <Dashboard />
-              </PrivateProtectedRoute>
+              // <PrivateProtectedRoute>
+              <Dashboard />
+              // </PrivateProtectedRoute>
             }
           />
 
           <Route
             path="/account-verification/:token"
             element={
-              <PrivateProtectedRoute>
-                <AccountVerification />
-              </PrivateProtectedRoute>
+              // <PrivateProtectedRoute>
+              <AccountVerification />
+              // </PrivateProtectedRoute>
             }
           />
           <Route
             path="/study"
             element={
-              <PrivateProtectedRoute>
-                <TimerContainer />
-              </PrivateProtectedRoute>
+              // <PrivateProtectedRoute>
+              <TimerContainer />
+              // </PrivateProtectedRoute>
             }
           />
           <Route
             path="/tasks"
             element={
-              <PrivateProtectedRoute>
-                <TasksContainer />
-              </PrivateProtectedRoute>
+              // <PrivateProtectedRoute>
+              <TasksContainer />
+              // </PrivateProtectedRoute>
             }
           />
           <Route
             path="/leaderboard"
             element={
-              <PrivateProtectedRoute>
-                <LeaderBoardContainer />
-              </PrivateProtectedRoute>
+              // <PrivateProtectedRoute>
+              <LeaderBoardContainer />
+              // </PrivateProtectedRoute>
             }
           />
           <Route
             path="/settings"
             element={
-              <PrivateProtectedRoute>
-                <Settings />
-              </PrivateProtectedRoute>
+              // <PrivateProtectedRoute>
+              <Settings />
+              // </PrivateProtectedRoute>
             }
           />
           <Route
@@ -97,17 +97,17 @@ function App() {
           <Route
             path="/send-email"
             element={
-              <PrivateProtectedRoute>
-                <SendEmail />
-              </PrivateProtectedRoute>
+              // <PrivateProtectedRoute>
+              <SendEmail />
+              // </PrivateProtectedRoute>
             }
           />
           <Route
             path="/checkout"
             element={
-              <PrivateProtectedRoute>
-                <Checkout />
-              </PrivateProtectedRoute>
+              // <PrivateProtectedRoute>
+              <Checkout />
+              // </PrivateProtectedRoute>
             }
           />
         </Routes>
