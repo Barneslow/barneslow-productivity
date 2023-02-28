@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { Navigate, Link } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
-
 import InsightsIcon from "@mui/icons-material/Insights";
 import { useState } from "react";
 
@@ -15,7 +14,9 @@ const LoginPage = () => {
 
   const { loading, serverError, appError, userAuth } = userData;
 
-  if (userAuth) {
+  console.log(userData.isLoggedIn);
+
+  if (userAuth || userData.isLoggedInGuest) {
     return <Navigate to="/" />;
   }
 

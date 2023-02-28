@@ -25,7 +25,7 @@ const StatsContainer = () => {
     { month: "Dec", time: 0, breakTime: 0 },
   ];
 
-  sessions.map((session) => {
+  sessions?.map((session) => {
     months.forEach((month) => {
       const sessionMonth = new Date(session.createdAt).toLocaleString("en-US", {
         month: "short",
@@ -38,7 +38,6 @@ const StatsContainer = () => {
   });
 
   const stateHandler = (e) => {
-    console.log(e);
     setState(e);
   };
 

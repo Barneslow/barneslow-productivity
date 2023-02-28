@@ -5,11 +5,13 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../../store/authSlice";
 
 const PublicNavBar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const handleLoginNavigation = () => navigate("/login");
+  const { loginGuest } = useSelector(() => authActions);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -35,8 +37,11 @@ const PublicNavBar = () => {
             Barneslow Productivity
           </Typography>
 
-          <Button onClick={handleLoginNavigation} color="inherit">
+          <Button onClick={() => navigate("/login")} color="inherit">
             Login
+          </Button>
+          <Button onClick={() => dispatch(loginGuest())} color="inherit">
+            Guest
           </Button>
         </Toolbar>
       </AppBar>

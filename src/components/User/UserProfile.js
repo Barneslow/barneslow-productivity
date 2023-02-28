@@ -1,7 +1,5 @@
 import { useSelector } from "react-redux";
 import { useState, useEffect, useRef } from "react";
-import { dateFormatter } from "../../utils/dateFormater";
-import { secondsToHhrsAndMins } from "../../utils/secondsToHms";
 import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 import Modal from "../UI/Modal";
@@ -11,11 +9,14 @@ import SettingsModal from "../Settings/SettingsModal";
 import styles from "./UserProfile.module.css";
 import EditUserProfileImage from "./EditiUserProfileImage";
 import UserInformation from "./UserInformation";
+import GuestInformation from "../Guest/GuestInformation";
+import guestImage from "../../images/guestProfile.png";
 
-const UserProfile = (props) => {
+const UserProfile = ({ isLoggedInGuest }) => {
   const { user, appError, serverError, loading } = useSelector(
     (state) => state.user
   );
+
   const [showUpdateUserModal, setshowUpdateUserModal] = useState(false);
   const [showUpdateGoalsModal, setshowUpdateGoalsModal] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -67,11 +68,16 @@ const UserProfile = (props) => {
       <div className={styles.profile}>
         <div className={styles.container}>
           <div>
-            <EditUserProfileImage
-              imageSrc={user?.profilePhoto}
-              userName={user?.userName}
-            />
-            {appError || serverError ? (
+            {isLoggedInGuest ? (
+              <img src={guestImage} width={"100%"} />
+            ) : (
+              <EditUserProfileImage
+                imageSrc={user?.profilePhoto}
+                userName={user?.userName}
+              />
+            )}
+            {(appError && !isLoggedInGuest) ||
+            (serverError && !isLoggedInGuest) ? (
               <div className={styles["error-container"]}>
                 <h3 className={styles.error}>
                   {appError} / {serverError}
@@ -79,20 +85,28 @@ const UserProfile = (props) => {
               </div>
             ) : null}
           </div>
-          <UserInformation user={user} />
+          {isLoggedInGuest ? (
+            <GuestInformation />
+          ) : (
+            <UserInformation user={user} />
+          )}{" "}
         </div>
-        <div className={styles.bio}>
-          <h2 className={styles.title}>Bio</h2>
-          <p>{biography}</p>
-        </div>
-        <div className={styles.settings}>
-          <button className="ui blue button" onClick={showModalHandler}>
-            <i className="user icon"></i> Update Profile
-          </button>
-          <button className="ui green button" onClick={showGoalModalHandler}>
-            <i className="chart line icon"></i> Update Goals
-          </button>
-        </div>
+        {!isLoggedInGuest && (
+          <div className={styles.bio}>
+            <h2 className={styles.title}>Bio</h2>
+            <p>{biography}</p>
+          </div>
+        )}
+        {!isLoggedInGuest && (
+          <div className={styles.settings}>
+            <button className="ui blue button" onClick={showModalHandler}>
+              <i className="user icon"></i> Update Profile
+            </button>
+            <button className="ui green button" onClick={showGoalModalHandler}>
+              <i className="chart line icon"></i> Update Goals
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

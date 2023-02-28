@@ -3,7 +3,6 @@ import {
   WeeklyChart,
   MonthlyChart,
   GoalChart,
-  RatingsChart,
 } from "../components/Data/ApexCharts";
 import { useSelector } from "react-redux";
 import { frequencyCounter } from "../utils/frequencyCounter";
@@ -58,9 +57,6 @@ const Layout = ({ setState, setValue }) => {
             <div className={styles["chart-container"]}>
               <MonthlyChart sessions={sessions} />
             </div>
-            {/* <div className={styles["rating-container"]}>
-              <RatingsChart rating={rating} />
-            </div> */}
           </>
         )}
       </main>

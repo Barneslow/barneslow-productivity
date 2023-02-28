@@ -4,13 +4,13 @@ import { Navigate } from "react-router-dom";
 const PrivateProtectedRoute = ({ children }) => {
   const user = useSelector((state) => state.auth);
 
-  const { userAuth } = user;
+  const { userAuth, isLoggedInGuest } = user;
 
-  if (!userAuth) {
+  if (!userAuth && !isLoggedInGuest) {
     return <Navigate to="/login" />;
   }
 
-  return userAuth ? children : <h2>Not Allowed</h2>;
+  return userAuth || isLoggedInGuest ? children : <h2>Not Allowed</h2>;
 };
 
 export default PrivateProtectedRoute;

@@ -3,7 +3,7 @@ import ViewMoreBtn from "../UI/ViewMoreBtn";
 
 import styles from "./UserTasks.module.css";
 
-const UserTasks = ({ onClick }) => {
+const UserTasks = ({ onClick, isLoggedInGuest }) => {
   const { tasks } = useSelector((state) => state.task);
 
   const pending = tasks?.filter((task) => task.status === "pending");
@@ -20,7 +20,7 @@ const UserTasks = ({ onClick }) => {
           <h3 className={styles.title}>Total Tasks</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
             <i className="tasks icon blue"></i>
-            {tasks?.length}
+            {isLoggedInGuest ? 0 : tasks?.length}
           </div>
         </button>
 
@@ -31,7 +31,7 @@ const UserTasks = ({ onClick }) => {
           <h3 className={styles.title}>Pending Tasks</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
             <i className="sync icon orange"></i>
-            {pending?.length}
+            {isLoggedInGuest ? 0 : pending?.length}
           </div>
         </button>
         <button
@@ -41,7 +41,7 @@ const UserTasks = ({ onClick }) => {
           <h3 className={styles.title}>Completed Tasks</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
             <i className="icon checkmark green"></i>
-            {completed?.length}
+            {isLoggedInGuest ? 0 : completed?.length}
           </div>
         </button>
       </div>

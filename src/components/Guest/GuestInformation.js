@@ -1,47 +1,33 @@
-import countryData from "../../config/sourceCountries.json";
-
-import { dateFormatter } from "../../utils/dateFormater";
 import { secondsToHhrsAndMins } from "../../utils/secondsToHms";
-import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import StyledBlock from "../UI/StyledBlock";
-import styles from "./UserInformation.module.css";
+import styles from "../User/UserInformation.module.css";
 import flag from "../../images/unknownFlag.png";
 
-const UserInformation = ({ user, isLoggedInGuest }) => {
-  const [countryCode] = countryData.filter(
-    (country) => country.name === user?.country
-  );
-
-  let source = `${countryCode?.code.toLowerCase()}`;
-
+const GuestInformation = ({ user }) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h2 className={styles.title}>{user?.userName}</h2>
-        {user?.isAccountVerified && (
-          <VerifiedUserIcon sx={{ fontSize: 40, color: "var(--light-blue)" }} />
-        )}
+        <h2 className={styles.title}>Guest Account</h2>
       </div>
 
       <div className={styles.information}>
         <StyledBlock
           title={"Name:"}
-          value={`${user?.firstName} ${user?.lastName}`}
+          value={"Guest account"}
           icon={<i className="user icon blue"></i>}
         />
         <StyledBlock
           title={"Email:"}
-          value={user?.email}
+          value={"Guest account"}
           icon={<i className="envelope icon red outline"></i>}
         />
         <StyledBlock
           title={"Country:"}
-          value={user?.country}
+          value={"Guest account"}
           icon={
             <img
               className={styles.flag}
-              src={`https://flagcdn.com/w40/${source}.png`}
-              srcSet={`https://flagcdn.com/w80/${source}.png 2x`}
+              src={flag}
               width="40"
               alt={user?.country}
             />
@@ -49,14 +35,12 @@ const UserInformation = ({ user, isLoggedInGuest }) => {
         />
         <StyledBlock
           title={"Date Joined:"}
-          value={`${dateFormatter(user?.createdAt)}`}
+          value={"Guest account"}
           icon={<i className="calendar check icon orange"></i>}
         />
         <StyledBlock
           title={"Weekly Goal:"}
-          value={` ${secondsToHhrsAndMins(user?.weeklyGoal).hours}hrs
-        ${secondsToHhrsAndMins(user?.weeklyGoal).minutes}mins
-      `}
+          value={"Guest account"}
           icon={<i className="clock icon green"></i>}
         />
 
@@ -72,4 +56,4 @@ const UserInformation = ({ user, isLoggedInGuest }) => {
   );
 };
 
-export default UserInformation;
+export default GuestInformation;

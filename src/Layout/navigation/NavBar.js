@@ -8,6 +8,7 @@ import AccountVerificationSuccess from "../../components/Auth/AccountVerificatio
 
 import styles from "./NavBar.module.css";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";
+import GuestNavBar from "./GuestNavBar";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,14 @@ const NavBar = () => {
 
   // const { isAccountVerified } = user;
 
-  const { userAuth, tokenSent, appError, serverError, loading } = auth;
+  const {
+    userAuth,
+    tokenSent,
+    appError,
+    serverError,
+    loading,
+    isLoggedInGuest,
+  } = auth;
 
   useEffect(() => {
     dispatch(fetchUserAction(userAuth?.id));
@@ -26,6 +34,8 @@ const NavBar = () => {
     <>
       {userAuth ? (
         <UserNavBar userAuth={userAuth} user={user} />
+      ) : isLoggedInGuest ? (
+        <GuestNavBar />
       ) : (
         <PublicNavBar />
       )}

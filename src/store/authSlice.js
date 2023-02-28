@@ -212,13 +212,14 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     userAuth: userLoginFromStorage,
+    isLoggedInGuest: false,
   },
   reducers: {
-    login(state) {
-      state.isLoggedIn = true;
+    loginGuest(state) {
+      state.isLoggedInGuest = true;
     },
-    logout(state) {
-      state.isLoggedIn = false;
+    logoutGuest(state) {
+      state.isLoggedInGuest = false;
     },
   },
 

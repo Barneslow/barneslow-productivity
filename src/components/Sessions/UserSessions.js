@@ -7,7 +7,7 @@ import ViewMoreBtn from "../UI/ViewMoreBtn";
 import styles from "../Tasks/UserTasks.module.css";
 import { averageSessionTimeCalc } from "../../utils/Time/averageTimeSessionUtils";
 
-const UserSessions = ({ onClick, setState, setValue }) => {
+const UserSessions = ({ onClick, setState, setValue, isLoggedInGuest }) => {
   const { sessions } = useSelector((state) => state.session);
 
   let recentSessions;
@@ -30,7 +30,7 @@ const UserSessions = ({ onClick, setState, setValue }) => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.header}>USER SESSIONS</h2>
+      <h2 className={styles.header}>SESSIONS</h2>
       <div className={styles.table}>
         <button
           onClick={() => onClick("recent")}
