@@ -13,30 +13,40 @@ const Tasks = () => {
   const [addTask, setAddTask] = useState(false);
   const [tasksArray, setTasksArray] = useState();
   const [showArchive, setShowArchive] = useState(false);
+  const { isLoggedInGuest } = useSelector((state) => state.auth);
+  const { guestTasks } = useSelector((state) => state.guest);
 
   useEffect(() => {
-    setTasksArray(tasks);
-  }, [tasks]);
+    if (isLoggedInGuest) {
+      setTasksArray(guestTasks);
+    } else {
+      setTasksArray(tasks);
+    }
+  }, [tasks, isLoggedInGuest, guestTasks]);
 
   const archivedTasks = tasks?.filter((task) => task.isArchive);
 
   const sortByDueDate = () => {
-    let sortedArray;
-    if (!tasks) return;
+    if (!tasks || !guestTasks) return;
 
-    sortedArray = [...tasks].sort((taskA, taskB) => {
-      return taskA.dueDate > taskB.dueDate ? 1 : -1;
-    });
+    let sortedArray;
+
+    if (isLoggedInGuest) {
+      sortedArray = [...guestTasks].sort((taskA, taskB) => {
+        return taskA.dueDate > taskB.dueDate ? 1 : -1;
+      });
+    } else {
+      sortedArray = [...tasks].sort((taskA, taskB) => {
+        return taskA.dueDate > taskB.dueDate ? 1 : -1;
+      });
+    }
 
     setTasksArray(sortedArray);
     setShowArchive(false);
   };
 
   const sortByDateCreated = () => {
-    let sortedArray;
-    if (!tasks) return;
-
-    sortedArray = [...tasks].sort((taskA, taskB) => {
+    let sortedArray = [...tasks].sort((taskA, taskB) => {
       return taskA.createdAt < taskB.createdAt ? 1 : -1;
     });
 
@@ -45,10 +55,15 @@ const Tasks = () => {
   };
 
   const sortByCompleted = () => {
-    let sortedArray;
-    if (!tasks) return;
+    if (!tasks || !guestTasks) return;
 
-    sortedArray = [...tasks].sort(sortWithNullValue(true));
+    let sortedArray;
+
+    if (isLoggedInGuest) {
+      sortedArray = [...guestTasks].sort(sortWithNullValue(true));
+    } else {
+      sortedArray = [...tasks].sort(sortWithNullValue(true));
+    }
 
     setTasksArray(sortedArray);
     setShowArchive(false);
@@ -56,7 +71,7 @@ const Tasks = () => {
 
   useEffect(() => {
     sortByDueDate();
-  }, [tasks?.length]);
+  }, [tasks?.length, guestTasks?.length]);
 
   const showAddTaskHandler = () => {
     setAddTask(true);
@@ -78,7 +93,11 @@ const Tasks = () => {
     <div className={styles.container}>
       <div className={styles.tasks}>
         <div className={styles.sorting}>
-          <button className={styles.button} onClick={sortByDateCreated}>
+          <button
+            disabled={isLoggedInGuest}
+            className={styles.button}
+            onClick={sortByDateCreated}
+          >
             Created
           </button>
           <button className={styles.button} onClick={sortByDueDate}>
@@ -87,7 +106,11 @@ const Tasks = () => {
           <button className={styles.button} onClick={sortByCompleted}>
             Completed
           </button>
-          <button className={styles.button} onClick={showArchiveHandler}>
+          <button
+            disabled={isLoggedInGuest}
+            className={styles.button}
+            onClick={showArchiveHandler}
+          >
             Archive
           </button>
         </div>

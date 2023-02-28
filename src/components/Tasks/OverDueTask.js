@@ -3,13 +3,15 @@ import AddTaskIcon from "@mui/icons-material/AddTask";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { Checkbox, IconButton } from "@mui/material";
 import { dateFormatter } from "../../utils/dateFormater";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteTaskAction, updateTaskAction } from "../../store/taskSlice";
 
 import styles from "./Task.module.css";
+import { guestActions } from "../../store/guestSlice";
 
-const OverDueTask = ({ task }) => {
+const OverDueTask = ({ task, isLoggedInGuest }) => {
   const dispatch = useDispatch();
+  const { updateGuestTask } = useSelector(() => guestActions);
 
   const handleChange = () => {
     const updatedTask = {
@@ -18,7 +20,9 @@ const OverDueTask = ({ task }) => {
       id: task.id,
     };
 
-    dispatch(updateTaskAction(updatedTask));
+    isLoggedInGuest
+      ? dispatch(updateGuestTask(updatedTask))
+      : dispatch(updateTaskAction(updatedTask));
   };
 
   const deleteTaskHandler = () => {

@@ -14,9 +14,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     {/* <Elements stripe={stripePromise}> */}
-    <PersistGate persistor={persistor}>
-      <App />
-    </PersistGate>
+    {/* <PersistGate persistor={persistor}> */}
+    <App />
+    {/* </PersistGate> */}
     {/* </Elements> */}
   </Provider>
 );

@@ -14,8 +14,6 @@ const LoginPage = () => {
 
   const { loading, serverError, appError, userAuth } = userData;
 
-  console.log(userData.isLoggedIn);
-
   if (userAuth || userData.isLoggedInGuest) {
     return <Navigate to="/" />;
   }

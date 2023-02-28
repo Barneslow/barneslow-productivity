@@ -1,5 +1,4 @@
 import { useContext, useState, useEffect, useRef } from "react";
-import { CSSTransition } from "react-transition-group";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectTimer, timerActions } from "../../store/timerSlice";
@@ -98,7 +97,7 @@ const Timer = () => {
       }
 
       tick();
-    }, 1000);
+    }, 10);
 
     return () => {
       clearInterval(interval);

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { guestActions } from "../../store/guestSlice";
 import { createTaskAction } from "../../store/taskSlice";
 import { BasicDateTimePicker } from "../UI/DatePicker";
 import styles from "./AddTask.module.scss";
@@ -7,6 +8,9 @@ import styles from "./AddTask.module.scss";
 function AddTask(props) {
   const dispatch = useDispatch();
   const [description, setDescription] = useState("");
+  const { isLoggedInGuest } = useSelector((state) => state.auth);
+  const { createGuestTask } = useSelector((state) => guestActions);
+
   const [title, setTitle] = useState("");
 
   const [dueTime, setDueTime] = useState();
@@ -14,7 +18,7 @@ function AddTask(props) {
   const saveTask = (e) => {
     e.preventDefault();
 
-    const dueDate = dueTime?.$d;
+    const dueDate = dueTime?.$d || new Date(Date.now());
 
     const data = {
       title,
@@ -22,9 +26,15 @@ function AddTask(props) {
       dueDate,
     };
 
-    console.log(data);
-
-    dispatch(createTaskAction(data));
+    isLoggedInGuest
+      ? dispatch(
+          createGuestTask({
+            ...data,
+            status: "pending",
+            id: Math.random().toString(36).slice(2),
+          })
+        )
+      : dispatch(createTaskAction(data));
     props.onClose();
   };
   return (

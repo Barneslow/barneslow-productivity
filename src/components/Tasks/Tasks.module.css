@@ -42,7 +42,7 @@
   padding-bottom: 1rem;
   justify-content: center;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
 }
 
 .button {
@@ -53,6 +53,16 @@
   border-radius: 4px;
   padding: 0.5rem 1.5rem;
   cursor: pointer;
+}
+
+.button:disabled {
+  background-color: darkslategray;
+  color: white;
+}
+
+.button:hover:disabled {
+  background-color: darkslategray;
+  cursor: not-allowed;
 }
 
 .button:hover {

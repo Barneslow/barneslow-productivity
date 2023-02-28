@@ -1,34 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { udpatedTaskArr } from "./taskSlice";
 
 const INITIAL_STATE = {
-  sessions: [],
-  tasks: [],
-  notes: [],
+  guestSessions: [],
+  guestTasks: [],
+  guestNotes: [],
 };
 
 const guestSlice = createSlice({
   name: "guest",
   initialState: INITIAL_STATE,
   reducers: {
-    updateTimerClock(state, action) {
-      const { workTime, breakTime } = action.payload;
-      state.workMinutes = workTime;
-      state.breakMinutes = breakTime;
+    createGuestSession: (state, action) => {
+      state.guestSessions.push(action.payload);
     },
-    addCurrentSession(state, action) {
-      state.session += action.payload.work;
-      state.sessionBreak += action.payload.break;
+    removeGuestSession: (state, action) => {
+      const sessionId = action.payload;
+      state.guestSessions = state.guestSessions.filter(
+        (session) => session.id !== sessionId
+      );
     },
-    resetCurrentSession(state) {
-      state.session = INITIAL_STATE.session;
-      state.sessionBreak = INITIAL_STATE.sessionBreak;
+    createGuestTask: (state, action) => {
+      state.guestTasks.push(action.payload);
+    },
+    updateGuestTask: (state, action) => {
+      state.guestTasks = udpatedTaskArr(state.guestTasks, action.payload);
+    },
+    removeGuestTask: (state, action) => {
+      const sessionId = action.payload;
+      state.guestTasks = state.guestTasks.filter(
+        (session) => session.id !== sessionId
+      );
     },
   },
 });
 
-export const selectTimer = (state) => state.timer;
-export const selectTimerLog = (state) => state.timer.timerLog;
+export const guestActions = guestSlice.actions;
 
-export const timerActions = timerSlice.actions;
-
-export default timerSlice;
+export default guestSlice;

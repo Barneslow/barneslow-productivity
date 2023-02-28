@@ -14,7 +14,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import PunchClockIcon from "@mui/icons-material/PunchClock";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { LogoutUserAction } from "../../store/authSlice";
 
 const pages = ["Dashboard", "Study", "Tasks", "Leaderboard", "Store"];

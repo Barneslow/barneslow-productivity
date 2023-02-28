@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { timerActions } from "../../store/timerSlice";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
@@ -8,9 +8,13 @@ import Star from "./Star";
 
 import styles from "./SaveSession.module.css";
 import { secondsToHms } from "../../utils/secondsToHms";
+import { guestActions } from "../../store/guestSlice";
 
 const SaveSession = (props) => {
   const dispatch = useDispatch();
+  const { isLoggedInGuest } = useSelector((state) => state.auth);
+  const { createGuestSession } = useSelector((state) => guestActions);
+
   const { session, rating, breakTime } = props;
 
   const confirmHandler = () => {
@@ -20,7 +24,10 @@ const SaveSession = (props) => {
       rating,
     };
 
-    dispatch(createSessionAction(data));
+    isLoggedInGuest
+      ? dispatch(createGuestSession(data))
+      : dispatch(createSessionAction(data));
+
     dispatch(timerActions.resetCurrentSession());
     props.setShowModal(false);
   };

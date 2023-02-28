@@ -3,27 +3,27 @@ import ArchiveIcon from "@mui/icons-material/Archive";
 import { Checkbox, Tooltip } from "@mui/material";
 import { dateFormatter } from "../../utils/dateFormater";
 import { formatDistance } from "date-fns";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateTaskAction } from "../../store/taskSlice";
 import { useState } from "react";
 
 import styles from "./Task.module.css";
+import { guestActions } from "../../store/guestSlice";
 
-const CompleteTask = ({ task }) => {
+const CompleteTask = ({ task, isLoggedInGuest }) => {
   const dispatch = useDispatch();
   const [taskArchive, setTaskArchive] = useState(task.isArchive);
+  const { updateGuestTask } = useSelector(() => guestActions);
 
   let distanceSinceCompleted;
 
-  if (task?.completedAt) {
+  if (task?.completedAt && !isLoggedInGuest) {
     distanceSinceCompleted = formatDistance(
       new Date(task?.createdAt),
       new Date(task?.completedAt),
       { includeSeconds: true }
     );
   }
-
-  const [completedIn, setCompletedIn] = useState(distanceSinceCompleted);
 
   const handleChange = () => {
     const updatedTask = {
@@ -33,7 +33,9 @@ const CompleteTask = ({ task }) => {
       id: task.id,
     };
 
-    dispatch(updateTaskAction(updatedTask));
+    isLoggedInGuest
+      ? dispatch(updateGuestTask(updatedTask))
+      : dispatch(updateTaskAction(updatedTask));
   };
 
   const handleArchive = () => {
@@ -69,7 +71,7 @@ const CompleteTask = ({ task }) => {
       </div>
       <div className={styles.block}>
         <span className={styles.date}>Completed in:</span>
-        <h3>{completedIn}</h3>
+        <h3>{isLoggedInGuest ? "Login for data" : distanceSinceCompleted}</h3>
       </div>
       <div className={styles.block}>
         <Checkbox

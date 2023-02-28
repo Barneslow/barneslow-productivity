@@ -4,8 +4,6 @@ import { LinearProgress } from "@mui/material";
 
 import { selectTimer, timerActions } from "../../store/timerSlice";
 
-import Card from "../UI/Card";
-
 import styles from "./CurrentSession.module.css";
 import CountdownTimer from "./CountdownTimer";
 import { secondsToHms } from "../../utils/secondsToHms";

@@ -10,6 +10,7 @@ import thunk from "redux-thunk";
 
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import guestSlice from "./guestSlice";
 
 export const persistConfig = {
   key: "root",
@@ -25,12 +26,13 @@ const rootReducer = combineReducers({
   session: sessionSlice.reducer,
   task: taskSlice.reducer,
   emoji: emojiSlice.reducer,
+  guest: guestSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: [thunk],
 });
 

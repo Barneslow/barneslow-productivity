@@ -7,7 +7,6 @@ const TasksContainer = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("fetched tasks");
     dispatch(fetchUserTasksAction());
   }, [dispatch]);
 

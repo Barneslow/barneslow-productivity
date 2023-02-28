@@ -144,7 +144,7 @@ const newTasksArr = (state, payload) => {
   return newArr;
 };
 
-const udpatedTaskArr = (state, payload) => {
+export const udpatedTaskArr = (state, payload) => {
   const newArr = state.map(
     (obj) => [payload].find((o) => o.id === obj.id) || obj
   );

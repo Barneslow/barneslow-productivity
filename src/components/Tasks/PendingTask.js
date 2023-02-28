@@ -8,18 +8,20 @@ import KeyboardDoubleArrowUpIcon from "@mui/icons-material/KeyboardDoubleArrowUp
 
 import { Checkbox, IconButton, Tooltip } from "@mui/material";
 import { dateFormatter } from "../../utils/dateFormater";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteTaskAction, updateTaskAction } from "../../store/taskSlice";
 import { useState } from "react";
 import EditTask from "./EditTask";
 
 import styles from "./Task.module.css";
+import { guestActions } from "../../store/guestSlice";
 
-const PendingTask = ({ task }) => {
+const PendingTask = ({ task, isLoggedInGuest }) => {
   const dispatch = useDispatch();
   const [taskArchive, setTaskArchive] = useState(task.isArchive);
   const [isEditing, setIsEditing] = useState(false);
   const [viewDescription, setViewDescription] = useState(false);
+  const { updateGuestTask } = useSelector(() => guestActions);
 
   const archiveColour = taskArchive ? "blue" : "darkgrey";
 
@@ -30,7 +32,9 @@ const PendingTask = ({ task }) => {
       id: task.id,
     };
 
-    dispatch(updateTaskAction(updatedTask));
+    isLoggedInGuest
+      ? dispatch(updateGuestTask(updatedTask))
+      : dispatch(updateTaskAction(updatedTask));
   };
 
   const handleArchive = () => {
