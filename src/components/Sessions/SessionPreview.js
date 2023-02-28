@@ -2,8 +2,10 @@ import styles from "./SessionPreview.module.css";
 import { useNavigate } from "react-router-dom";
 import StudyBlock from "../Study/StudyBlock";
 import SessionGoals from "./SessionGoals";
+import { useSelector } from "react-redux";
 
 const SessionPreview = ({ session, state, setState }) => {
+  const { isLoggedInGuest } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
   const navigateHandler = () => {
@@ -12,7 +14,11 @@ const SessionPreview = ({ session, state, setState }) => {
     navigate(`sessions/${session.id}`);
   };
   return (
-    <button onClick={navigateHandler} className={styles.study}>
+    <button
+      disabled={isLoggedInGuest}
+      onClick={navigateHandler}
+      className={styles.study}
+    >
       <div className={styles.block}>
         <StudyBlock date={session.createdAt} />
       </div>
@@ -26,6 +32,7 @@ const SessionPreview = ({ session, state, setState }) => {
           sessionGoal={session.sessionGoal}
         />
       </div>
+      <span className={styles.tooltip}>Register for access</span>
     </button>
   );
 };

@@ -3,11 +3,18 @@ import ViewMoreBtn from "../UI/ViewMoreBtn";
 
 import styles from "./UserTasks.module.css";
 
-const UserTasks = ({ onClick, isLoggedInGuest }) => {
+const UserTasks = ({ onClick }) => {
   const { tasks } = useSelector((state) => state.task);
+  const { guestTasks } = useSelector((state) => state.guest);
+  const { isLoggedInGuest } = useSelector((state) => state.auth);
 
-  const pending = tasks?.filter((task) => task.status === "pending");
-  const completed = tasks?.filter((task) => task.status === "completed");
+  let selectedTasks;
+  isLoggedInGuest ? (selectedTasks = guestTasks) : (selectedTasks = tasks);
+
+  const pending = selectedTasks?.filter((task) => task.status === "pending");
+  const completed = selectedTasks?.filter(
+    (task) => task.status === "completed"
+  );
 
   return (
     <div className={styles.container}>
@@ -20,7 +27,7 @@ const UserTasks = ({ onClick, isLoggedInGuest }) => {
           <h3 className={styles.title}>Total Tasks</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
             <i className="tasks icon blue"></i>
-            {isLoggedInGuest ? 0 : tasks?.length}
+            {selectedTasks?.length}
           </div>
         </button>
 
@@ -31,7 +38,7 @@ const UserTasks = ({ onClick, isLoggedInGuest }) => {
           <h3 className={styles.title}>Pending Tasks</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
             <i className="sync icon orange"></i>
-            {isLoggedInGuest ? 0 : pending?.length}
+            {pending?.length}
           </div>
         </button>
         <button
@@ -41,7 +48,7 @@ const UserTasks = ({ onClick, isLoggedInGuest }) => {
           <h3 className={styles.title}>Completed Tasks</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
             <i className="icon checkmark green"></i>
-            {isLoggedInGuest ? 0 : completed?.length}
+            {completed?.length}
           </div>
         </button>
       </div>

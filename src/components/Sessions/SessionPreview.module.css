@@ -12,12 +12,22 @@
   animation: Slide_Up 300ms ease;
   border: 1px solid green;
   background-color: rgba(26, 245, 26, 0.15);
+  position: relative;
 }
 
 .study:hover {
-  transform: scale(0.98);
+  transform: scale(0.99);
   cursor: pointer;
   background-color: rgba(26, 245, 26, 0.5);
+}
+
+.study:hover .tooltip {
+  visibility: visible;
+}
+
+.study:hover:disabled {
+  cursor: not-allowed;
+  transform: none;
 }
 
 .block {
@@ -47,4 +57,16 @@
   100% {
     transform: translateY(0);
   }
+}
+
+.tooltip {
+  visibility: hidden;
+  background-color: darkslategrey;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  font-size: 20px;
 }

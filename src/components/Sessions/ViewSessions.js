@@ -10,24 +10,31 @@ import SessionList from "./SessionList";
 
 import styles from "./ViewSessions.module.css";
 
-const ViewSessions = ({ status }) => {
+const ViewSessions = ({ status, isLoggedInGuest }) => {
   const { sessions } = useSelector((state) => state.session);
   const { user } = useSelector((state) => state.user);
+  const { guestSessions } = useSelector((state) => state.guest);
+
+  let selectedSessions;
+
+  isLoggedInGuest
+    ? (selectedSessions = guestSessions)
+    : (selectedSessions = sessions);
 
   const sessionGoal = secondsToMinutes(user?.sessionGoal);
 
-  const [sessionArray, setSessionArray] = useState(sessions);
+  const [sessionArray, setSessionArray] = useState(selectedSessions);
 
   const ratingArray = [];
 
-  sessions?.forEach((session) => ratingArray.push(session.rating));
+  selectedSessions?.forEach((session) => ratingArray.push(session.rating));
 
   const rating = frequencyCounter(ratingArray);
 
   useEffect(() => {
-    if (!sessions || sessions.length === 0) return;
+    if (!selectedSessions || selectedSessions.length === 0) return;
     if (status === "longest") {
-      let filteredTasks = [...sessions].sort((sessionA, sessionB) => {
+      let filteredTasks = [...selectedSessions].sort((sessionA, sessionB) => {
         return sessionA.time > sessionB.time ? -1 : 1;
       });
 
@@ -35,37 +42,41 @@ const ViewSessions = ({ status }) => {
     }
 
     if (status === "recent") {
-      let recentSessions = sessionsWithinSevenDays(sessions);
+      let recentSessions = sessionsWithinSevenDays(selectedSessions);
 
       let filteredTasks = [...recentSessions].sort((sessionA, sessionB) => {
         return sessionA.createdAt > sessionB.createdAt ? -1 : 1;
       });
 
+      console.log(recentSessions);
+
       setSessionArray(filteredTasks);
     }
 
     if (status === "rated") {
-      let filteredTasks = [...sessions].sort((sessionA, sessionB) => {
+      let filteredTasks = [...selectedSessions].sort((sessionA, sessionB) => {
         return sessionA.rating > sessionB.rating ? -1 : 1;
       });
 
       setSessionArray(filteredTasks);
     }
-  }, [status, sessions]);
+  }, [status]);
 
   return (
     <div className={styles.container}>
       <div className={styles.chart}>
         {status === "recent" && <WeeklyChart sessions={sessionArray} />}
         {status === "rated" && <RatingsChart rating={rating} />}
-        {status === "longest" && (
-          <MarkerChart sessionGoal={sessionGoal} sessions={sessionArray} />
-        )}
+        {status === "longest" &&
+          !(<MarkerChart sessionGoal={sessionGoal} sessions={sessionArray} />)}
       </div>
       <div className={styles.events}>
         <h2 className={styles.title}>Sessions</h2>
         <div className={styles.container}></div>
-        <SessionList state={"preview"} sessionArray={sessionArray} />
+        <SessionList
+          state={"preview"}
+          sessionArray={isLoggedInGuest ? guestSessions : sessionArray}
+        />
       </div>
     </div>
   );

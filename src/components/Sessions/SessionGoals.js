@@ -7,9 +7,7 @@ import styles from "./SessionGoals.module.css";
 import { useSelector } from "react-redux";
 import { secondsToMinutes } from "date-fns";
 
-const SessionGoals = ({ rating, time }) => {
-  const { sessionGoal } = useSelector((state) => state.user.user);
-
+const SessionGoals = ({ rating, time, sessionGoal }) => {
   const goal = secondsToMinutes(sessionGoal);
   return (
     <div className={styles.container}>

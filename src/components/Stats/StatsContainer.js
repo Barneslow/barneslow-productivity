@@ -7,6 +7,9 @@ import SessionStatsPreview from "../Sessions/SessionStatsPreview";
 import styles from "./StatsContainer.module.css";
 
 const StatsContainer = () => {
+  const { isLoggedInGuest } = useSelector((state) => state.auth);
+  const { guestSessions } = useSelector((state) => state.guest);
+
   const { sessions } = useSelector((state) => state.session);
   const [state, setState] = useState("");
 
@@ -25,7 +28,13 @@ const StatsContainer = () => {
     { month: "Dec", time: 0, breakTime: 0 },
   ];
 
-  sessions?.map((session) => {
+  let selectedSessions;
+
+  isLoggedInGuest
+    ? (selectedSessions = guestSessions)
+    : (selectedSessions = sessions);
+
+  selectedSessions?.map((session) => {
     months.forEach((month) => {
       const sessionMonth = new Date(session.createdAt).toLocaleString("en-US", {
         month: "short",
@@ -47,7 +56,7 @@ const StatsContainer = () => {
         {state.hasOwnProperty("_id") && <SessionStatsPreview session={state} />}
         {state === "" && <MonthlyLineChart sessions={months} />}
         <SessionList
-          sessionArray={sessions}
+          sessionArray={selectedSessions}
           state={"full"}
           setState={stateHandler}
         />

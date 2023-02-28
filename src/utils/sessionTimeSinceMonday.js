@@ -31,6 +31,4 @@ export const sessionsWithinSevenDays = (sessions) => {
   );
 
   return filteredSessions;
-
-  console.log(sevenDaysAgo);
 };

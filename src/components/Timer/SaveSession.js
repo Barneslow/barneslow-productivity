@@ -25,7 +25,12 @@ const SaveSession = (props) => {
     };
 
     isLoggedInGuest
-      ? dispatch(createGuestSession(data))
+      ? dispatch(
+          createGuestSession({
+            ...data,
+            id: Math.random().toString(36).slice(2),
+          })
+        )
       : dispatch(createSessionAction(data));
 
     dispatch(timerActions.resetCurrentSession());

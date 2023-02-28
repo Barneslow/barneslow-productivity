@@ -38,12 +38,18 @@
   border: 1px solid rgb(0, 0, 0, 0.5);
   border-radius: 10px;
   box-shadow: var(--button-box-shadow);
+  position: relative;
 }
 
 .block-hover:hover {
   cursor: pointer;
   border: 1px solid;
   background: var(--light-orange-gradient);
+}
+
+.block-hover:hover:disabled {
+  cursor: not-allowed;
+  background: inherit;
 }
 
 .title {
@@ -57,16 +63,17 @@
   font-size: 2rem;
 }
 
-.total-hover:hover {
-  cursor: pointer;
-}
-
 .view {
   justify-content: center;
   display: flex;
   flex-direction: column;
   height: 100%;
   border: 1px solid rgb(0, 0, 0, 0);
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 1;
 }
 
 @media (max-width: 600px) {

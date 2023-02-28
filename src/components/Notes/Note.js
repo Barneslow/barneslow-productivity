@@ -31,8 +31,6 @@ const Note = ({ note }) => {
         noteId: note.id,
       };
 
-      console.log(data);
-
       dispatch(editNoteAction(data));
 
       setIsEditing(false);

@@ -9,44 +9,38 @@ import { averageSessionTimeCalc } from "../../utils/Time/averageTimeSessionUtils
 
 const UserSessions = ({ onClick, setState, setValue, isLoggedInGuest }) => {
   const { sessions } = useSelector((state) => state.session);
-  const guest = useSelector((state) => state.guest);
+  const { guestSessions } = useSelector((state) => state.guest);
 
   let recentSessions;
   let averageTime;
   let totalSessions;
   let totalTime;
 
-  if (sessions?.length > 0) {
-    let averageSeconds = secondsToHms(averageSessionTimeCalc(sessions));
-    averageTime = `${averageSeconds.hours}:${averageSeconds.minutes}:${averageSeconds.seconds}`;
-    totalSessions = sessions?.length;
+  let selectedSessions;
 
-    let time = sessions?.map((session) => session.time);
+  isLoggedInGuest
+    ? (selectedSessions = guestSessions)
+    : (selectedSessions = sessions);
+
+  if (selectedSessions?.length > 0) {
+    let averageSeconds = secondsToHms(averageSessionTimeCalc(selectedSessions));
+    averageTime = `${averageSeconds.hours}:${averageSeconds.minutes}:${averageSeconds.seconds}`;
+    totalSessions = selectedSessions?.length;
+
+    let time = selectedSessions?.map((session) => session.time);
     let totalSeconds = secondsToHms(time?.reduce((acc, cur) => acc + cur));
 
     totalTime = `${totalSeconds.hours}:${totalSeconds.minutes}:${totalSeconds.seconds}`;
 
-    recentSessions = sessionsWithinSevenDays(sessions).length;
+    recentSessions = sessionsWithinSevenDays(selectedSessions).length;
   }
-
-  // if (isLoggedInGuest && guestSessions.length > 0) {
-  //   let averageSeconds = secondsToHms(averageSessionTimeCalc(guestSessions));
-  //   averageTime = `${averageSeconds.hours}:${averageSeconds.minutes}:${averageSeconds.seconds}`;
-  //   totalSessions = guestSessions?.length;
-
-  //   let time = sessions?.map((session) => session.time);
-  //   let totalSeconds = secondsToHms(time?.reduce((acc, cur) => acc + cur));
-
-  //   totalTime = `${totalSeconds.hours}:${totalSeconds.minutes}:${totalSeconds.seconds}`;
-
-  //   recentSessions = sessionsWithinSevenDays(guestSessions).length;
-  // }
 
   return (
     <div className={styles.container}>
       <h2 className={styles.header}>SESSIONS</h2>
       <div className={styles.table}>
         <button
+          disabled={isLoggedInGuest}
           onClick={() => onClick("recent")}
           className={`${styles.block} ${styles["block-hover"]}`}
         >
@@ -58,22 +52,24 @@ const UserSessions = ({ onClick, setState, setValue, isLoggedInGuest }) => {
         </button>
 
         <button
+          disabled={isLoggedInGuest}
           onClick={() => onClick("rated")}
           className={`${styles.block} ${styles["block-hover"]}`}
         >
           <h3 className={styles.title}>Top Rated</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
-            <i className="star icon yellow"></i>10
+            <i className="star icon yellow"></i>
           </div>
         </button>
 
         <button
           onClick={() => onClick("longest")}
+          disabled={isLoggedInGuest}
           className={`${styles.block} ${styles["block-hover"]}`}
         >
           <h3 className={styles.title}>Longest Sessions</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
-            <i className="hourglass half icon purple"></i>10
+            <i className="hourglass half icon purple"></i>
           </div>
         </button>
       </div>

@@ -12,7 +12,7 @@ import styles from "./Dashboard.module.css";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { userAuth, isLoggedInGuest } = useSelector((state) => state.auth);
+  const { userAuth } = useSelector((state) => state.auth);
 
   const [viewable, setViewable] = useState("Dashboard");
   const [value, setValue] = useState(0);
