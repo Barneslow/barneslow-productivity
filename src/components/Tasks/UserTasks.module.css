@@ -52,6 +52,10 @@
   background: inherit;
 }
 
+.block-hover:hover:disabled .tooltip {
+  visibility: visible;
+}
+
 .title {
   padding: 0.5rem;
   font-size: 1.5rem;
@@ -72,8 +76,18 @@
 }
 
 .tooltip {
+  visibility: hidden;
+  background-color: darkslategrey;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 6px;
   position: absolute;
   z-index: 1;
+  font-size: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media (max-width: 600px) {

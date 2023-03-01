@@ -46,6 +46,8 @@ const UserSessions = ({ onClick, setState, setValue, isLoggedInGuest }) => {
         >
           <h3 className={styles.title}>Recent Sessions</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
+            <span className={styles.tooltip}>Register for access</span>
+
             <i className="calendar check icon red outline"></i>
             {recentSessions}
           </div>
@@ -58,6 +60,7 @@ const UserSessions = ({ onClick, setState, setValue, isLoggedInGuest }) => {
         >
           <h3 className={styles.title}>Top Rated</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
+            <span className={styles.tooltip}>Register for access</span>
             <i className="star icon yellow"></i>
           </div>
         </button>
@@ -69,6 +72,8 @@ const UserSessions = ({ onClick, setState, setValue, isLoggedInGuest }) => {
         >
           <h3 className={styles.title}>Longest Sessions</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
+            <span className={styles.tooltip}>Register for access</span>
+
             <i className="hourglass half icon purple"></i>
           </div>
         </button>

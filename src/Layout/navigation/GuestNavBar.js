@@ -14,6 +14,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import PunchClockIcon from "@mui/icons-material/PunchClock";
 
+import styles from "./NavBar.module.css";
+
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../store/authSlice";
 
@@ -225,19 +227,9 @@ const GuestNavBar = ({ userAuth, user }) => {
           </Box>
         </Toolbar>
       </Container>
-      <Typography
-        variant="h5"
-        sx={{
-          textAlign: "center",
-          fontWeight: "bold",
-          background: "#3aba45",
-          paddingBlock: 1,
-          paddingInline: 2,
-          color: "black",
-        }}
-      >
-        Guest Account. Register for saved details, greater tracking
-        capabilities, leaderboard and shop access!
+      <Typography className={styles["guest-notification"]}>
+        Guest Account! Register to save details, greater tracking capabilities,
+        leaderboard and shop access!
       </Typography>
     </AppBar>
   );

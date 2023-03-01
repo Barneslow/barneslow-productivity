@@ -50,6 +50,7 @@
     rgba(215, 208, 6, 1) 53%
   );
 
+  --subtitle: clamp(1rem, 2.5vw, 1.4rem);
   --speed: 500ms;
   --white-box-shadow: rgba(255, 255, 255, 0.7) 0px 1px 4px;
   --box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;

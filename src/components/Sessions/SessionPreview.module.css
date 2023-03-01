@@ -21,7 +21,7 @@
   background-color: rgba(26, 245, 26, 0.5);
 }
 
-.study:hover .tooltip {
+.study:hover:disabled .tooltip {
   visibility: visible;
 }
 
