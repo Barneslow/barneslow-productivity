@@ -13,7 +13,7 @@ const Star = ({ rating, onClick }) => {
             color: "#ffc23a",
             stroke: "black",
             strokeWidth: 0.3,
-            fontSize: 50,
+            fontSize: "var(--header)",
           }}
         />
       </IconButton>
@@ -27,7 +27,7 @@ const Star = ({ rating, onClick }) => {
             color: "lightgrey",
             stroke: "black",
             strokeWidth: 0.3,
-            fontSize: 50,
+            fontSize: "var(--header)",
           }}
         />
       </IconButton>

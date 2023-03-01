@@ -129,7 +129,9 @@ const Timer = () => {
           : `${styles.container} ${styles.break}`
       }
     >
-      <h2>{mode === "Study" ? "Study Hard" : "Break Time"}</h2>
+      <h2 style={{ fontSize: "var(--header)" }}>
+        {mode === "Study" ? "Study Hard" : "Break Time"}
+      </h2>
       <div className={styles.padding}>
         <div className={styles.timer}>
           <CircularProgressbar

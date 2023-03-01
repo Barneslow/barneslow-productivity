@@ -85,13 +85,13 @@ const CurrentSession = () => {
           />
           <div className={styles["session-stats"]}>
             <div className={styles["session-time"]}>
-              <h3>Session Time</h3>
+              <h3 style={{ fontSize: "var(--subtitle)" }}>Session Time</h3>
               <h3>
                 {sessionTime.hours}:{sessionTime.minutes}:{sessionTime.seconds}
               </h3>
             </div>
             <div className={styles["session-time"]}>
-              <h3>
+              <h3 style={{ fontSize: "var(--subtitle)" }}>
                 {goal < currentSession ? "Completed Goal" : "Time Until Goal"}
               </h3>
               <CountdownTimer goal={goal} session={currentSession} />
