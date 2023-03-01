@@ -8,8 +8,6 @@ const Task = ({ task }) => {
 
   let content;
 
-  console.log(task);
-
   if (new Date(task.dueDate) < new Date() && task.status !== "completed") {
     content = <OverDueTask task={task} isLoggedInGuest={isLoggedInGuest} />;
   } else if (task.status === "completed") {

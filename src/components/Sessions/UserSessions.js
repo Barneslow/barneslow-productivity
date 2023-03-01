@@ -37,14 +37,13 @@ const UserSessions = ({ onClick, setState, setValue, isLoggedInGuest }) => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.header}>SESSIONS</h2>
       <div className={styles.table}>
         <button
           disabled={isLoggedInGuest}
           onClick={() => onClick("recent")}
           className={`${styles.block} ${styles["block-hover"]}`}
         >
-          <h3 className={styles.title}>Recent Sessions</h3>
+          <h3 className={styles.title}>Recent</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
             <span className={styles.tooltip}>Register for access</span>
 
@@ -70,7 +69,7 @@ const UserSessions = ({ onClick, setState, setValue, isLoggedInGuest }) => {
           disabled={isLoggedInGuest}
           className={`${styles.block} ${styles["block-hover"]}`}
         >
-          <h3 className={styles.title}>Longest Sessions</h3>
+          <h3 className={styles.title}>Longest</h3>
           <div className={`${styles.total} ${styles["total-hover"]}`}>
             <span className={styles.tooltip}>Register for access</span>
 
@@ -81,14 +80,14 @@ const UserSessions = ({ onClick, setState, setValue, isLoggedInGuest }) => {
 
       <div className={`${styles.table} ${styles["small-grid"]}`}>
         <div className={styles.block}>
-          <h3 className={styles.title}>Total Sessions</h3>
+          <h3 className={styles.title}>Total</h3>
           <div className={styles.total}>
             <i className="pencil alternate icon blue"></i>
             {totalSessions}
           </div>
         </div>
         <div className={styles.block}>
-          <h3 className={styles.title}>Average Session</h3>
+          <h3 className={styles.title}>Average</h3>
           <div className={styles.total}>
             <i className="stopwatch icon orange"></i>
             {averageTime}

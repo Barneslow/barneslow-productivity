@@ -36,7 +36,6 @@ export const fetchUserAction = createAsyncThunk(
       },
     };
 
-    console.log("user fetched");
     try {
       const { data } = await axios.get(
         `${baseUrl}/api/users/${id}`,
@@ -176,6 +175,9 @@ export const uploadProfilePhotoAction = createAsyncThunk(
 const userSlice = createSlice({
   name: "user",
   initialState: {},
+  reducers: {
+    removeUser: (state) => (state.user = undefined),
+  },
 
   extraReducers: (builder) => {
     builder.addCase(fetchAllUsersAction.pending, (state, action) => {
@@ -283,3 +285,5 @@ const userSlice = createSlice({
 });
 
 export default userSlice;
+
+export const userActions = userSlice.actions;

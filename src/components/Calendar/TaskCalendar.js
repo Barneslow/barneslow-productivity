@@ -72,15 +72,17 @@ const TaskCalander = ({ status, setStatus }) => {
 
   return (
     <div className={styles.container}>
-      <Calendar
-        onChange={onChange}
-        value={date}
-        tileClassName={({ date, view }) => {
-          if (dateArr.find((x) => x === moment(date).format("DD-MM-YYYY"))) {
-            return `${styles.highlight}`;
-          }
-        }}
-      />
+      <div className={styles.calendar}>
+        <Calendar
+          onChange={onChange}
+          value={date}
+          tileClassName={({ date, view }) => {
+            if (dateArr.find((x) => x === moment(date).format("DD-MM-YYYY"))) {
+              return `${styles.highlight}`;
+            }
+          }}
+        />
+      </div>
       <div className={styles.events}>
         <h2 className={styles.title}>Tasks</h2>
         <p className={styles.date}>

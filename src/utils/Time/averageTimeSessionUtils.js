@@ -13,9 +13,5 @@ export const averageTimePercentDifference = (averageTime, time) => {
   if (time < averageTime) percent = 100 - (time / averageTime) * 100;
   if (time > averageTime) percent = ((time - averageTime) / averageTime) * 100;
 
-  // const difference = 100 - percent;
-
   return percent.toFixed(2);
-
-  // console.log(difference);
 };

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import { baseUrl } from "../config/baseUrl";
+import { userActions } from "./userSlice";
 
 export const resetAccountAction = createAction("account/reset");
 
@@ -196,8 +197,6 @@ export const accountVerifiedAction = createAsyncThunk(
 );
 
 const tokenSentTimer = (state) => {
-  console.log(state);
-
   // setTimeout((state, action) => {
   //   state.tokenSent = undefined;
   //   console.log(state.tokenSent);

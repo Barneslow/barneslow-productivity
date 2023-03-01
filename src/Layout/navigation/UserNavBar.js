@@ -16,6 +16,7 @@ import PunchClockIcon from "@mui/icons-material/PunchClock";
 
 import { useDispatch } from "react-redux";
 import { LogoutUserAction } from "../../store/authSlice";
+import { userActions } from "../../store/userSlice";
 
 const pages = ["Dashboard", "Study", "Tasks", "Leaderboard", "Store"];
 const settings = [
@@ -59,6 +60,7 @@ const UserNavBar = ({ userAuth, user }) => {
     if (e.target.textContent === "Store") navigate("/store");
 
     if (e.target.textContent === "Logout") {
+      dispatch(userActions.removeUser());
       dispatch(LogoutUserAction());
       navigate("/login");
     }

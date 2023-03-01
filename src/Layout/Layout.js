@@ -15,47 +15,66 @@ import SessionInformation from "../components/Sessions/SessionInformation";
 const Layout = ({ setState, setValue }) => {
   const user = useSelector((state) => state.user.user);
   const sessions = useSelector((state) => state.session.sessions);
+  const { isLoggedInGuest } = useSelector((state) => state.auth);
+  const { guestSessions, guestWeeklyGoal } = useSelector(
+    (state) => state.guest
+  );
 
   const ratingArray = [];
 
-  sessions?.forEach((session) => ratingArray.push(session.rating));
+  let selectedSessions;
+  let selectedWeeklyGoal;
+
+  if (isLoggedInGuest) {
+    selectedSessions = guestSessions;
+    selectedWeeklyGoal = guestWeeklyGoal;
+  } else {
+    selectedSessions = sessions;
+    selectedWeeklyGoal = user?.weeklyGoal;
+  }
+
+  selectedSessions?.forEach((session) => ratingArray.push(session.rating));
 
   const rating = frequencyCounter(ratingArray);
 
   let totalTime;
-  if (sessions?.length > 0) {
-    totalTime = sessionTimeSinceMonday(sessions);
+  if (selectedSessions?.length > 0) {
+    totalTime = sessionTimeSinceMonday(selectedSessions);
   } else {
     totalTime = 0;
   }
 
-  const time = secondsToHms(user?.weeklyGoal - totalTime);
+  const time = secondsToHms(selectedWeeklyGoal - totalTime);
 
   let timeRemaining;
-  if (user?.weeklyGoal > totalTime) {
+  if (selectedWeeklyGoal > totalTime) {
     timeRemaining = `Time Remaining - ${time.hours}:${time.minutes}:${time.seconds}`;
   } else {
     timeRemaining = "Weekly Goal Complete";
   }
 
   return (
-    <div className={styles.layout}>
+    <div className={styles.wrapper}>
       <TaskInformation />
       <SessionInformation setState={setState} setValue={setValue} />
       <main className={styles.main}>
-        {user && sessions && (
+        {selectedSessions && (
           <>
             <div className={styles["chart-container"]}>
-              <WeeklyChart sessions={sessions} />
+              <WeeklyChart sessions={selectedSessions} />
             </div>
             <div className={styles["chart-container"]}>
-              <GoalChart sessions={sessions} totalTime={totalTime} />
+              <GoalChart
+                sessions={selectedSessions}
+                totalTime={totalTime}
+                weeklyGoal={selectedWeeklyGoal}
+              />
               <div className={styles.box}>
                 <h2>{timeRemaining}</h2>
               </div>
             </div>
             <div className={styles["chart-container"]}>
-              <MonthlyChart sessions={sessions} />
+              <MonthlyChart sessions={selectedSessions} />
             </div>
           </>
         )}

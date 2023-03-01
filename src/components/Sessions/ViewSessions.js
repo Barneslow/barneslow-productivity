@@ -48,8 +48,6 @@ const ViewSessions = ({ status, isLoggedInGuest }) => {
         return sessionA.createdAt > sessionB.createdAt ? -1 : 1;
       });
 
-      console.log(recentSessions);
-
       setSessionArray(filteredTasks);
     }
 

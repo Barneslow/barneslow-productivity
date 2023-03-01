@@ -129,9 +129,7 @@ export const MonthlyLineChart = (props) => {
   );
 };
 
-export const MonthlyChart = (props) => {
-  const { sessions } = props;
-
+export const MonthlyChart = ({ sessions }) => {
   const [series, setSeries] = useState([
     {
       name: "Study Time",
@@ -276,9 +274,7 @@ export const MonthlyChart = (props) => {
   );
 };
 
-export const WeeklyChart = (props) => {
-  const { sessions } = props;
-
+export const WeeklyChart = ({ sessions }) => {
   const [series, setSeries] = useState([
     {
       name: "Study Time",
@@ -410,10 +406,7 @@ export const WeeklyChart = (props) => {
   );
 };
 
-export const GoalChart = (props) => {
-  const weeklyGoal = useSelector((state) => state.user.user.weeklyGoal);
-  const { sessions, totalTime } = props;
-
+export const GoalChart = ({ weeklyGoal, sessions, totalTime }) => {
   const [series, setSeries] = useState([0]);
 
   useEffect(() => {

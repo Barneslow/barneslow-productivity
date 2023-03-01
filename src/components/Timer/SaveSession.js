@@ -29,6 +29,7 @@ const SaveSession = (props) => {
           createGuestSession({
             ...data,
             id: Math.random().toString(36).slice(2),
+            createdAt: new Date().toISOString(),
           })
         )
       : dispatch(createSessionAction(data));

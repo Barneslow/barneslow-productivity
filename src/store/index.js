@@ -8,15 +8,15 @@ import timerSlice from "./timerSlice";
 import userSlice from "./userSlice";
 import thunk from "redux-thunk";
 
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+// import { persistStore, persistReducer } from "redux-persist";
+// import storage from "redux-persist/lib/storage";
 import guestSlice from "./guestSlice";
 
-export const persistConfig = {
-  key: "root",
-  storage,
-  blacklist: ["auth"],
-};
+// export const persistConfig = {
+//   key: "root",
+//   storage,
+//   blacklist: ["auth"],
+// };
 
 const rootReducer = combineReducers({
   note: noteSlice.reducer,
@@ -29,11 +29,11 @@ const rootReducer = combineReducers({
   guest: guestSlice.reducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: rootReducer,
   middleware: [thunk],
 });
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);

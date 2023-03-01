@@ -1,7 +1,7 @@
 :root {
   --light-grey: #a8a7a7;
   --dark-grey: #242526;
-  --off-white: #dbdbdb;
+  --off-white: rgb(250, 249, 246);
   --light-blue: #2086d0;
   --blue: #67b0e4;
   --dark-blue: #114971;
@@ -9,7 +9,7 @@
   --dark-orange: #ff9100;
   --green: #429416;
   --dark-green: #276009;
-  --light-blue-gradient: linear-gradient(to right, #e9f8ff, #90b2d8, #c1e3ff);
+  --light-blue-gradient: linear-gradient(to left, #8693ab, #bdd4e7);
   --light-green-gradient: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
   --light-red-gradient: linear-gradient(
     315deg,
@@ -51,6 +51,8 @@
   );
 
   --subtitle: clamp(1rem, 2.5vw, 1.4rem);
+  --title: clamp(1.2rem, 3vw, 2rem);
+
   --speed: 500ms;
   --white-box-shadow: rgba(255, 255, 255, 0.7) 0px 1px 4px;
   --box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;

@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   guestSessions: [],
   guestTasks: [],
   guestNotes: [],
+  guestWeeklyGoal: 300 * 60,
 };
 
 const guestSlice = createSlice({
