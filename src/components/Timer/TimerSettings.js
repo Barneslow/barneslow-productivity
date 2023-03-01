@@ -1,17 +1,15 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { PrettoSlider, WorkingSlider } from "./StyledSlider";
-import { selectTimer, timerActions } from "../../store/timerSlice";
+import { timerActions } from "../../store/timerSlice";
 
 import SettingsIcon from "@mui/icons-material/Settings";
 
 import styles from "./TimerSettings.module.scss";
 import { IconButton } from "@mui/material";
-import { borderRadius } from "@mui/system";
 
 const TimerSettings = () => {
   const dispatch = useDispatch();
-  const timerState = useSelector(selectTimer);
   const [showSettings, setShowSettings] = useState(false);
   const [workTime, setWorkTime] = useState(25);
   const [breakTime, setBreakTime] = useState(5);

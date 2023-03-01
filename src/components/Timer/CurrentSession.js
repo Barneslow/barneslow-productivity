@@ -19,6 +19,8 @@ const CurrentSession = () => {
   const [error, setError] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const { user } = useSelector((state) => state.user);
+  const { isLoggedInGuest } = useSelector((state) => state.auth);
+  const { guestSessionGoal } = useSelector((state) => state.guest);
 
   const [stars, setStars] = useState(3);
 
@@ -42,11 +44,20 @@ const CurrentSession = () => {
 
   const sessionTime = secondsToHms(currentSession);
 
-  const goal = user?.sessionGoal ? user?.sessionGoal : 0;
+  let goal;
+
+  isLoggedInGuest ? (goal = guestSessionGoal) : (goal = user?.sessionGoal);
+
   let value = (currentSession / goal) * 100;
 
-  if (currentSession > user?.sessionGoal) {
-    value = 100;
+  if (isLoggedInGuest) {
+    if (currentSession > guestSessionGoal) {
+      value = 100;
+    }
+  } else {
+    if (currentSession > user?.sessionGoal) {
+      value = 100;
+    }
   }
 
   return (
